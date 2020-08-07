@@ -3,10 +3,6 @@ of error analysis. Writes a python list to file containing.
 
 Parallelisation of GAP QUIP calculations would be good (speed up object creation)'''
 
-from sys import path
-if '/Users/Moji/Applications/QUIP/build/darwin_x86_64_gfortran' not in path:
-    path.append('/Users/Moji/Applications/QUIP/build/darwin_x86_64_gfortran')
-print(path)
 import numpy as np
 import re
 import pickle
@@ -16,12 +12,15 @@ from quippy.descriptors import Descriptor
 from ase import Atoms
 from ase.io import write, read
 import pickle
+import matplotlib.pyplot as plt
+from sklearn import decomposition
 
 
 class GAP:
 
 
-    def __init__(self, train_file, val_file=None, pot=None, parameter_names=('dft_energy', 'dft_forces', 'dft_virial')):
+    def __init__(self, train_file, val_file=None, pot=None, parameter_names=('dft_energy', 'dft_forces', 'dft_virial'),
+                 sorted_order=None):
         self.dft_energy, self.dft_forces, self.dft_virial = parameter_names
         if pot:
             self.pot = Potential(param_filename=pot)
@@ -44,24 +43,45 @@ class GAP:
         self.zero_e = read(train_file, format='extxyz', index=0).info[self.dft_energy]
         
         self.config_labels = []
+        print('Read configs, now fixing virials')
         for i in T_set:
             if not i.info['config_type'] in self.config_labels:
                 self.config_labels.append(i.info['config_type'])
+            if self.dft_virial not in i.info:
+                i.info[self.dft_virial] = None
         print('Config labels:', self.config_labels)
         self.T_configs = [[i for i in T_set if i.info['config_type'] == j] for j in self.config_labels]
 
-        self.qm_t = [[[at.info['dft_energy']/len(at) for at in j] for j in self.T_configs],
+        self.qm_t = [[[at.info[self.dft_energy]/len(at) for at in j] for j in self.T_configs],
                 [[i for at in j for i in at.get_array(self.dft_forces).flatten()] for j in self.T_configs],
                 [[at.info[self.dft_virial] for at in j] for j in self.T_configs]]
         if val_file:
             self.V_configs = [[i for i in V_set if i.info['config_type'] == j] for j in self.config_labels]
-            self.qm_v = [[[at.info['dft_energy']/len(at) for at in j] for j in self.V_configs],
+            self.qm_v = [[[at.info[self.dft_energy]/len(at) for at in j] for j in self.V_configs],
                          [[i for at in j for i in at.get_array(self.dft_forces).flatten()] for j in self.V_configs],
                          [[at.info[self.dft_virial] for at in j] for j in self.V_configs]]
         else:
-            self.qm_v = [[] for i in range(len(qm_t))]
+            self.qm_v = [[] for i in range(len(self.qm_t))]
+            self.V_configs = []
         self.data_dict = {'QM_E_t':self.qm_t[0],  'QM_F_t':self.qm_t[1],  'QM_V_t':self.qm_t[2],
                           'QM_E_v':self.qm_v[0],  'QM_F_v':self.qm_v[1],  'QM_V_v':self.qm_v[2]}
+        if sorted_order:
+            for i in self.data_dict.keys():
+                if self.data_dict[i]:
+                    self.data_dict[i] = self.sort_by_config_type(self.data_dict[i], sorted_order)
+            self.config_labels = self.sort_by_config_type(self.config_labels, sorted_order)
+            self.T_configs = self.sort_by_config_type(self.T_configs, sorted_order)
+            self.V_configs = self.sort_by_config_type(self.V_configs, sorted_order)
+            print('New order: ', self.config_labels)
+
+        self.cfg_i_T = [0]
+        self.cfg_i_V = [0]
+        for i in self.T_configs:
+            self.cfg_i_T.append(len(i) + self.cfg_i_T[-1])
+        for i in self.V_configs:
+            self.cfg_i_V.append(len(i) + self.cfg_i_V[-1])
+        self.cfg_i_T.append(None)
+        self.cfg_i_V.append(None)
 
     def save(self, outfile):
         f = open(outfile, 'wb')
@@ -71,6 +91,10 @@ class GAP:
     def load(self, infile):
         f = open(infile, 'rb')
         self.data_dict = pickle.load(f)
+        self.gap_v = [self.data_dict['GAP_E_v'], self.data_dict['GAP_F_v'], self.data_dict['GAP_V_v']]
+        self.gap_t = [self.data_dict['GAP_E_t'], self.data_dict['GAP_F_t'], self.data_dict['GAP_V_t']]
+        self.qm_v = [self.data_dict['QM_E_v'], self.data_dict['QM_F_v'], self.data_dict['QM_V_v']]
+        self.qm_t = [self.data_dict['QM_E_t'], self.data_dict['QM_F_t'], self.data_dict['QM_V_t']]
         f.close()
 
     def calc_gap_observables(self, configs, virials=True):
@@ -114,8 +138,9 @@ class GAP:
     def sort_by_config_type(self, d, sorted_order):
         return [d[i] for i in sorted_order]
 
-    def calc(self, virials=True, train=True):
-        self.gap_v = list(self.calc_gap_observables(self.V_configs, virials=virials))
+    def calc(self, virials=True, train=True, val=True):
+        if val:
+            self.gap_v = list(self.calc_gap_observables(self.V_configs, virials=virials))
         if train:
             self.gap_t = list(self.calc_gap_observables(self.T_configs, virials=virials))
         
@@ -148,5 +173,30 @@ class GAP:
             self.config_labels = self.sort_by_config_type(self.config_labels, sorted_order)
             self.T_configs = self.sort_by_config_type(self.T_configs, sorted_order)
             self.V_configs = self.sort_by_config_type(self.V_configs, sorted_order)
+            for i in range(len(self.qm_t)):
+                self.gap_v[i] = self.sort_by_config_type(self.gap_v[i], sorted_order)
+                self.gap_t[i] = self.sort_by_config_type(self.gap_t[i], sorted_order)
+                self.qm_v[i] = self.sort_by_config_type(self.qm_v[i], sorted_order)
+                self.qm_t[i] = self.sort_by_config_type(self.qm_t[i], sorted_order)
             print('New order: ', self.config_labels)
 
+
+    def calc_similarity(self, descriptor=None, zeta=4):
+        '''Could read zeta from descriptor specified and use this
+        in kernel construction. If construction of the outer product
+        is slow, could speed up by taking advantage of symmetry and
+        broadcasting'''
+        if not descriptor:
+            descriptor = quippy.descriptors.Descriptor(
+                             'soap average=T l_max=6 n_max=12 atom_sigma=0.5 zeta=4 \
+                              cutoff=5.0 cutoff_transition_width=1.0 \
+                              central_weight=1.0 n_sparse=5000 delta=0.1 \
+                              f0=0.0 covariance_type=dot_product \
+                              sparse_method=CUR_POINTS')
+        descs = np.array([descriptor.calc_descriptor(i) for i in self.flatten(self.T_configs)])
+        k_mat = np.array([[2 - 2*np.dot(i[0]**zeta, j[0]**zeta) for j in descs] for i in descs])
+        pca = decomposition.PCA(n_components=2)
+        pca.fit(k_mat)
+        self.red = pca.fit_transform(k_mat)
+
+        return self.red

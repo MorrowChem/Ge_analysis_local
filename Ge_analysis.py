@@ -1,5 +1,5 @@
-from sys import path
-path.append('/Users/Moji/Applications/QUIP/build/darwin_x86_64_gfortran')
+'''Set of functions for plotting/analysis potentials and their databases
+Plan is to migrate these to methods of the GAP class at some point'''
 import numpy as np
 import matplotlib.pylab as plt
 from scipy.stats import gaussian_kde
@@ -9,6 +9,7 @@ from quippy.potential import Potential
 from quippy.descriptors import Descriptor
 from ase import Atoms
 from ase.io import write, read
+from sklearn import decomposition
 
 
 def rms_dict(x_ref, x_pred):
@@ -34,65 +35,9 @@ def sort_by_timestep(d, i):
     return sorted(d[0][i], key=lambda x: d[2][1][d[0][i].index(x)], reverse=True), \
            sorted(d[1][i], key=lambda x: d[2][1][d[1][i].index(x)], reverse=True)
 
-def read_database(filename):
-    '''data is in format:
-    T_configs, T_qm_energies,  T_qm_forces, T_qm_virials, T_gap_energies, T_gap_forces, T_gap_virials, abs e, abs f, abs v, Ermse, Frmse, Vrmse 
-    V_configs, V_qm_energies,  V_qm_forces, V_qm_virials, V_gap_energies, V_gap_forces, V_gap_virials, abs e, abs f, abs v, Ermse, Frmse, Vrmse 
-    supporting info: [zero_e]'''
-    
-    infile = open(filename, 'rb')
-    data = pickle.load(infile)
-    infile.close()
-    # Calculate the absolute errors in the fit
-    data[0].extend([[(np.array(i) - np.array(j)).tolist() for i,j in zip(data[0][1], data[0][4])],
-                    [(np.array(i) - np.array(j)).tolist() for i,j in zip(data[0][2], data[0][5])],
-                    [(np.array(i) - np.array(j)).tolist() for i,j in zip(data[0][3], data[0][6])]])
-    data[1].extend([[(np.array(i) - np.array(j)).tolist() for i,j in zip(data[1][1], data[1][4])],
-                    [(np.array(i) - np.array(j)).tolist() for i,j in zip(data[1][2], data[1][5])],
-                    [(np.array(i) - np.array(j)).tolist() for i,j in zip(data[1][3], data[1][6])]])
-    # Calculate some rmses
-    '''data[0].append(rms_dict(flatten(data[0][1]), flatten(data[0][4])))
-    data[0].append(rms_dict(flatten(data[0][2]), flatten(data[0][5])))
-    data[0].append(rms_dict(flatten(data[0][3]), flatten(data[0][6])))
-    data[1].append(rms_dict(flatten(data[1][1]), flatten(data[1][4])))
-    data[1].append(rms_dict(flatten(data[1][2]), flatten(data[1][5])))
-    data[1].append(rms_dict(flatten(data[1][3]), flatten(data[1][6])))'''
-
-    data[0].append(rms_dict(i,j) for i,j in zip(data[0][1], data[0][4]))
-    data[0].append(rms_dict(i,j) for i,j in zip(data[0][2], data[0][5]))
-    data[0].append(rms_dict(i,j) for i,j in zip(data[0][3], data[0][6]))
-    data[0].append(rms_dict(i,j) for i,j in zip(data[1][1], data[1][4]))
-    data[0].append(rms_dict(i,j) for i,j in zip(data[1][2], data[1][5]))
-    data[0].append(rms_dict(i,j) for i,j in zip(data[1][3], data[1][6]))
-
-    data_dict = {'QM_E_t':data[0][1],
-                'QM_F_t':data[0][2],
-                'QM_V_t':data[0][3],
-                 'GAP_E_t':data[0][4],
-                 'GAP_F_t':data[0][5],
-                 'GAP_V_t':data[0][6],
-                'E_err_t':data[0][7],
-                'F_err_t':data[0][8],
-                'V_err_t':data[0][9],
-                'E_rmse_t':data[0][10],
-                 'F_rmse_t':data[0][11],
-                 'V_rmse_t':data[0][12],
-                 'QM_E_t':data[0][1],
-                  'QM_F_v':data[1][2],
-                  'QM_V_v':data[1][3],
-                  'GAP_E_v':data[1][4],
-                  'GAP_F_v':data[1][5],
-                  'GAP_V_v':data[1][6],
-                  'E_err_v':data[1][7],
-                  'F_err_v':data[1][8],
-                  'V_err_v':data[1][9],
-                  'E_rmse_v':data[1][10],
-                  'F_rmse_v':data[1][11],
-                  'V_rmse_v':data[1][12]}
-    return data, data_dict
 
 data_dir = '/Users/Moji/Documents/Summer20/Ge/'
-data_216_125_2000 = data_dir + 'Pickles/data_3b2000_5c_216_125'
+'''data_216_125_2000 = data_dir + 'Pickles/data_3b2000_5c_216_125'
 data_216_125_4000 = data_dir + 'Pickles/data_3b4000_5c_216_125'
 data_64_5000 = data_dir + 'Pickles/data_2bSOAP5000_5c_64'
 data_d1 = data_dir + 'Pickles/data_125_216_d1'
@@ -104,11 +49,11 @@ val_file = data_dir + 'Structure_databases/validate_216_125_64.xyz'
 gaps = [Potential(param_filename= data_dir + 'Potentials/Ge_3bSOAP_2000/Ge_3bSOAP_2000_5cut.xml'),
         Potential(param_filename= data_dir + 'Potentials/Ge_3bSOAP_4000/Ge_3bSOAP_4000_5cut.xml')]
 
-'''data_216_125_2000 = read_database(data_216_125_2000)[0]
+data_216_125_2000 = read_database(data_216_125_2000)[0]
 data_216_125_4000 = read_database(data_216_125_4000)[0]
 data_64_5000 = read_database(data_64_5000)[0]
 data_d1 = read_database(data_d1)[0]
-data_d2 = read_database(data_d2)[0]'''
+data_d2 = read_database(data_d2)[0]
 data_d155, d155_dict = read_database(data_d155_f)
 #datasets = [data_216_125_2000, data_216_125_4000, data_64_5000, data_d155]
 datasets = [data_d155]
@@ -123,11 +68,8 @@ for j in datasets:
         except:
             print('data not regular in ', i)
 
-    j[2][1].sort(reverse=True)
+    j[2][1].sort(reverse=True)'''
     
-zero_e = data_216_125_2000[2][0]
-print('zero energy:', zero_e)
-print([data_216_125_2000[0][0][i][0].info['config_type'] for i in range(5)])
 
 '''desc_SOAP = Descriptor("soap l_max=10 n_max=10 \
 delta=0.5 atom_sigma=0.5 zeta=4 central_weight=1.0 \
@@ -136,19 +78,23 @@ config_type_n_sparse={isol:1:liq:2000:amorph:2000} \
 covariance_type=dot_product sparse_method=CUR_POINTS add_species=T")'''
 
 # Have a look at the pairwise potential
-def dimer_curve(gap, ax=None, color='r', label='Ge-Ge'):
+def dimer_curve(pot, ax=None, color='r', label='Ge-Ge'):
+    '''Plots a dimer curve. If ax is specified, adds the curve to an
+    existing plot for side-by-side comparison with other potentials'''
+
+
     dimers = [Atoms("2Ge", positions=[[0,0,0], [x, 0,0]]) for x in np.linspace(1.6,6,100)]
-    dimer_curve_gap = []
+    dimer_curve_pot = []
     
     for dim in dimers:
-        dim.set_calculator(gap)
-        dimer_curve_gap.append(dim.get_total_energy())
+        dim.set_calculator(pot)
+        dimer_curve_pot.append(dim.get_total_energy())
     if ax:
-        ax.plot([dim.positions[1,0] for dim in dimers], np.array(dimer_curve_gap[0])/2.0 - zero_e,
+        ax.plot([dim.positions[1,0] for dim in dimers], np.array(dimer_curve_pot[0])/2.0 - zero_e,
                 color=color, label=label)
     else:
         fig, ax = plt.subplots(1, 1)
-        ax.plot([dim.positions[1,0] for dim in dimers], np.array(dimer_curve_gap[0])/2.0 - zero_e,
+        ax.plot([dim.positions[1,0] for dim in dimers], np.array(dimer_curve_pot[0])/2.0 - zero_e,
                       color='b', label='5.0')
         ax.axhline(0, color='k')
         ax.legend()
@@ -158,111 +104,157 @@ def dimer_curve(gap, ax=None, color='r', label='Ge-Ge'):
 
 # Fit plotting ####################
 colormap = plt.get_cmap('plasma')
-colors = [colormap(i) for i in np.linspace(0, 0.8, len(data_216_125_2000[2][1]))]
+colors = [colormap(i) for i in np.linspace(0, 0.8, 5)]
 labels = ['240 ps', '180 ps', '160 ps', '120 ps', '20 ps']
 xs = np.linspace(-6, 6, 100)
 
-def energy_error(data, ax=None, title=None, train=False, file=None):
-    if train:
-        n=0
-    else:
-        n=1
-    mi = np.amin(flatten(data[0][1])) - 0.01 - data[2][0]
-    ma = np.amax(flatten(data[0][1])) + 0.01 - data[2][0]
+
+def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r'):
+    mi = np.amin(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
+    ma = np.amax(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
     xs = np.linspace(mi, ma, 100)
     if not ax:
         fig, ax = plt.subplots()
-    for i in range(len(data[1][1])):
-        ax.scatter(np.array(data[n][1][i]) - data[2][0],
-                   np.array(data[n][3][i]) - data[2][0],
-                   marker='.', color=colors[i], label=data[2][1][i])
+    if by_config:
+        for i in range(len(GAP.config_labels)):
+            ax.scatter(np.array(GAP.data_dict['QM_E_v'][i]) - GAP.zero_e,
+                       np.array(GAP.data_dict['GAP_E_v'][i]) - GAP.zero_e,
+                       marker='.', color=colors[i], label=GAP.config_labels[i])
+    else:
+        ax.scatter(np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e,
+                   np.array(flatten(GAP.data_dict['GAP_E_v'])) - GAP.zero_e,
+                   marker='.', color=color, label=None)
     ax.set(xlabel='DFT energies per atom / eV', ylabel='GAP energies / eV', title=title,
                        xlim=(mi, ma), ylim=(mi, ma))
     ax.legend(loc='upper left')
     ax.plot(xs, xs, color='k')
     ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0], 'Energy RMSE: {0:6.3f} meV\nStdev: {1:6.3f} meV'.format(
-        data[n][5]['rmse']*1000, data[n][5]['std']*1000))
+        np.average([i['rmse']*1000 for i in GAP.data_dict['E_rmse_v']]),
+        np.average([i['std']*1000 for i in GAP.data_dict['E_rmse_v']])))
     plt.show()
     if file:
         fig.savefig(file)
     return ax
 
-#energy_error(data_d1, title='delta = 1.0', train=True, file='/Users/Moji/Documents/Summer20/Ge/Analysis/delta1_2b.png')
-#energy_error(data_d2, title='delta = 2.0', train=True, file='/Users/Moji/Documents/Summer20/Ge/Analysis/delta2_2b.png')
 
 ########################################
 
 # Forces plotting ####################
-def forces_error(data, ax=None, title=None):
-    mi = np.amin(flatten(data[0][2])) - 0.01 - data[2][0]
-    ma = np.amax(flatten(data[0][2])) + 0.01 - data[2][0]
+def forces_error(GAP, ax=None, title=None, file=None):
+    mi = np.amin(flatten(GAP.data_dict['QM_F_t'])) - 0.01
+    ma = np.amax(flatten(GAP.data_dict['QM_F_t'])) - 0.01
     xs = np.linspace(mi, ma, 100)
     if not ax:
         fig, ax = plt.subplots()
-    for i in range(len(data[1][1])):
-        ax.scatter(np.array(data[1][2][i]) - data[2][0],
-                   np.array(data[1][4][i]) - data[2][0],
-                   marker = '.', color=colors[i], label=data[2][1][i])
+    for i in range(len(GAP.config_labels)):
+        ax.scatter(np.array(GAP.data_dict['QM_F_v'][i]),
+                   np.array(GAP.data_dict['GAP_F_v'][i]),
+                   marker='.', color=colors[i], label=GAP.config_labels[i])
     ax.set(xlabel='DFT forces per atom / $\mathrm{eV\;Å^{-1}}$', ylabel='GAP forces / $\mathrm{eV\;Å^{-1}}$', title=title,
            xlim=(mi, ma), ylim=(mi, ma))
     ax.legend(loc='upper left')
     ax.plot(xs, xs, color='k')
     ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0],
             'Forces RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'.format(
-            data[1][6]['rmse'], data[1][6]['std']))
+                np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
+                np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
     plt.show()
     return ax
 
-#forces_error(data_d1, title='delta = 1.0')
-#forces_error(data_d2, title='delta = 2.0')
+def virials_error(GAP, ax=None, title=None, file=None):
+    mi = np.amin(flatten(GAP.data_dict['QM_V_t'])) - 0.01
+    ma = np.amax(flatten(GAP.data_dict['QM_V_t'])) - 0.01
+    xs = np.linspace(mi, ma, 100)
+    if not ax:
+        fig, ax = plt.subplots()
+    for i in range(len(GAP.config_labels)):
+        ax.scatter(np.array(GAP.data_dict['QM_V_v'][i]+GAP.data_dict['QM_V_t'][i]),
+                   np.array(GAP.data_dict['GAP_V_v'][i]+GAP.data_dict['GAP_V_t'][i]),
+                   marker='.', color=colors[i], label=GAP.config_labels[i])
+    ax.set(xlabel='DFT virials / $\mathrm{eV}$', ylabel='GAP virials / $\mathrm{eV}$', title=title,
+           xlim=(mi, ma), ylim=(mi, ma))
+    ax.legend(loc='upper left')
+    ax.plot(xs, xs, color='k')
+    ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0],
+            'Virials RMSE: {0:6.3f} $\mathrm{{eV}}$\nStdev: {1:6.3f} $\mathrm{{eV}}$'.format(
+                np.average([i['rmse'] for i in GAP.data_dict['V_rmse_v']]),
+                np.average([i['std'] for i in GAP.data_dict['V_rmse_v']])))
+    plt.show()
+    if file:
+        fig.savefig(file)
+    return ax
+
 ########################################
 
-# Absolute error plotting ####################
-def abs_energy_error(data, ax=None, title=None):
+def abs_energy_error(GAP, ax=None, title=None):
+    mi = np.amin(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
+    ma = np.amax(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
     if not ax:
         leg = True
         fig, ax = plt.subplots()
     
-    for i in range(len(data[1][1])):
-        ax.scatter(np.array(data[1][1][i]) - data[2][0], abs(np.array(data[1][7][i]))*1000,
-                        marker='.', s=12, color=colors[i], label=data[2][1][i])
+    for i in range(len(GAP.config_labels)):
+        ax.scatter(np.array(GAP.data_dict['QM_E_v'][i]) - GAP.zero_e, abs(np.array(GAP.data_dict['E_err_v'][i]))*1000,
+                        marker='.', s=12, color=colors[i], label=GAP.config_labels[i])
     ax.set(xlabel='DFT Energies / eV', ylabel='Abs GAP error / meV', title=title)
-    ax.text(np.amin(np.array(data[1][1][0])) - data[2][0], np.amax(abs(np.array(data[1][7][0])))*1000,
-                       'Energy RMSE: {0:6.3f} meV\nStdev: {1:6.3f} meV'.format(
-                        data[1][5]['rmse']*1000, data[1][5]['std']*1000))
+    ax.text(mi, np.amax(abs(np.array(flatten(GAP.data_dict['E_err_v'])))*1000)-2,
+            'Energy RMSE: {0:6.3f} meV\nStdev: {1:6.3f} meV'.format(
+            np.average([i['rmse']*1000 for i in GAP.data_dict['E_rmse_v']]),
+            np.average([i['std']*1000 for i in GAP.data_dict['E_rmse_v']])))
     plt.show()
     if leg:
         ax.legend()
         return ax
 
-def abs_force_error(data, ax=None, title=None):
+def abs_force_error(GAP, ax=None, title=None):
+    ma = np.amax(abs(np.array(flatten(GAP.data_dict['F_err_v'])))) - 0.2
     if not ax:
         leg = True
         fig, ax = plt.subplots()
 
-    for i in range(len(data[1][2])):
-        ax.scatter(np.array(data[1][2][i]), abs(np.array(data[1][8][i])),
-                   marker='.', s=8, color=colors[i], label=data[2][1][i])
+    for i in range(len(GAP.config_labels)):
+        ax.scatter(np.array(GAP.data_dict['QM_F_v'][i]), abs(np.array(GAP.data_dict['F_err_v'][i])),
+                   marker='.', s=12, color=colors[i], label=GAP.config_labels[i])
     ax.set(xlabel='DFT Forces / $\mathrm{eV\;Å^{-1}}$',
            ylabel='Abs GAP error / $\mathrm{eV\;Å^{-1}}$',
            title=title)
-    ax.text(0, np.amax(abs(np.array(data[1][8][0]))),
+    ax.text(0, ma,
             'Forces RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'.format(
-                data[1][5]['rmse'], data[1][5]['std']))
+            np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
+            np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
     plt.show()
     if leg:
         ax.legend()
         return ax
 
-#abs_energy_error(data_216_125_2000)
-#abs_force_error(data_216_125_2000)
-def dens_error_plot(data, title=None):
+def abs_virial_error(GAP, ax=None, title=None):
+    ma = np.amax(abs(np.array(flatten(GAP.data_dict['V_err_v'])))) - 0.2
+    if not ax:
+        leg = True
+        fig, ax = plt.subplots()
+
+    for i in range(len(GAP.config_labels)):
+        ax.scatter(np.array(GAP.data_dict['QM_V_v'][i]), abs(np.array(GAP.data_dict['V_err_v'][i])),
+                   marker='.', s=12, color=colors[i], label=GAP.config_labels[i])
+    ax.set(xlabel='DFT Forces / $\mathrm{eV\;Å^{-1}}$',
+           ylabel='Abs GAP error / $\mathrm{eV\;Å^{-1}}$',
+           title=title)
+    ax.text(0, ma,
+            'Forces RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'.format(
+                np.average([i['rmse'] for i in GAP.data_dict['V_rmse_v']]),
+                np.average([i['std'] for i in GAP.data_dict['V_rmse_v']])))
+    plt.show()
+    if leg:
+        ax.legend()
+        return ax
+########## up to here #########
+def dens_error_plot(GAP, title=None):
     fig, ax = plt.subplots(1,2)
 
-    x = [np.array(flatten(data[1][1])) - data[2][0], np.array(flatten(data[1][2]))]
-    y = [abs(np.array(flatten(data[1][7]))*1000), abs(np.array(flatten(data[1][8])))]
-    xy = [np.vstack([np.array(flatten(data[1][1])), abs(np.array(flatten(data[1][7])))]),
-          np.vstack([np.array(flatten(data[1][2])), abs(np.array(flatten(data[1][8])))])]
+    x = [np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e, np.array(flatten(GAP.data_dict['QM_F_v']))]
+    y = [abs(np.array(flatten(GAP.data_dict['E_err_v']))*1000), abs(np.array(flatten(GAP.data_dict['F_err_v'])))]
+    xy = [np.vstack([x[0], y[0]]),
+          np.vstack([x[1], y[1]])]
     z = [gaussian_kde(xy[0])(xy[0]), gaussian_kde(xy[1])(xy[1])]
     idx = [z[0].argsort(), z[1].argsort()]
     x[0], y[0], z[0] = x[0][idx[0]], y[0][idx[0]], z[0][idx[0]]
@@ -272,18 +264,20 @@ def dens_error_plot(data, title=None):
 
     escat = ax[0].scatter(x[0], y[0], c=z[0], cmap=plt.get_cmap('plasma'),
                            vmin=emin, vmax=emax, s=10, edgecolor='')
-    ax[0].text(-0.2, 19, 'RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'
-                .format(data[1][5]['rmse'], data[1][5]['std']))
+    ax[0].text(-0.2, 19, 'RMSE: {0:6.3f} $\mathrm{{eV}}$\nStdev: {1:6.3f} $\mathrm{{eV}}$'.format(
+        np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
+        np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
     ax[0].set(xlabel='DFT Energies / $\mathrm{eV}$', title='Energies')
-
     fig.colorbar(escat, ax=ax[0])
-
     ax[0].set(xlabel='DFT Energies / $\mathrm{eV}$',
                ylabel='Abs GAP error / $\mathrm{eV}$')
+
     fscat = ax[1].scatter(x[1], y[1], c=z[1], cmap=plt.get_cmap('plasma'),
                            vmin=fmin, vmax=fmax, s=10, edgecolor='')
     ax[1].text(-5, 0.90, 'RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'
-                .format(data[1][6]['rmse'], data[1][6]['std']))
+                .format(
+        np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
+        np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
     ax[1].set(xlabel='DFT Forces / $\mathrm{eV\;Å^{-1}}$', title='Forces')
 
     fig.colorbar(fscat, ax=ax[1], label='Density of points')
@@ -292,11 +286,26 @@ def dens_error_plot(data, title=None):
                title='Forces')
     plt.subplots_adjust(hspace=1.0)
     plt.show()
-
-#dens_error_plot(data_216_125_2000)
 ########################################
-
+# extra plot types to incorporate (based on GAP object):
+# rdfs (by config-type and generally)
+# structure maps (using the TiO2 paper recommended by Volker to make sure it's calculated right
 # Density of points plot for the forces
+
+def similarity_map(GAP):
+    symbols = ['x' for i in GAP.T_configs]
+    colormap = plt.get_cmap('plasma')
+    colors = [colormap(i) for i in np.linspace(0, 0.8, len(GAP.T_configs))]
+
+    fig, ax = plt.subplots()
+    for i in range(len(GAP.cfg_i_T)):
+        ax.scatter(GAP.red.T[0][GAP.cfi_i_T[i]:GAP.cfi_i_T[i+1]],
+                   GAP.red.T[1][GAP.cfi_i_T[i]:GAP.cfi_i_T[i+1]],
+                   color=colors[i], label=GAP.config_labels[i],
+                   s=symbols[i])
+    ax.legend()
+    fig.show()
+
 '''
 e_dens_fig, e_dens_ax = plt.subplots(1, len(cutoff_data), figsize=(4*len(cutoff_data), 6))
 e_dens_fig.suptitle('Error vs. cutoff n_sparse=2000')
