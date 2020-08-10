@@ -89,6 +89,6 @@ def write_sub(gap_str, sub_file):
                 '#SBATCH --account=chem-amais\n' +
                 #'#SBATCH --partition=htc\n\n' +
                 'module load gcc/7.3.0\n' +
-                '{}'.format(gap_str))
+                'gap_fit {}'.format(gap_str))
 
 #system('sbatch gap.sh')

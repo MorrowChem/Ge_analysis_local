@@ -25,6 +25,6 @@ for i in settings[1]:
     db_2b.calc(val=False)
     db_2b.analyse()
 
-    with open('{}.out'.format(gap_file), 'w') as f:
+    with open('{}.out'.format(gap_file.split('=')[1][:-4]), 'w') as f:
         f.write('Energy RMSE error / eV:\n{}\n'.format(
             np.average([i['rmse'] for i in db_2b.data_dict['E_rmse_t']])))
