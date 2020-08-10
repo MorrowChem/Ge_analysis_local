@@ -3,9 +3,9 @@ from sys import argv
 from os import system, getcwd
 import numpy as np
 
-def gap_fit_create(*args):
+def gap_fit_create(*args, no_soap=False):
     
-    gap_args = {'at_file': 'train_216_125_64_v.xyz',
+    gap_args = {'atoms_filename': '../train_216_125_64_v.xyz',
                 'gap': {'distance_Nb': {'order': '2',
                         'cutoff': '5.0',
                         'covariance_type': 'ARD_SE',
@@ -57,6 +57,9 @@ def gap_fit_create(*args):
             continue
         gap_args[i.split('=')[0]] = i.split('=')[1]
 
+    if no_soap:
+        gap_args['gap'].pop('soap')
+
 
     gap_str = ''
     for i in gap_args.keys():
@@ -74,7 +77,7 @@ def gap_fit_create(*args):
         gap_str += "{0}={1} ".format(i, gap_args[i])
     print(gap_str)
 
-    return(gap_str)
+    return(gap_str, gap_args)
 
 def write_sub(gap_str, sub_file):
     with open(sub_file, 'w') as f:
