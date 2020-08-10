@@ -10,6 +10,7 @@ from quippy.descriptors import Descriptor
 from ase import Atoms
 from ase.io import write, read
 from sklearn import decomposition
+from ase.geometry.analysis import Analysis
 
 
 def rms_dict(x_ref, x_pred):
@@ -109,7 +110,7 @@ labels = ['240 ps', '180 ps', '160 ps', '120 ps', '20 ps']
 xs = np.linspace(-6, 6, 100)
 
 
-def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r'):
+def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r', rmse=True, label=None):
     mi = np.amin(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
     ma = np.amax(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
     xs = np.linspace(mi, ma, 100)
@@ -123,14 +124,15 @@ def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r')
     else:
         ax.scatter(np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e,
                    np.array(flatten(GAP.data_dict['GAP_E_v'])) - GAP.zero_e,
-                   marker='.', color=color, label=None)
+                   marker='.', color=color, label=label)
     ax.set(xlabel='DFT energies per atom / eV', ylabel='GAP energies / eV', title=title,
                        xlim=(mi, ma), ylim=(mi, ma))
     ax.legend(loc='upper left')
     ax.plot(xs, xs, color='k')
-    ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0], 'Energy RMSE: {0:6.3f} meV\nStdev: {1:6.3f} meV'.format(
-        np.average([i['rmse']*1000 for i in GAP.data_dict['E_rmse_v']]),
-        np.average([i['std']*1000 for i in GAP.data_dict['E_rmse_v']])))
+    if rmse:
+        ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0], 'Energy RMSE: {0:6.3f} meV\nStdev: {1:6.3f} meV'.format(
+            np.average([i['rmse']*1000 for i in GAP.data_dict['E_rmse_v']]),
+            np.average([i['std']*1000 for i in GAP.data_dict['E_rmse_v']])))
     plt.show()
     if file:
         fig.savefig(file)
@@ -140,24 +142,30 @@ def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r')
 ########################################
 
 # Forces plotting ####################
-def forces_error(GAP, ax=None, title=None, file=None):
+def forces_error(GAP, ax=None, title=None, by_config=True, color='r', file=None, rmse=True):
     mi = np.amin(flatten(GAP.data_dict['QM_F_t'])) - 0.01
     ma = np.amax(flatten(GAP.data_dict['QM_F_t'])) - 0.01
     xs = np.linspace(mi, ma, 100)
     if not ax:
         fig, ax = plt.subplots()
-    for i in range(len(GAP.config_labels)):
-        ax.scatter(np.array(GAP.data_dict['QM_F_v'][i]),
-                   np.array(GAP.data_dict['GAP_F_v'][i]),
-                   marker='.', color=colors[i], label=GAP.config_labels[i])
+    if by_config:
+        for i in range(len(GAP.config_labels)):
+            ax.scatter(np.array(GAP.data_dict['QM_F_v'][i]),
+                       np.array(GAP.data_dict['GAP_F_v'][i]),
+                       marker='.', color=colors[i], label=GAP.config_labels[i])
+    else:
+        ax.scatter(np.array(flatten(GAP.data_dict['QM_F_v'])),
+                   np.array(flatten(GAP.data_dict['GAP_F_v'])),
+                   color=color)
     ax.set(xlabel='DFT forces per atom / $\mathrm{eV\;Å^{-1}}$', ylabel='GAP forces / $\mathrm{eV\;Å^{-1}}$', title=title,
            xlim=(mi, ma), ylim=(mi, ma))
     ax.legend(loc='upper left')
     ax.plot(xs, xs, color='k')
-    ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0],
-            'Forces RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'.format(
-                np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
-                np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
+    if rmse:
+        ax.text((xs[-1] - xs[0])*2/3 + xs[0], (xs[-1] - xs[0])/3 + xs[0],
+                'Forces RMSE: {0:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$\nStdev: {1:6.3f} $\mathrm{{eV\;Å^{{-1}}}}$'.format(
+                    np.average([i['rmse'] for i in GAP.data_dict['F_rmse_v']]),
+                    np.average([i['std'] for i in GAP.data_dict['F_rmse_v']])))
     plt.show()
     return ax
 
@@ -298,14 +306,27 @@ def similarity_map(GAP):
     colors = [colormap(i) for i in np.linspace(0, 0.8, len(GAP.T_configs))]
 
     fig, ax = plt.subplots()
-    for i in range(len(GAP.cfg_i_T)):
+    for i in range(len(GAP.T_configs)):
         ax.scatter(GAP.red.T[0][GAP.cfi_i_T[i]:GAP.cfi_i_T[i+1]],
                    GAP.red.T[1][GAP.cfi_i_T[i]:GAP.cfi_i_T[i+1]],
                    color=colors[i], label=GAP.config_labels[i],
-                   s=symbols[i])
+                   marker=symbols[i])
     ax.legend()
     fig.show()
 
+def plot_rdf(GAP, ax=None):
+    if not ax:
+        leg = True
+        fig, ax = plt.subplots()
+    ana = [Analysis(i) for i in GAP.T_configs]
+    rdf = [np.average(i.get_rdf(5.0, 400), axis=0) for i in ana]
+    dists = np.linspace(0, 5.0, 400)
+
+    for i in range(len(rdf)):
+        ax.scatter(dists, rdf[i],
+                    color=colors[i], label=GAP.config_labels[i])
+    ax.legend()
+    fig.show()
 '''
 e_dens_fig, e_dens_ax = plt.subplots(1, len(cutoff_data), figsize=(4*len(cutoff_data), 6))
 e_dens_fig.suptitle('Error vs. cutoff n_sparse=2000')

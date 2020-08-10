@@ -14,6 +14,7 @@ from ase.io import write, read
 import pickle
 import matplotlib.pyplot as plt
 from sklearn import decomposition
+import time
 
 
 class GAP:
@@ -66,6 +67,7 @@ class GAP:
         self.data_dict = {'QM_E_t':self.qm_t[0],  'QM_F_t':self.qm_t[1],  'QM_V_t':self.qm_t[2],
                           'QM_E_v':self.qm_v[0],  'QM_F_v':self.qm_v[1],  'QM_V_v':self.qm_v[2]}
         if sorted_order:
+            self.sorted_order = sorted_order
             for i in self.data_dict.keys():
                 if self.data_dict[i]:
                     self.data_dict[i] = self.sort_by_config_type(self.data_dict[i], sorted_order)
@@ -73,15 +75,17 @@ class GAP:
             self.T_configs = self.sort_by_config_type(self.T_configs, sorted_order)
             self.V_configs = self.sort_by_config_type(self.V_configs, sorted_order)
             print('New order: ', self.config_labels)
+            self.data_dict['sorted_order'] = self.sorted_order
 
-        self.cfg_i_T = [0]
-        self.cfg_i_V = [0]
+        self.cfi_i_T = [0]
+        self.cfi_i_V = [0]
         for i in self.T_configs:
-            self.cfg_i_T.append(len(i) + self.cfg_i_T[-1])
+            self.cfi_i_T.append(len(i) + self.cfi_i_T[-1])
         for i in self.V_configs:
-            self.cfg_i_V.append(len(i) + self.cfg_i_V[-1])
-        self.cfg_i_T.append(None)
-        self.cfg_i_V.append(None)
+            self.cfi_i_V.append(len(i) + self.cfi_i_V[-1])
+        self.cfi_i_T.append(None)
+        self.cfi_i_V.append(None)
+        
 
     def save(self, outfile):
         f = open(outfile, 'wb')
@@ -95,6 +99,11 @@ class GAP:
         self.gap_t = [self.data_dict['GAP_E_t'], self.data_dict['GAP_F_t'], self.data_dict['GAP_V_t']]
         self.qm_v = [self.data_dict['QM_E_v'], self.data_dict['QM_F_v'], self.data_dict['QM_V_v']]
         self.qm_t = [self.data_dict['QM_E_t'], self.data_dict['QM_F_t'], self.data_dict['QM_V_t']]
+        print('Load successful\ndata_dict: ', self.data_dict.keys())
+        if 'sorted_order' in self.data_dict.keys():
+            self.config_labels = self.sort_by_config_type(self.config_labels, self.data_dict['sorted_order'])
+            self.T_configs = self.sort_by_config_type(self.T_configs, self.data_dict['sorted_order'])
+            self.V_configs = self.sort_by_config_type(self.V_configs, self.data_dict['sorted_order'])
         f.close()
 
     def calc_gap_observables(self, configs, virials=True):
@@ -139,17 +148,25 @@ class GAP:
         return [d[i] for i in sorted_order]
 
     def calc(self, virials=True, train=True, val=True):
+        st = time.time()
         if val:
             self.gap_v = list(self.calc_gap_observables(self.V_configs, virials=virials))
+        else:
+            self.gap_v = None
         if train:
             self.gap_t = list(self.calc_gap_observables(self.T_configs, virials=virials))
+        else:
+            self.gap_t = None
+        print("--- %s seconds ---" % (time.time() - st))
         
     def analyse(self, sorted_order=None, virials=True, train=True):
         n = len(self.qm_t); m = len(self.config_labels)
-        print(n)
-        err_v = [[[(np.array(i) - np.array(j)).tolist() for i, j in zip(self.qm_v[k][l],
-                                                                       self.gap_v[k][l])] for l in range(m)] for k in range(n)]
-        rms_v = [[self.rms_dict(self.qm_v[k][l], self.gap_v[k][l]) for l in range(m)] for k in range(n)]
+        if self.gap_v:
+            err_v = [[[(np.array(i) - np.array(j)).tolist() for i, j in zip(self.qm_v[k][l],
+                                                                           self.gap_v[k][l])] for l in range(m)] for k in range(n)]
+            rms_v = [[self.rms_dict(self.qm_v[k][l], self.gap_v[k][l]) for l in range(m)] for k in range(n)]
+        else:
+            self.gap_v, err_v, rms_v = [[[] for i in range(n)] for i in range(3)]
 
         if self.gap_t:
             err_t = [[(np.array(i) - np.array(j)).tolist() for i,j in zip(self.qm_t[k], self.gap_t[k])] for k in range(n)]
@@ -198,5 +215,3 @@ class GAP:
         pca = decomposition.PCA(n_components=2)
         pca.fit(k_mat)
         self.red = pca.fit_transform(k_mat)
-
-        return self.red
