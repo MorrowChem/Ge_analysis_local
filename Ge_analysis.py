@@ -11,6 +11,25 @@ from ase import Atoms
 from ase.io import write, read
 from sklearn import decomposition
 from ase.geometry.analysis import Analysis
+from ase.io.cfg import read_cfg
+from ase.io.proteindatabank import write_proteindatabank
+from Ge_analysis import *
+
+
+def read_dat(filey, head=True):
+    with open(filey) as f:
+        lines = f.readlines()
+    if head:
+        s = 1
+    else:
+        s = 0
+    dat = [[] for i in range(len(lines[1].split()))]
+    for i in lines[s:]:
+        d = i.split()
+        for j, val in enumerate(d):
+            dat[j].append(float(val))
+    dat = np.array(dat)
+    return dat
 
 
 def rms_dict(x_ref, x_pred):
@@ -440,4 +459,139 @@ lcurve_dax.set(ylabel='Force error / $\mathrm{eV\;Å^{-1}}$')
 lcurve_fig.legend()
 lcurve_fig.savefig('GAPPY/Ge_RMSE_nsparse_covergence', bbox_inches='tight')'''
 ########################################
+
+def rings(rdir, cfg_file=None, atoms=None, opts={}):
+    os.mkdir(rdir)
+    if 'data' not in os.listdir(rdir):
+        os.mkdir(rdir + '/data')
+    if cfg_file:
+        f = read_cfg(cfg_file)
+        f.set_atomic_numbers([32 for i in range(len(f))])
+        nf = cfg_file.split('/')[-1][:-4] + '.pdb'
+        write_proteindatabank(rdir + '/data/' + nf, f)
+    if atoms:
+        f = atoms
+        f.set_atomic_numbers([32 for i in range(len(f))])
+        nf = f.info['file'].split('/')[-1][:-4] + '.pdb'
+        write_proteindatabank(rdir + '/data/' + nf, f)
+    #    f = [i for i
+    N = len(f)
+    #Nchem = f.get_chemical_symbols()
+    cell = f.get_cell()
+    if len(cell) == 3:
+        cell = cell.tolist()
+    cfg_N = 1
+
+    options = {
+       'PBC':True,
+       'Frac':False,
+       'g(r)':False,
+       'S(q)':False,
+       'S(k)':False,
+       'gfft(r)':False,
+       'MSD':False,
+       'atMSD':False,
+       'Bonds':False,
+       'Angles':False,
+       'Chains':False,
+       'chain_options':{
+       'Species':0,
+       'AAAA':False,
+       'ABAB':False,
+       '1221':False},
+       'Rings':False,
+       'ring_options':{
+       'Species':0,
+       'ABAB':False,
+       'Rings0':False,
+       'Rings1':False,
+       'Rings2':False,
+       'Rings3':False,
+       'Rings4':False,
+       'Prim_Rings':False,
+       'Str_Rings':False,
+       'BarycRings':False,
+       'Prop-1':False,
+       'Prop-2':False,
+       'Prop-3':False,
+       'Prop-4':False,
+       'Prop-5':False},
+       'Vacuum':False,
+       'Evol':False,
+       'Dxout':False,
+       'RadOut':False,
+       'RingsOut':False,
+       'DRngOut':False,
+       'VoidsOut':False,
+       'TetraOut':False,
+       'TrajOut':False,
+       'Output':'my-output.out'
+    }
+
+    for i in opts:
+        if i=='chain_options' or i=='ring_options':
+            for j in opts[i]:
+                options[i][j] = opts[i][j]
+        else:
+            options[i] = opts[i]
+
+
+    with open(rdir + '/options', 'w') as file:
+        file.write('#######################################\n' +
+                   'R.I.N.G.S. options file       #\n' +
+                   '#######################################\n')
+        for i in options:
+            if i=='chain_options' or i=='ring_options':
+                file.write('----- ! {} statistics options ! -----\n'.format(i.split('_')[0]))
+                for j in options[i]:
+                    if type(options[i][j]) is bool:
+                        file.write('{} .{}.\n'.format(j, str(options[i][j])))
+                    else:
+                        file.write('{} {}\n'.format(j, str(options[i][j])))
+                file.write('---------------------------------------\n')
+            else:
+                if i=='Evol':
+                    file.write('#######################################\n' +
+                               '  Outputting options           #\n' +
+                               '#####################################\n')
+                if type(options[i]) is bool:
+                    file.write('{} .{}.\n'.format(i, str(options[i])))
+                else:
+                    file.write('{} {}\n'.format(i, str(options[i])))
+                if i=='Dxout' or i=='TrajOut':
+                    file.write('-----------------------\n')
+        file.write('######################################\n')
+
+
+    with open(rdir + '/rings.in', 'w') as file:
+        file.write('############\n#\n#\n' +
+        'amorphous-Ge\n' +
+        '{} # natom\n'.format(N) +
+        '1  # number of chemical species\n' +
+        'Ge # chemical species\n' +
+        '{}  # number of M.D. steps\n'.format(cfg_N) +
+        '1 \n' +
+        '{}    {}    {}\n'.format(*cell[0]) +
+        '{}    {}    {}\n'.format(*cell[1]) +
+        '{}    {}    {}\n'.format(*cell[2]) +
+        '1 # integration time step for M.D\n' +
+        'PDB # file format\n' +
+        '{} # name of file\n'.format(nf) +
+        '200     # real space discretization g(r)\n' +
+        '500     # reciprocal space disc. S(q)\n' +
+        '25      # max modulus of recip vectors\n' +
+        '0.125   # Smoothing factor for S(q)\n' +
+        '90      # angular disc.\n' +
+        '20      # real space disc. for voids and ring stats\n' +
+        '10      # max search depth/2 for ring stats\n' +
+        '15      # max search depth for chain stats\n' +
+        '#######################################\n' +
+        'Ge Ge    3.2  # cutoff radius for g(r) partials\n' +
+        'Grtot   3.2   # cutoff for total g(r)\n' +
+        '#######################################\n'
+        )
+    os.chdir(rdir)
+    exit = os.system('/Users/Moji/Applications/rings-code-v1.3.4/src/rings rings.in >rings.log 2>&1')
+    os.chdir('../')
+    return exit
 

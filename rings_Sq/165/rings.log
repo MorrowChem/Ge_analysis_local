@@ -1,0 +1,84 @@
+
+***************************************************************
+
+                      RINGS v1.3 Start
+
+     Started on 25/08/2020 at 11:23:35 MET +01:00 from GMT
+
+***************************************************************
+
+
+==========      Options      ==========
+
+  =>  Periodic Boundary Conditions applied
+  =>  Atomic positions in real coordinates
+ Changing option =>  Calculate g(r) is needed to compute S(q)
+  =>  Calculate S(q) structure factor from FFT[g(r)]
+
+========      End Options      ========
+
+
+********************** g(r) Evaluation ************************
+
+Writting of Xmgrace files and data files: gr/gr.dat   , gr/grtot.dat   
+                                          gr/gr.agr   , gr/grtot.agr   
+
+Writting of Xmgrace data files: gr/gr-p/gr-Ge_Ge.dat    and gr/gr-p/gr-Ge_Ge.agr   
+
+Writting of Xmgrace files and data files: gr/Gr.dat   , gr/Grtot.dat   
+                                          gr/Gr.agr   , gr/Grtot.agr   
+
+Writting of Xmgrace data files: gr/Gr-p/Gr-Ge_Ge.dat    and gr/Gr-p/Gr-Ge_Ge.agr   
+
+Writting of Xmgrace data files: gr/gr-neutrons.dat    and gr/gr-neutrons.agr   
+                                gr/Gr-neutron.dat     and gr/Gr-neutron.agr    
+                                gr/Tr-neutrons.dat    and gr/Tr-neutrons.agr   
+                                gr/Dr-neutrons.dat    and gr/Dr-neutrons.agr   
+
+Writting of Xmgrace data files: gr/gr-xrays.dat       and gr/gr-xrays.agr      
+                                gr/Gr-xray.dat        and gr/Gr-xray.agr       
+                                gr/Tr-xrays.dat       and gr/Tr-xrays.agr      
+                                gr/Dr-xrays.dat       and gr/Dr-xrays.agr      
+
+All g(r) files have been succesfully written
+
+*********************** S(q) Evaluation ***********************
+
+Writting of Xmgrace data files:  sq/sq-neutrons.agr and  sq/sq-neutrons.dat
+
+Writting of Xmgrace data files:  sq/sq-xrays.agr    and  sq/sq-xrays.dat   
+
+Writting of Xmgrace data file: sq/al-p/al_Ge_Ge.dat  and sq/al-p/al_Ge_Ge.agr 
+                               sq/fz-p/fz_Ge_Ge.dat  and sq/fz-p/fz_Ge_Ge.agr 
+
+*********************** Global output *************************
+
+Writting of output file: my-output.out  
+
+my-output.out   succesfully written
+
+All files have been succesfully written
+
+
+------------------------ WallTime by Subroutine -----------------------
+
+             Subroutine             |      Time (s)       |     %age
+-----------------------------------------------------------------------
+
+ Total time for the calculation     |               0.07  |    100.00
+
+ Main                               |               0.00  |      0.00
+ Lattice                            |               0.00  |      0.00
+ Chemistry                          |               0.01  |      7.46
+ g(r) evaluation                    |               0.03  |     47.76
+ S(q) from FFT[g(r)]                |               0.03  |     44.78
+-----------------------------------------------------------------------
+
+***************************************************************
+
+                      RINGS v1.3 Stopped
+
+     Stopped on 25/08/2020 at 11:23:35 MET +01:00 from GMT
+
+***************************************************************
+

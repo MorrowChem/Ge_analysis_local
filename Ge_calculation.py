@@ -1,5 +1,7 @@
-'''Script to read DFT from and apply GAP potential to a structural database for purposes
-of error analysis. Writes a python list to file containing.
+'''Objects to store the training/validation databases and associated
+calculations for analysis purposes. Also an object to store MD runs
+and facilitate efficient calculation of structural information (via wrapper
+to R.I.N.G.S.)
 
 Parallelisation of GAP QUIP calculations would be good (speed up object creation)'''
 
@@ -15,6 +17,12 @@ import pickle
 import matplotlib.pyplot as plt
 from sklearn import decomposition
 import time
+from glob import glob
+from ase.io.cfg import read_cfg
+from ase.io.proteindatabank import write_proteindatabank
+from Ge_analysis import *
+import os
+from shutil import rmtree
 
 
 class GAP:
@@ -23,8 +31,10 @@ class GAP:
     def __init__(self, train_file, val_file=None, pot=None, parameter_names=('dft_energy', 'dft_forces', 'dft_virial'),
                  sorted_order=None):
         self.dft_energy, self.dft_forces, self.dft_virial = parameter_names
-        if pot:
+        if isinstance(pot, str):
             self.pot = Potential(param_filename=pot)
+        else:
+            self.pot = pot
         self.T_ct = 0
         self.V_ct = 0
         with open(train_file) as f:
@@ -121,7 +131,16 @@ class GAP:
                     V[i].append((-a.get_stress(voigt=False)*a.get_volume()))
             print('Config %s done' % self.config_labels[i])
         return E, F, V
-    
+
+    def basic_calc(self, configs, virials=True):
+        E, F, V = [], [], []
+        for i, val in enumerate(configs):
+            val.set_calculator(self.pot)
+            E[i].append(val.get_total_energy()/len(val))
+            F[i].extend(val.get_forces().flatten())
+            if virials:
+                V[i].append((-val.get_stress(voigt=False)*val.get_volume()))
+        return E, F, V
 
     def rms_dict(self, x_ref, x_pred):
         """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
@@ -158,7 +177,20 @@ class GAP:
         else:
             self.gap_t = None
         print("--- %s seconds ---" % (time.time() - st))
-        
+
+    def parallel_calc(self, virials=True, train=True, val=True):
+        st = time.time()
+        if val:
+            self.gap_v = list(self.calc_gap_observables(self.V_configs, virials=virials))
+        else:
+            self.gap_v = None
+        if train:
+            self.gap_t = list(self.calc_gap_observables(self.T_configs, virials=virials))
+        else:
+            self.gap_t = None
+        print("--- %s seconds ---" % (time.time() - st))
+
+
     def analyse(self, sorted_order=None, virials=True, train=True):
         n = len(self.qm_t); m = len(self.config_labels)
         if self.gap_v:
@@ -215,3 +247,71 @@ class GAP:
         pca = decomposition.PCA(n_components=2)
         pca.fit(k_mat)
         self.red = pca.fit_transform(k_mat)
+
+
+class MD_run:
+
+    def __init__(self, run_dir, label=None):
+        with open(glob(run_dir + '/log*')[0]) as f:
+            out = f.readlines()
+        flag = 0
+        for i, val in enumerate(out):
+            test = val.split()
+            test.append('')
+            if test[0] == 'Step':
+                if not hasattr(self, 'dat'):
+                    self.dat = [[] for j in range(len(out[i+1].split()))]
+                    self.dat_head = val.split()
+                flag = 1
+                continue
+            if flag:
+                try:
+                    for j, num in enumerate(val.split()):
+                        self.dat[j].append(float(num))
+                except:
+                    flag = 0
+        self.dat = np.array(self.dat)
+        self.configs = []
+        self.timesteps = []
+        for i in glob(run_dir + '/NPT/*.cfg'):
+            self.configs.append(read_cfg(i))
+            self.configs[-1].info['file'] = i
+            self.timesteps.append(i.split('/')[-1].split('.')[1])
+
+        if label:
+            self.label = label
+        else:
+            self.label = run_dir.split('/')[-2]
+        return
+
+
+    def structure_factors(self, selection=None, rings_dir='', discard=False, read_only=False):
+
+        if selection is None:
+            selection = tuple(i for i in range(len(self.configs)))
+        if not os.path.isdir(rings_dir):
+            os.mkdir(rings_dir)
+        os.chdir(rings_dir)
+        self.Sq_n = []
+        self.Sq_x = []
+        self.Sk_n = []
+        self.Sk_x = []
+        self.gr = []
+        if not read_only:
+            for i in selection:
+                flag = rings(str(i), atoms=self.configs[i], opts={'S(q)':True,
+                                                      #'S(k)':True,
+                                                      'g(r)':True})
+            if not flag:
+                print('R.I.N.G.S ran successfully')
+        dats = sorted(os.listdir(), key=int)
+        self.Sq_x = [read_dat(str(i) + '/sq/sq-xrays.dat') for i in dats]
+        self.Sq_n = [read_dat(str(i) + '/sq/sq-neutrons.dat') for i in dats]
+        #self.Sk_x = [read_dat(str(i) + '/sk/sk-xrays.dat') for i in dats]
+        #self.Sk_n = [read_dat(str(i) + '/sk/sk-neutrons.dat') for i in dats]
+        self.gr =   [read_dat(str(i) + '/gr/gr.dat') for i in dats]
+        self.rings_list = [str(i) for i in dats]
+        os.chdir('../')
+        if discard:
+            rmtree(rings_dir)
+        return self.Sq_x

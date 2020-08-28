@@ -8,7 +8,7 @@ import re
 from sys import argv
 import os
 
-cfg_directory = ['/Users/Moji/Documents/Summer20/Ge/MD_runs/2bSOAP_5000_125_216_d155/run_64001/NPT/']
+cfg_directory = [argv[1]]
 a=0
 c=[]
 for ct, direc in enumerate(cfg_directory):
@@ -16,6 +16,8 @@ for ct, direc in enumerate(cfg_directory):
         if re.search(r"\.cfg", i):
             a +=1
             c.append(read_cfg(direc + i))
-write_proteindatabank(cfg_directory[0]+'run.pdb', c[-1])
-
+if len(argv) == 2:
+    write_proteindatabank(cfg_directory[0]+'run.pdb', c[-1])
+else:
+    write_proteindatabank(str(argv[])[:-4]+'.pdb', read_cfg(argv[1]+ '/' + argv[2]))
 print(a)

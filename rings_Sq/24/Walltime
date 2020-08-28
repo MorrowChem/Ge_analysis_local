@@ -1,0 +1,18 @@
+
+     Started on 25/08/2020 at 11:23:17 MET +01:00 from GMT
+
+------------------------ WallTime by Subroutine -----------------------
+
+             Subroutine             |      Time (s)       |     %age
+-----------------------------------------------------------------------
+
+ Total time for the calculation     |               0.10  |    100.00
+
+ Main                               |               0.00  |      0.00
+ Lattice                            |               0.00  |      0.00
+ Chemistry                          |               0.01  |      8.91
+ g(r) evaluation                    |               0.04  |     43.56
+ S(q) from FFT[g(r)]                |               0.05  |     47.52
+-----------------------------------------------------------------------
+
+     Stopped on 25/08/2020 at 11:23:17 MET +01:00 from GMT
