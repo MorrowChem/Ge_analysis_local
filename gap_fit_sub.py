@@ -94,7 +94,7 @@ def write_sub(gap_str, sub_file):
                 '#SBATCH --ntasks-per-node=16\n' +
                 '#SBATCH --account=chem-amais\n' +
                 #'#SBATCH --partition=htc\n\n' +
-                'module load gcc/6.4.0\n' +
+                'module load gcc/7.3.0\n' +
                 'gap_fit {}'.format(gap_str))
 
 def train_2b(gap_args, train_file, gap_file='2b'):
