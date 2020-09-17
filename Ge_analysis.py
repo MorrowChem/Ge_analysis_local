@@ -13,6 +13,7 @@ from sklearn import decomposition
 from ase.geometry.analysis import Analysis
 from ase.io.cfg import read_cfg
 from ase.io.proteindatabank import write_proteindatabank
+from ase.build import bulk
 from Ge_analysis import *
 
 
@@ -121,6 +122,10 @@ def dimer_curve(pot, ax=None, color='r', label='Ge-Ge'):
         ax.set_ylim(-1, 2.5)
     return fig, ax
 #######################################
+
+def crystal_EV_curve(potentials, crystal):
+    return
+
 
 # Fit plotting ####################
 colormap = plt.get_cmap('plasma')
@@ -346,6 +351,7 @@ def plot_rdf(GAP, ax=None):
                     color=colors[i], label=GAP.config_labels[i])
     ax.legend()
     fig.show()
+
 '''
 e_dens_fig, e_dens_ax = plt.subplots(1, len(cutoff_data), figsize=(4*len(cutoff_data), 6))
 e_dens_fig.suptitle('Error vs. cutoff n_sparse=2000')
@@ -553,18 +559,18 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
                 if i=='Evol':
                     file.write('#######################################\n' +
                                '  Outputting options           #\n' +
-                               '#####################################\n')
+                               '#######################################\n')
                 if type(options[i]) is bool:
                     file.write('{} .{}.\n'.format(i, str(options[i])))
                 else:
                     file.write('{} {}\n'.format(i, str(options[i])))
-                if i=='Dxout' or i=='TrajOut':
+                if i in ['Dxout', 'TrajOut']:
                     file.write('-----------------------\n')
         file.write('######################################\n')
 
 
     with open(rdir + '/rings.in', 'w') as file:
-        file.write('############\n#\n#\n' +
+        file.write('# R.I.N.G.S input file ######\n#\n#\n' +
         'amorphous-Ge\n' +
         '{} # natom\n'.format(N) +
         '1  # number of chemical species\n' +
@@ -594,4 +600,43 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
     exit = os.system('/Users/Moji/Applications/rings-code-v1.3.4/src/rings rings.in >rings.log 2>&1')
     os.chdir('../')
     return exit
+
+
+def cryst_test(pots, element, extra_configs=[], extra_labels=[], n=10, opt=True):
+    if not isinstance(pots, list):
+        pots = [pots]
+
+    structs = [build.bulk(element, crystalstructure='fcc', a=3.0, cubic=True),
+               build.bulk(element, crystalstructure='diamond', a=3.0,  cubic=True),
+               build.bulk(element, crystalstructure='hcp', a=3, c=5),
+               build.bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
+               build.bulk(element, crystalstructure='sc', a=3.0),
+               Atoms(hexagonal.Hexagonal(symbol=element, latticeconstant={'a':3.0, 'c':3.0}))] + \
+              extra_configs
+
+    labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh'] + extra_labels
+
+    cells = []; Es = [[[] for j in range(len(structs))] for i in range(len(pots))]
+    V = [[] for j in range(len(structs))]
+    for ct,i in enumerate(structs):
+        if opt and ct < 6:
+            i.set_calculator(pots[0])
+            sf = StrainFilter(i)
+            opt = BFGS(sf, logfile='dump')
+            opt.run(0.005)
+            i.set_calculator(None)
+        cells.append(i.get_cell())
+    print('opts done')
+
+    for j, p in enumerate(pots):
+        for ct, val in enumerate(structs):
+            for i in np.linspace(0.95, 1.05, n):
+                val.set_cell(i*cells[ct])
+                val.set_calculator(p)
+                Es[j][ct].append(val.get_potential_energy()/len(val))
+                if j == 0:
+                    V[ct].append(val.get_volume()/len(val))
+            print('struct {0}: {1} done'.format(ct, val))
+
+    return Es, V
 

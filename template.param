@@ -1,0 +1,22 @@
+task = SinglePoint
+
+xc_functional = PBEsol
+cut_off_energy = 400 eV
+finite_basis_corr = automatic
+fine_grid_scale = 2
+
+spin_polarized = false
+elec_energy_tol = 0.00000001
+max_scf_cycles = 250
+
+nextra_bands = 24
+fix_occupancy = false
+smearing_width = 0.05 eV
+mixing_scheme = Pulay
+mix_charge_amp = 0.2
+mix_history_length = 20
+
+calculate_stress = true
+popn_calculate = false
+pdos_calculate_weights = false
+write_checkpoint = none
