@@ -14,7 +14,13 @@ from ase.geometry.analysis import Analysis
 from ase.io.cfg import read_cfg
 from ase.io.proteindatabank import write_proteindatabank
 from ase.build import bulk
+from ase.lattice import hexagonal, tetragonal, orthorhombic
+from ase.constraints import StrainFilter, UnitCellFilter, ExpCellFilter, FixAtoms
+from pandas import DataFrame
+from ase.optimize import BFGS
 from Ge_analysis import *
+from copy import deepcopy
+import re
 
 
 def read_dat(filey, head=True):
@@ -57,41 +63,29 @@ def sort_by_timestep(d, i):
            sorted(d[1][i], key=lambda x: d[2][1][d[1][i].index(x)], reverse=True)
 
 
-data_dir = '/Users/Moji/Documents/Summer20/Ge/'
-'''data_216_125_2000 = data_dir + 'Pickles/data_3b2000_5c_216_125'
-data_216_125_4000 = data_dir + 'Pickles/data_3b4000_5c_216_125'
-data_64_5000 = data_dir + 'Pickles/data_2bSOAP5000_5c_64'
-data_d1 = data_dir + 'Pickles/data_125_216_d1'
-data_d2 = data_dir + 'Pickles/data_125_216_d2'
-data_d155_f = data_dir + 'Pickles/data_125_216_d155'
-train_file = data_dir + 'Structure_databases/train_216_125_64.xyz'
-val_file = data_dir + 'Structure_databases/validate_216_125_64.xyz'
+def tex_escape(text):
+    """
+        :param text: a plain text message
+        :return: the message escaped to appear correctly in LaTeX
+    """
+    conv = {
+        '&': r'\&',
+        '%': r'\%',
+        '$': r'\$',
+        '#': r'\#',
+        '_': r'\_',
+        '{': r'\{',
+        '}': r'\}',
+        '~': r'\textasciitilde{}',
+        '^': r'\^{}',
+        '\\': r'\textbackslash{}',
+        '<': r'\textless{}',
+        '>': r'\textgreater{}',
+    }
+    regex = re.compile('|'.join(re.escape(str(key)) for key in sorted(conv.keys(), key = lambda item: - len(item))))
+    return regex.sub(lambda match: conv[match.group()], text)
 
-gaps = [Potential(param_filename= data_dir + 'Potentials/Ge_3bSOAP_2000/Ge_3bSOAP_2000_5cut.xml'),
-        Potential(param_filename= data_dir + 'Potentials/Ge_3bSOAP_4000/Ge_3bSOAP_4000_5cut.xml')]
-
-data_216_125_2000 = read_database(data_216_125_2000)[0]
-data_216_125_4000 = read_database(data_216_125_4000)[0]
-data_64_5000 = read_database(data_64_5000)[0]
-data_d1 = read_database(data_d1)[0]
-data_d2 = read_database(data_d2)[0]
-data_d155, d155_dict = read_database(data_d155_f)
-#datasets = [data_216_125_2000, data_216_125_4000, data_64_5000, data_d155]
-datasets = [data_d155]
-
-for j in datasets:
-    j[2][1] = [240, 120, 20, 180, 160]
-    for i in range(0, len(datasets[0][0])):
-        if i > 9:
-            pass
-        try:
-            j[0][i], j[1][i] = sort_by_timestep(j, i)
-        except:
-            print('data not regular in ', i)
-
-    j[2][1].sort(reverse=True)'''
-    
-
+GE = '/Users/Moji/Documents/Summer20/Ge/'
 '''desc_SOAP = Descriptor("soap l_max=10 n_max=10 \
 delta=0.5 atom_sigma=0.5 zeta=4 central_weight=1.0 \
 f0=0.0 cutoff=5.0 cutoff_transition_width=1.0 \
@@ -144,11 +138,11 @@ def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r',
         for i in range(len(GAP.config_labels)):
             ax.scatter(np.array(GAP.data_dict['QM_E_v'][i]) - GAP.zero_e,
                        np.array(GAP.data_dict['GAP_E_v'][i]) - GAP.zero_e,
-                       marker='.', color=colors[i], label=GAP.config_labels[i])
+                       marker='.', color=colors[i], label=tex_escape(GAP.config_labels[i]))
     else:
         ax.scatter(np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e,
                    np.array(flatten(GAP.data_dict['GAP_E_v'])) - GAP.zero_e,
-                   marker='.', color=color, label=label)
+                   marker='.', color=color, label=tex_escape(label))
     ax.set(xlabel='DFT energies per atom / eV', ylabel='GAP energies / eV', title=title,
                        xlim=(mi, ma), ylim=(mi, ma))
     ax.legend(loc='upper left')
@@ -325,6 +319,8 @@ def dens_error_plot(GAP, title=None):
 # Density of points plot for the forces
 
 def similarity_map(GAP):
+    '''Plots a similarity map based on the
+    kernel values calculated by the GAP.calc_similarity method'''
     symbols = ['x' for i in GAP.T_configs]
     colormap = plt.get_cmap('plasma')
     colors = [colormap(i) for i in np.linspace(0, 0.8, len(GAP.T_configs))]
@@ -467,6 +463,12 @@ lcurve_fig.savefig('GAPPY/Ge_RMSE_nsparse_covergence', bbox_inches='tight')'''
 ########################################
 
 def rings(rdir, cfg_file=None, atoms=None, opts={}):
+    '''Runs rings with inputs set by dictionary. So as not to lose data,
+    the output is written to rdir. Provide either a cfg file (lammps dump)
+    or an atoms object for analysis
+
+    Needs implementation: rings seems to operate on full MD runs, this may
+    be more efficient than running multiple instances on different structures.'''
     os.mkdir(rdir)
     if 'data' not in os.listdir(rdir):
         os.mkdir(rdir + '/data')
@@ -477,10 +479,9 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
         write_proteindatabank(rdir + '/data/' + nf, f)
     if atoms:
         f = atoms
-        f.set_atomic_numbers([32 for i in range(len(f))])
+        f.set_atomic_numbers([32 for i in range(len(f))]) # need to make automatic
         nf = f.info['file'].split('/')[-1][:-4] + '.pdb'
         write_proteindatabank(rdir + '/data/' + nf, f)
-    #    f = [i for i
     N = len(f)
     #Nchem = f.get_chemical_symbols()
     cell = f.get_cell()
@@ -570,11 +571,13 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
 
 
     with open(rdir + '/rings.in', 'w') as file:
+        '''Some parts of this could do with automation/user access via
+        a dictionary. Left for now'''
         file.write('# R.I.N.G.S input file ######\n#\n#\n' +
-        'amorphous-Ge\n' +
+        'amorphous-Ge\n' + # automate
         '{} # natom\n'.format(N) +
         '1  # number of chemical species\n' +
-        'Ge # chemical species\n' +
+        'Ge # chemical species\n' + # need to automate
         '{}  # number of M.D. steps\n'.format(cfg_N) +
         '1 \n' +
         '{}    {}    {}\n'.format(*cell[0]) +
@@ -602,41 +605,156 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
     return exit
 
 
-def cryst_test(pots, element, extra_configs=[], extra_labels=[], n=10, opt=True):
-    if not isinstance(pots, list):
-        pots = [pots]
+class bSn_factory(tetragonal.CenteredTetragonalFactory):
+    xtal_name='bSn'
+    bravais_basis=[[0, 0.5, 0.25], [0.0, 0.0, 0.5]]
 
-    structs = [build.bulk(element, crystalstructure='fcc', a=3.0, cubic=True),
-               build.bulk(element, crystalstructure='diamond', a=3.0,  cubic=True),
-               build.bulk(element, crystalstructure='hcp', a=3, c=5),
-               build.bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
-               build.bulk(element, crystalstructure='sc', a=3.0),
-               Atoms(hexagonal.Hexagonal(symbol=element, latticeconstant={'a':3.0, 'c':3.0}))] + \
-              extra_configs
+class Imma_factory(orthorhombic.BodyCenteredOrthorhombicFactory):
+    xtal_name='Imma'
+    bravais_basis=[[0.0641, 0.0000, 0.7500], [0.4359, 0.5000, 0.7500]]
 
-    labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh'] + extra_labels
+class CrystTest:
 
-    cells = []; Es = [[[] for j in range(len(structs))] for i in range(len(pots))]
-    V = [[] for j in range(len(structs))]
-    for ct,i in enumerate(structs):
-        if opt and ct < 6:
-            i.set_calculator(pots[0])
-            sf = StrainFilter(i)
-            opt = BFGS(sf, logfile='dump')
-            opt.run(0.005)
-            i.set_calculator(None)
-        cells.append(i.get_cell())
-    print('opts done')
+    def __init__(self, pots, element,
+                 extra_configs=[], extra_labels=[], n=10,
+                 opt=True, silent=False, load=False,
+                 traj=False):
+        '''pots: list of potentials
+        element: element used for the pots (needs updating for multicomponent systems
+        extra_configs/labels for the non-supported crystal structures (see add_config method)
+        n: number of V points calculated per crystal structure
+        opt: bool, optimize the crystal structures? Need to implement separate opt for
+        each pot if desired
+        silent: bool, silence output'''
+        if not isinstance(pots, list):
+            self.pots = [pots]
+        else:
+            self.pots = pots
+        if load:
+            return
 
-    for j, p in enumerate(pots):
-        for ct, val in enumerate(structs):
+        bSn_fact = bSn_factory()
+        bSn = Atoms(bSn_fact(symbol=element, latticeconstant={'a':5.2, 'c':2.87}))
+
+        Imma_fact = Imma_factory()
+        Imma = Imma_fact(symbol=element, latticeconstant={'a':2.87, 'b':4.99, 'c':5.30})
+
+        structs = [bulk(element, crystalstructure='fcc', a=3.0, cubic=True),
+                   bulk(element, crystalstructure='diamond', a=5.0,  cubic=True),
+                   bulk(element, crystalstructure='hcp', a=3, c=5),
+                   bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
+                   bulk(element, crystalstructure='sc', a=3.0),
+                   Atoms(hexagonal.Hexagonal(symbol=element, latticeconstant={'a':3.0, 'c':3.0})),
+                   bSn,
+                   Imma] + \
+                  [deepcopy(i) for i in extra_configs]
+
+        labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh', 'bSn', 'Imma'] + extra_labels
+
+        cells = [[] for i in range(len(pots))]
+        E = [[[] for j in range(len(structs))] for i in range(len(pots))]
+        V = [[] for j in range(len(structs))]
+        for j, p in enumerate(self.pots):
+            copy_structs = deepcopy(structs)
+            for ct, val in enumerate(copy_structs):
+                if opt and ct < 8:
+                    val.set_calculator(p)
+                    uf = StrainFilter(val)
+                    opt = BFGS(uf, logfile='/dev/null')
+                    opt.run(0.05)
+                    val.set_calculator(None)
+                cells[j].append(val.get_cell())
+        if not silent:
+            print('opts done')
+
+        for j, p in enumerate(self.pots):
+            copy_structs = deepcopy(structs)
+            for ct, val in enumerate(copy_structs):
+                for i in np.linspace(0.95, 1.05, n):
+                    val.set_cell(i*cells[j][ct])
+                    val.set_calculator(p)
+                    E[j][ct].append(val.get_potential_energy()/len(val))
+                    if j == 0:
+                        V[ct].append(val.get_volume()/len(val))
+            if not silent:
+                print('pot {0} done'.format(p.name))
+
+        dat = {'Structure':structs, 'Volumes':V}
+        for i, val in enumerate(self.pots):
+            dat.update({val.name:E[i]})
+        self.df = DataFrame(dat, index=labels)
+
+    def add_config(self, config, label, opt=False, n=10):
+
+        config = deepcopy(config)
+        if opt:
+            config.set_calculator(self.pots[0])
+            uf = UnitCellFilter(config)
+            opt = BFGS(uf, logfile='dump')
+            opt.run(0.05)
+            config.set_calculator(None)
+        cell = config.get_cell()
+
+        E = [[] for i in self.pots]; V = []
+        for j, p in enumerate(self.pots):
             for i in np.linspace(0.95, 1.05, n):
-                val.set_cell(i*cells[ct])
-                val.set_calculator(p)
-                Es[j][ct].append(val.get_potential_energy()/len(val))
+                config.set_cell(i*cell)
+                config.set_calculator(p)
+                E[j].append(config.get_potential_energy()/len(config))
                 if j == 0:
-                    V[ct].append(val.get_volume()/len(val))
-            print('struct {0}: {1} done'.format(ct, val))
+                    V.append(config.get_volume()/len(config))
+            print('pot {0} done'.format(p.name))
 
-    return Es, V
+        dat = {'Structure':[config], 'Volumes':[V]}
+        for i, val in enumerate(self.pots):
+            dat.update({val.name:[E[i]]})
+        tdf = DataFrame(dat, index=[label])
+        self.df = self.df.append(tdf)
 
+    def add_config_by_mpid(self):
+        return
+
+    def calc_HP(self, ps, pf, pn, opt_freq=4, subset=slice(0, 8, None)):
+        p = np.linspace(ps, pf, pn)
+        pea = p*0.05/8
+        copy_structs = deepcopy(self.df['Structure'][subset])
+        # consider initializing below as NaNs for pandas
+        v = [[np.zeros(pn) for i in range(len(self.df))] for j in range(len(self.pots))]
+        H = [[np.zeros(pn) for i in range(len(self.df))] for j in range(len(self.pots))]
+        for j, pot in enumerate(self.pots):
+            for ct, val in enumerate(copy_structs):
+                val.set_calculator(pot)
+                for i in range(len(p)):
+                    if i % opt_freq == 0:
+                        #val.set_constraint(FixAtoms(mask=[True for atom in val]))
+                        #uf = ExpCellFilter(val, scalar_pressure=pea[i], hydrostatic_strain=True)
+                        uf = ExpCellFilter(val, scalar_pressure=pea[i], hydrostatic_strain=True)
+                        opt = BFGS(uf, logfile='/dev/null')
+                        opt.run(0.05, steps=20)
+                    v[j][ct][i] = (vt := val.get_volume()/len(val))
+                    H[j][ct][i] = val.get_potential_energy()/len(val) + pea[i]*vt
+                print('struct {} done'.format(self.df.index[ct]))
+
+            print('\npot {0} done\n'.format(pot.name))
+            self.df['H(P) {}'.format(pot.name)] = H[j]
+        self.df['P'] = [p for i in range(len(self.df))]
+
+        return
+
+    def save(self, outfile):
+        for i in flatten(self.df['Structure']):
+            i.calc = None
+        f = open(outfile, 'wb')
+        pickle.dump(self.df, f)
+        f.close()
+
+    def load(self, infile):
+        f = open(infile, 'rb')
+        self.df = pickle.load(f)
+
+
+    def add_pot(self):
+        return
+
+    def plot_EV(self):
+        return

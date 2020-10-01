@@ -3,15 +3,17 @@ calculations for analysis purposes. Also an object to store MD runs
 and facilitate efficient calculation of structural information (via wrapper
 to R.I.N.G.S.)
 
-Parallelisation of GAP QUIP calculations would be good (speed up object creation)'''
+Parallelisation of GAP QUIP calculations would be good (speed up object creation)
+Memory conservation is a must
+'''
 
 import numpy as np
-import re
+from re import match, compile
 import pickle
 import quippy
 from quippy.potential import Potential
 from quippy.descriptors import Descriptor
-from ase import Atoms
+from ase.atoms import Atoms
 from ase.io import write, read
 import pickle
 import matplotlib.pyplot as plt
@@ -39,15 +41,16 @@ class GAP:
             self.pot = pot
         self.T_ct = 0
         self.V_ct = 0
+        pattern = compile(r'^[1-9]+$')
         with open(train_file) as f:
             for i in f.readlines():
-                if re.match("^[1-9]+$", i):
+                if match(pattern, i):
                     self.T_ct += 1
         print('Training set structure count:', self.T_ct)
         if val_file:
             with open(val_file) as f:
                 for i in f.readlines():
-                    if re.match("^[1-9]+$", i):
+                    if match(pattern, i):
                         self.V_ct += 1
             print('Validation set structure count:', self.V_ct)
             V_set = read(val_file, format='extxyz', index=slice(None, None, None))
@@ -230,11 +233,9 @@ class GAP:
         broadcasting'''
         if not descriptor:
             descriptor = quippy.descriptors.Descriptor(
-                             'soap average=T l_max=6 n_max=12 atom_sigma=0.5 zeta=4 \
+                             'soap average=T l_max=6 n_max=12 atom_sigma=0.5 \
                               cutoff=5.0 cutoff_transition_width=1.0 \
-                              central_weight=1.0 n_sparse=5000 delta=0.1 \
-                              f0=0.0 covariance_type=dot_product \
-                              sparse_method=CUR_POINTS')
+                              central_weight=1.0')
         descs = np.array([descriptor.calc_descriptor(i) for i in self.flatten(self.T_configs)])
         k_mat = np.array([[2 - 2*np.dot(i[0]**zeta, j[0]**zeta) for j in descs] for i in descs])
         pca = decomposition.PCA(n_components=2)
@@ -275,7 +276,8 @@ class MD_run:
         self.configs = [i for _, i in sorted(zip(self.timesteps, temp))]
         self.timesteps.sort()
         self.df = pd.DataFrame(self.dat[1:].T, columns=self.dat_head[1:], index=self.dat[0].astype(int))
-        self.df.drop_duplicates(subset=self.df.columns[1:], inplace=True)
+        # should drop dupes based on index (more independant of log setup)
+        self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
         self.df.insert(0, 'Configs', self.configs)
         self.df.drop(index=0, inplace=True)
 
@@ -286,8 +288,18 @@ class MD_run:
         return
 
 
-    def structure_factors(self, selection=None, rings_dir='', discard=False, read_only=False):
-
+    def structure_factors(self, selection=None, rings_dir='', discard=False, read_only=False, opts={}):
+        '''Calculates structure factors and PDFs for selection of MD run, by calling rings
+        function from Ge_analysis.py
+        Parameters:
+            selection: iterable, indices of configurations from MD run (could implement T range etc.)
+            rings_dir: str, directory in which to dump the rings outputs
+            discard: bool, remove the rings output at the end (wasteful storage-wise)
+            read_only: bool, if true, read output from existing rings_dir
+            opts: dict, extra options for the rings calc
+        Returns:
+            Sq_x, but also sets Sq_x(ray), Sq_n(eutron), gr objects
+            of the MD_run'''
         if selection is None:
             selection = tuple(i for i in range(len(self.configs)))
         if not os.path.isdir(rings_dir):
@@ -298,11 +310,13 @@ class MD_run:
         self.Sk_n = []
         self.Sk_x = []
         self.gr = []
+        rings_opts = {'S(q)':True,
+                      #'S(k)':True,
+                      'g(r)':True}
+        rings_opts.update(opts)
         if not read_only:
             for i in selection:
-                flag = rings(str(i), atoms=self.configs[i], opts={'S(q)':True,
-                                                      #'S(k)':True,
-                                                      'g(r)':True})
+                flag = rings(str(i), atoms=self.configs[i], opts=rings_opts)
             if not flag:
                 print('R.I.N.G.S ran successfully')
         dats = sorted(os.listdir(), key=int)
@@ -316,9 +330,16 @@ class MD_run:
         os.chdir('../')
         if discard:
             rmtree(rings_dir)
-        return self.Sq_x
+        return
 
     def bin_fit(self, nbins=100, s_selection=None, q_selection=None):
+        '''s_selection: list of ints, the configs you want to include
+        for the averaging of the structure factor (start from 0, could
+        change to match the timesteps)
+        q_selection: range of q over which you want to average (often want
+        to ignore longer-range q, 1,12 is good bet)'''
+
+        # Need to clean up and implement the df properly
         if s_selection:
             a = [self.Sq_x[i] for i in s_selection]
             b = [self.Sq_n[i] for i in s_selection]
@@ -353,7 +374,7 @@ class MD_run:
         self.Sq_n_std = np.array([[xx[dig2 == i].std() for i in range(1, len(bins)+1)],
                                   [yy[dig2 == i].std() for i in range(1, len(bins)+1)]])
 
-        return
+        return self.Sq_x_av, self.Sq_x_std
 
 
     def bin_fit_g(self, nbins=100, s_selection=None, r_selection=None):
@@ -381,6 +402,10 @@ class MD_run:
 
         return
 
+    def bond_angle(self):
+        '''function to calculate (and maybe average) bond angle distributions
+        using rings'''
+        return
 
 class GAP_pd:
 
@@ -388,22 +413,23 @@ class GAP_pd:
     def __init__(self, train_file, val_file=None, pot=None, parameter_names=('dft_energy', 'dft_forces', 'dft_virial'),
                  sorted_order=None):
         self.dft_energy, self.dft_forces, self.dft_virial = parameter_names
-        self.data_dict = {}
+        data_dict = {}
         if isinstance(pot, str):
             self.pot = Potential(param_filename=pot)
         else:
             self.pot = pot
         self.T_ct = 0
         self.V_ct = 0
+        pattern = compile(r'^[1-9]+$')
         with open(train_file) as f:
             for i in f.readlines():
-                if re.match("^[1-9]+$", i):
+                if match(pattern, i):
                     self.T_ct += 1
         print('Training set structure count:', self.T_ct)
         if val_file:
             with open(val_file) as f:
                 for i in f.readlines():
-                    if re.match("^[1-9]+$", i):
+                    if match(pattern, i):
                         self.V_ct += 1
             print('Validation set structure count:', self.V_ct)
             V_set = read(val_file, format='extxyz', index=slice(None, None, None))
@@ -415,16 +441,16 @@ class GAP_pd:
         self.config_labels = []
         print('Read configs, now fixing virials')
         for i in T_set:
-            if not i.info['config_type'] in self.config_labels:
+            if i.info['config_type'] not in self.config_labels:
                 self.config_labels.append(i.info['config_type'])
             if self.dft_virial not in i.info:
                 i.info[self.dft_virial] = None
         print('Config labels:', self.config_labels)
-        self.T_configs = [[i for i in T_set if i.info['config_type'] == j] for j in self.config_labels]
+        T_configs = [[i for i in T_set if i.info['config_type'] == j] for j in self.config_labels]
         if val_file:
-            self.V_configs = [[i for i in V_set if i.info['config_type'] == j] for j in self.config_labels]
+            V_configs = [[i for i in V_set if i.info['config_type'] == j] for j in self.config_labels]
         else:
-            self.V_configs = []
+            V_configs = []
 
         if sorted_order:
             self.sorted_order = sorted_order
