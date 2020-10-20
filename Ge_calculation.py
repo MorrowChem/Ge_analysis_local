@@ -276,7 +276,7 @@ class MD_run:
         self.configs = [i for _, i in sorted(zip(self.timesteps, temp))]
         self.timesteps.sort()
         self.df = pd.DataFrame(self.dat[1:].T, columns=self.dat_head[1:], index=self.dat[0].astype(int))
-        # should drop dupes based on index (more independant of log setup)
+        # should drop dupes based on index (more independent of log setup)
         self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
         self.df.insert(0, 'Configs', self.configs)
         self.df.drop(index=0, inplace=True)
@@ -288,7 +288,10 @@ class MD_run:
         return
 
 
-    def structure_factors(self, selection=None, rings_dir='', discard=False, read_only=False, opts={}):
+    def structure_factors(self, selection=None, rings_dir='',
+                          discard=False, read_only=False,
+                          opts={}, rings_in={},
+                          do_bin_fit=False, bin_args=None):
         '''Calculates structure factors and PDFs for selection of MD run, by calling rings
         function from Ge_analysis.py
         Parameters:
@@ -297,6 +300,7 @@ class MD_run:
             discard: bool, remove the rings output at the end (wasteful storage-wise)
             read_only: bool, if true, read output from existing rings_dir
             opts: dict, extra options for the rings calc
+            rings_in: dict, parameters for the rings calc
         Returns:
             Sq_x, but also sets Sq_x(ray), Sq_n(eutron), gr objects
             of the MD_run'''
@@ -305,18 +309,19 @@ class MD_run:
         if not os.path.isdir(rings_dir):
             os.mkdir(rings_dir)
         os.chdir(rings_dir)
-        self.Sq_n = []
-        self.Sq_x = []
+        self.rings_dir = os.getcwd()
+        self.Sq_n = []; self.Sq_n_av = []; self.Sq_n_std = []
+        self.Sq_x = []; self.Sq_x_av = []; self.Sq_x_std = []
         self.Sk_n = []
         self.Sk_x = []
-        self.gr = []
+        self.gr = []; self.gr_av = []; self.gr_std = []
         rings_opts = {'S(q)':True,
                       #'S(k)':True,
                       'g(r)':True}
         rings_opts.update(opts)
         if not read_only:
             for i in selection:
-                flag = rings(str(i), atoms=self.configs[i], opts=rings_opts)
+                flag = rings(str(i), atoms=self.configs[i], opts=rings_opts, rings_in=rings_in)
             if not flag:
                 print('R.I.N.G.S ran successfully')
         dats = sorted(os.listdir(), key=int)
@@ -330,9 +335,13 @@ class MD_run:
         os.chdir('../')
         if discard:
             rmtree(rings_dir)
+        if do_bin_fit:
+            self.bin_fit()
+            if 'Angles' in opts:
+                self.bond_angle()
         return
 
-    def bin_fit(self, nbins=100, s_selection=None, q_selection=None):
+    def bin_fit(self, nbins=100, s_selection=None, q_selection=None, ret=False):
         '''s_selection: list of ints, the configs you want to include
         for the averaging of the structure factor (start from 0, could
         change to match the timesteps)
@@ -351,12 +360,12 @@ class MD_run:
         tmp = np.concatenate([i for i in a], axis=1)
         tmp2 = np.concatenate([i for i in b], axis=1)
         order = np.argsort([i for i in tmp[0]])
-        self.tot_Sq_x = np.array([[tmp[0][i] for i in order],
+        tot_Sq_x = np.array([[tmp[0][i] for i in order],
                                  [tmp[1][i] for i in order]])
-        self.tot_Sq_n = np.array([[tmp2[0][i] for i in order],
+        tot_Sq_n = np.array([[tmp2[0][i] for i in order],
                                   [tmp2[1][i] for i in order]])
-        x, y = self.tot_Sq_x[0], self.tot_Sq_x[1]
-        xx, yy = self.tot_Sq_n[0], self.tot_Sq_n[1]
+        x, y = tot_Sq_x[0], tot_Sq_x[1]
+        xx, yy = tot_Sq_n[0], tot_Sq_n[1]
         if q_selection:
             mi = np.argmax(x > q_selection[0])
             ma = np.argmax(x > q_selection[1]) + 1
@@ -365,16 +374,19 @@ class MD_run:
         bins = np.linspace(np.amin(x), np.amax(x), nbins)
         dig = np.digitize(x, bins)
         dig2 = np.digitize(xx, bins)
-        self.Sq_x_av = np.array([[x[dig == i].mean() for i in range(1, len(bins))],
-                              [y[dig == i].mean() for i in range(1, len(bins))]])
-        self.Sq_x_std = np.array([[x[dig == i].std() for i in range(1, len(bins))],
-                            [y[dig == i].std() for i in range(1, len(bins))]])
-        self.Sq_n_av = np.array([[xx[dig2 == i].mean() for i in range(1, len(bins)+1)],
-                                 [yy[dig2 == i].mean() for i in range(1, len(bins)+1)]])
-        self.Sq_n_std = np.array([[xx[dig2 == i].std() for i in range(1, len(bins)+1)],
-                                  [yy[dig2 == i].std() for i in range(1, len(bins)+1)]])
+        self.Sq_x_av.append(np.array([[x[dig == i].mean() for i in range(1, len(bins))],
+                              [y[dig == i].mean() for i in range(1, len(bins))]]))
+        self.Sq_x_std.append(np.array([[x[dig == i].std() for i in range(1, len(bins))],
+                            [y[dig == i].std() for i in range(1, len(bins))]]))
+        self.Sq_n_av.append(np.array([[xx[dig2 == i].mean() for i in range(1, len(bins)+1)],
+                                 [yy[dig2 == i].mean() for i in range(1, len(bins)+1)]]))
+        self.Sq_n_std.append(np.array([[xx[dig2 == i].std() for i in range(1, len(bins)+1)],
+                                  [yy[dig2 == i].std() for i in range(1, len(bins)+1)]]))
 
-        return self.Sq_x_av, self.Sq_x_std
+        if ret:
+            return self.Sq_x_av, self.Sq_x_std
+        else:
+            return
 
 
     def bin_fit_g(self, nbins=100, s_selection=None, r_selection=None):
@@ -395,16 +407,49 @@ class MD_run:
             x, y = x[mi:ma], y[mi:ma]
         bins = np.linspace(np.amin(x), np.amax(x), nbins)
         dig = np.digitize(x, bins)
-        self.gr_av = np.array([[x[dig == i].mean() for i in range(1, len(bins))],
-                                 [y[dig == i].mean() + 1 for i in range(1, len(bins))]])
-        self.gr_std = np.array([[x[dig == i].std() for i in range(1, len(bins))],
-                                  [y[dig == i].std() for i in range(1, len(bins))]])
+        self.gr_av.append(np.array([[x[dig == i].mean() for i in range(1, len(bins))],
+                                 [y[dig == i].mean() + 1 for i in range(1, len(bins))]]))
+        self.gr_std.append(np.array([[x[dig == i].std() for i in range(1, len(bins))],
+                                  [y[dig == i].std() for i in range(1, len(bins))]]))
 
         return
 
-    def bond_angle(self):
+    def bin_bond_angle(self, nbins=100, s_selection=None):
         '''function to calculate (and maybe average) bond angle distributions
         using rings'''
+        if hasattr(self, 'bond_angle'):
+            self.bond_angle.append(np.array([[], []]))
+        else:
+            self.bond_angle = [np.array([[], []])]
+            self.bond_angle_av = []
+            self.bond_angle_std = []
+        if s_selection:
+            for i in s_selection:
+                a = np.genfromtxt(glob(self.rings_dir+'/'+self.Sq_timesteps[i]+'/angles/'+
+                                                                          'angle_*.dat')[0])
+                self.bond_angle[-1] = np.concatenate([self.bond_angle[-1], a.T], axis=1)
+            #self.gr_av_T = np.average([self.dat[3][int(self.Sq_timesteps[i])] for i in s_selection])
+        else:
+            for i in os.listdir(self.rings_dir):
+                a = np.genfromtxt(glob(self.rings_dir+'/'+i+'/angles/'+
+                                  'angle_*.dat')[0])
+                self.bond_angle[-1] = np.concatenate([self.bond_angle[-1], a.T], axis=1)
+            #self.gr_av_T = np.average([self.dat[3][int(self.Sq_timesteps[i])] for i in s_selection])
+        order = np.argsort([i for i in self.bond_angle[-1][0]])
+        self.bond_angle[-1] = np.array([[self.bond_angle[-1][0][i] for i in order],
+                                    [self.bond_angle[-1][1][i] for i in order]])
+        x, y = self.bond_angle[-1][0], self.bond_angle[-1][1]
+        # if r_selection:
+        #     mi = np.argmax(x > r_selection[0])
+        #     ma = np.argmax(x > r_selection[1]) + 1
+        #     x, y = x[mi:ma], y[mi:ma]
+        bins = np.linspace(np.amin(x), np.amax(x), nbins)
+        dig = np.digitize(x, bins)
+        self.bond_angle_av.append(np.array([[x[dig == i].mean() for i in range(1, len(bins))],
+                               [y[dig == i].mean() + 1 for i in range(1, len(bins))]]))
+        self.bond_angle_std.append(np.array([[x[dig == i].std() for i in range(1, len(bins))],
+                                [y[dig == i].std() for i in range(1, len(bins))]]))
+
         return
 
 class GAP_pd:

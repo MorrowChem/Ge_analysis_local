@@ -462,7 +462,7 @@ lcurve_fig.legend()
 lcurve_fig.savefig('GAPPY/Ge_RMSE_nsparse_covergence', bbox_inches='tight')'''
 ########################################
 
-def rings(rdir, cfg_file=None, atoms=None, opts={}):
+def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}):
     '''Runs rings with inputs set by dictionary. So as not to lose data,
     the output is written to rdir. Provide either a cfg file (lammps dump)
     or an atoms object for analysis
@@ -569,21 +569,33 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
                     file.write('-----------------------\n')
         file.write('######################################\n')
 
+    rings_in_def = {
+        'label' : 'amorphous Ge',
+        'species' : ['Ge'],
+        'MD_timestep' : 1,
+        'cutoffs' : [3.2], # in format 1:1, 1:2, ... 1:n, 2:2, 2:3.. n:3
+        'Grtot' : 3.2
+        'real_disc' : 200,
+        'recip_disc' : 500,
+        'max_mod_recip' : 25
+    }
+    for i in rings_in:
+        rings_in_def[i] = rings_in[i]
 
     with open(rdir + '/rings.in', 'w') as file:
         '''Some parts of this could do with automation/user access via
         a dictionary. Left for now'''
         file.write('# R.I.N.G.S input file ######\n#\n#\n' +
-        'amorphous-Ge\n' + # automate
+        '{}\n'.format(rings_in_def['label']) +  # automate
         '{} # natom\n'.format(N) +
         '1  # number of chemical species\n' +
-        'Ge # chemical species\n' + # need to automate
+        str('{} '*len(rings_in_def['species'])).format(*rings_in_def['species']) + '# chemical species\n' +
         '{}  # number of M.D. steps\n'.format(cfg_N) +
         '1 \n' +
         '{}    {}    {}\n'.format(*cell[0]) +
         '{}    {}    {}\n'.format(*cell[1]) +
         '{}    {}    {}\n'.format(*cell[2]) +
-        '1 # integration time step for M.D\n' +
+        '{} # integration time step for M.D\n'.format(rings_in_def['MD_timestep']) +
         'PDB # file format\n' +
         '{} # name of file\n'.format(nf) +
         '200     # real space discretization g(r)\n' +
@@ -595,8 +607,9 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}):
         '10      # max search depth/2 for ring stats\n' +
         '15      # max search depth for chain stats\n' +
         '#######################################\n' +
-        'Ge Ge    3.2  # cutoff radius for g(r) partials\n' +
-        'Grtot   3.2   # cutoff for total g(r)\n' +
+        '{} {}    3.2  # cutoff radius for g(r) partials\n'.format((a:=rings_in_def['species'])[0],
+                                                                   a[0]) +
+        'Grtot   {}   # cutoff for total g(r)\n'.format(rings_in_def['Grtot']) +
         '#######################################\n'
         )
     os.chdir(rdir)
@@ -639,8 +652,8 @@ class CrystTest:
         Imma_fact = Imma_factory()
         Imma = Imma_fact(symbol=element, latticeconstant={'a':2.87, 'b':4.99, 'c':5.30})
 
-        structs = [bulk(element, crystalstructure='fcc', a=3.0, cubic=True),
-                   bulk(element, crystalstructure='diamond', a=5.0,  cubic=True),
+        structs = [bulk(element, crystalstructure='fcc', a=3.8, cubic=True),
+                   bulk(element, crystalstructure='diamond', a=5.43,  cubic=True),
                    bulk(element, crystalstructure='hcp', a=3, c=5),
                    bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
                    bulk(element, crystalstructure='sc', a=3.0),
@@ -758,3 +771,20 @@ class CrystTest:
 
     def plot_EV(self):
         return
+
+def kernel_compare(cfgs, comp,
+                   desc=Descriptor('soap average=T l_max=6 n_max=12 \
+                                   atom_sigma=0.5 cutoff=5.0 \
+                                   cutoff_transition_width=1.0 central_weight=1.0'),
+                   zeta=4):
+    '''calculates the average/std dev similarity kernel between a set of
+    configs and a reference.
+    Need to average the kernels for atomic environments?'''
+    descs = np.array(desc.calc_descriptor(cfgs))
+    descs = descs.reshape(descs.shape[0::2])
+    comp_desc = desc.calc_descriptor(comp)[0]
+    # norm = np.einsum('ik,ik->i', descs, descs)
+    # norm_comp = np.dot(comp_desc, comp_desc)
+    k = np.array(np.einsum('ij,j', descs, comp_desc)**zeta)
+
+    return k
