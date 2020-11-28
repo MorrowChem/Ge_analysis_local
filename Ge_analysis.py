@@ -2,6 +2,7 @@
 Plan is to migrate these to methods of the GAP class at some point'''
 import numpy as np
 import matplotlib.pylab as plt
+import matplotlib as mpl
 from scipy.stats import gaussian_kde
 import os
 import pickle
@@ -85,7 +86,18 @@ def tex_escape(text):
     regex = re.compile('|'.join(re.escape(str(key)) for key in sorted(conv.keys(), key = lambda item: - len(item))))
     return regex.sub(lambda match: conv[match.group()], text)
 
-GE = '/Users/Moji/Documents/Summer20/Ge/'
+class MidpointNormalize(mpl.colors.Normalize):
+    def __init__(self, vmin, vmax, midpoint=0, clip=False):
+        self.midpoint = midpoint
+        mpl.colors.Normalize.__init__(self, vmin, vmax, clip)
+
+    def __call__(self, value, clip=None):
+        normalized_min = max(0, 1 / 2 * (1 - abs((self.midpoint - self.vmin) / (self.midpoint - self.vmax))))
+        normalized_max = min(1, 1 / 2 * (1 + abs((self.vmax - self.midpoint) / (self.midpoint - self.vmin))))
+        normalized_mid = 0.5
+        x, y = [self.vmin, self.midpoint, self.vmax], [normalized_min, normalized_mid, normalized_max]
+        return np.ma.masked_array(np.interp(value, x, y))
+
 '''desc_SOAP = Descriptor("soap l_max=10 n_max=10 \
 delta=0.5 atom_sigma=0.5 zeta=4 central_weight=1.0 \
 f0=0.0 cutoff=5.0 cutoff_transition_width=1.0 \
@@ -129,8 +141,8 @@ xs = np.linspace(-6, 6, 100)
 
 
 def energy_error(GAP, ax=None, title=None, file=None, by_config=True, color='r', rmse=True, label=None):
-    mi = np.amin(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
-    ma = np.amax(flatten(GAP.data_dict['QM_E_t'])) - 0.01 - GAP.zero_e
+    mi = np.amin(flatten(GAP.data_dict['QM_E_v'])) - 0.01 - GAP.zero_e
+    ma = np.amax(flatten(GAP.data_dict['QM_E_v'])) - 0.01 - GAP.zero_e
     xs = np.linspace(mi, ma, 100)
     if not ax:
         fig, ax = plt.subplots()
@@ -172,8 +184,8 @@ def forces_error(GAP, ax=None, title=None, by_config=True, color='r', file=None,
                        np.array(GAP.data_dict['GAP_F_v'][i]),
                        marker='.', color=colors[i], label=GAP.config_labels[i])
     else:
-        ax.scatter(np.array(flatten(GAP.data_dict['QM_F_v'])),
-                   np.array(flatten(GAP.data_dict['GAP_F_v'])),
+        ax.scatter(np.array(flatten(GAP.data_dict['QM_F_t'])),
+                   np.array(flatten(GAP.data_dict['GAP_F_t'])),
                    color=color)
     ax.set(xlabel='DFT forces per atom / $\mathrm{eV\;Å^{-1}}$', ylabel='GAP forces / $\mathrm{eV\;Å^{-1}}$', title=title,
            xlim=(mi, ma), ylim=(mi, ma))
@@ -462,7 +474,7 @@ lcurve_fig.legend()
 lcurve_fig.savefig('GAPPY/Ge_RMSE_nsparse_covergence', bbox_inches='tight')'''
 ########################################
 
-def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}):
+def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='rings'):
     '''Runs rings with inputs set by dictionary. So as not to lose data,
     the output is written to rdir. Provide either a cfg file (lammps dump)
     or an atoms object for analysis
@@ -474,12 +486,13 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}):
         os.mkdir(rdir + '/data')
     if cfg_file:
         f = read_cfg(cfg_file)
-        f.set_atomic_numbers([32 for i in range(len(f))])
+        print(f.get_atomic_numbers()[0])
+        #f.set_atomic_numbers([14 for i in range(len(f))])
         nf = cfg_file.split('/')[-1][:-4] + '.pdb'
         write_proteindatabank(rdir + '/data/' + nf, f)
     if atoms:
         f = atoms
-        f.set_atomic_numbers([32 for i in range(len(f))]) # need to make automatic
+        #f.set_atomic_numbers([3 for i in range(len(f))]) # need to make automatic
         nf = f.info['file'].split('/')[-1][:-4] + '.pdb'
         write_proteindatabank(rdir + '/data/' + nf, f)
     N = len(f)
@@ -574,7 +587,7 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}):
         'species' : ['Ge'],
         'MD_timestep' : 1,
         'cutoffs' : [3.2], # in format 1:1, 1:2, ... 1:n, 2:2, 2:3.. n:3
-        'Grtot' : 3.2
+        'Grtot' : 3.2,
         'real_disc' : 200,
         'recip_disc' : 500,
         'max_mod_recip' : 25
@@ -607,13 +620,13 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}):
         '10      # max search depth/2 for ring stats\n' +
         '15      # max search depth for chain stats\n' +
         '#######################################\n' +
-        '{} {}    3.2  # cutoff radius for g(r) partials\n'.format((a:=rings_in_def['species'])[0],
-                                                                   a[0]) +
+        '{} {}    3.2  # cutoff radius for g(r) partials\n'.format(rings_in_def['species'][0],
+                                                                   rings_in_def['species'][0]) +
         'Grtot   {}   # cutoff for total g(r)\n'.format(rings_in_def['Grtot']) +
         '#######################################\n'
         )
     os.chdir(rdir)
-    exit = os.system('/Users/Moji/Applications/rings-code-v1.3.4/src/rings rings.in >rings.log 2>&1')
+    exit = os.system('{} rings.in >rings.log 2>&1'.format(rings_command))
     os.chdir('../')
     return exit
 
@@ -779,12 +792,43 @@ def kernel_compare(cfgs, comp,
                    zeta=4):
     '''calculates the average/std dev similarity kernel between a set of
     configs and a reference.
-    Need to average the kernels for atomic environments?'''
+    '''
     descs = np.array(desc.calc_descriptor(cfgs))
     descs = descs.reshape(descs.shape[0::2])
     comp_desc = desc.calc_descriptor(comp)[0]
     # norm = np.einsum('ik,ik->i', descs, descs)
     # norm_comp = np.dot(comp_desc, comp_desc)
-    k = np.array(np.einsum('ij,j', descs, comp_desc)**zeta)
+    k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
 
     return k
+
+def print_DB_stats(atoms, by_config_type=True):
+    print('Size statistics:\n'+'-'*36)
+    if isinstance(atoms[0], list):
+        atoms = flatten(atoms)
+    hist = [len(i) for i in atoms]
+    tot = sum(hist)
+    sizes, freq = np.unique(hist, return_counts=True)
+    print(('{:<12s}'*3).format('size', 'freq', 'percentage'))
+    for j in range(len(sizes)):
+        print('{:<12d}{:<12d}{:<11.1f}'.format(sizes[j], freq[j], 100*sizes[j]*freq[j]/tot))
+
+    if by_config_type:
+        labels = []
+        catoms = []
+        for i in atoms:
+            if 'config_type' in i.info.keys():
+                if (l := i.info['config_type']) not in labels:
+                    labels.append(l)
+                    catoms.append([])
+                catoms[labels.index(l)].append(i)
+        print('\nBy config types:\n'+'-'*36)
+        for i, val in enumerate(catoms):
+            hist = [len(j) for j in val]
+            tot = sum(hist)
+            sizes, freq = np.unique(hist, return_counts=True)
+            print('{:<16s} {} atoms'.format(val[0].info['config_type'], tot))
+            for j in range(len(sizes)):
+                print('{:<12d}{:<12d}{:<11.1f}'.format(sizes[j], freq[j], 100*sizes[j]*freq[j]/tot))
+            print('-'*36+'\n')
+    return

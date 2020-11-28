@@ -54,6 +54,9 @@ class GAP:
                         self.V_ct += 1
             print('Validation set structure count:', self.V_ct)
             V_set = read(val_file, format='extxyz', index=slice(None, None, None))
+            for i in V_set:
+                if self.dft_virial not in i.info:
+                    i.info[self.dft_virial] = np.ones(9) * np.NaN
         print('Reading xyz file (may take a while)')
         # skip the first entry (reference atomic energy)
         T_set = read(train_file, format='extxyz', index=slice(1, None, None))
@@ -65,7 +68,7 @@ class GAP:
             if not i.info['config_type'] in self.config_labels:
                 self.config_labels.append(i.info['config_type'])
             if self.dft_virial not in i.info:
-                i.info[self.dft_virial] = None
+                i.info[self.dft_virial] = np.ones(9)*np.NaN
         print('Config labels:', self.config_labels)
         self.T_configs = [[i for i in T_set if i.info['config_type'] == j] for j in self.config_labels]
         if val_file:
@@ -137,7 +140,7 @@ class GAP:
                 E[i].append(a.get_total_energy()/len(a))
                 F[i].extend(a.get_forces().flatten())
                 if virials:
-                    V[i].append((-a.get_stress(voigt=False)*a.get_volume()))
+                    V[i].append((-a.get_stress(voigt=False)*a.get_volume()).ravel())
             print('Config %s done' % self.config_labels[i])
         return E, F, V
 
@@ -197,7 +200,7 @@ class GAP:
         else:
             self.gap_v, err_v, rms_v = [[[] for i in range(n)] for i in range(3)]
 
-        if self.gap_t:
+        if self.gap_t and train:
             err_t = [[(np.array(i) - np.array(j)).tolist() for i,j in zip(self.qm_t[k], self.gap_t[k])] for k in range(n)]
             rms_t = [[self.rms_dict(self.qm_t[k][l], self.gap_t[k][l]) for l in range(m)] for k in range(n)]
         else:
@@ -291,7 +294,7 @@ class MD_run:
     def structure_factors(self, selection=None, rings_dir='',
                           discard=False, read_only=False,
                           opts={}, rings_in={},
-                          do_bin_fit=False, bin_args=None):
+                          do_bin_fit=False, bin_args=None, rings_command='rings'):
         '''Calculates structure factors and PDFs for selection of MD run, by calling rings
         function from Ge_analysis.py
         Parameters:
@@ -321,7 +324,7 @@ class MD_run:
         rings_opts.update(opts)
         if not read_only:
             for i in selection:
-                flag = rings(str(i), atoms=self.configs[i], opts=rings_opts, rings_in=rings_in)
+                flag = rings(str(i), atoms=self.configs[i], opts=rings_opts, rings_in=rings_in, rings_command=rings_command)
             if not flag:
                 print('R.I.N.G.S ran successfully')
         dats = sorted(os.listdir(), key=int)
