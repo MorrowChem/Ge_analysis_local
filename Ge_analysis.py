@@ -22,6 +22,8 @@ from ase.optimize import BFGS
 from Ge_analysis import *
 from copy import deepcopy
 import re
+from ase.neighborlist import neighbor_list
+from ase.data import covalent_radii
 
 
 def read_dat(filey, head=True):
@@ -98,6 +100,14 @@ class MidpointNormalize(mpl.colors.Normalize):
         x, y = [self.vmin, self.midpoint, self.vmax], [normalized_min, normalized_mid, normalized_max]
         return np.ma.masked_array(np.interp(value, x, y))
 
+def cn_count(at, r=None):
+    if r is None:
+        r = covalent_radii[at.get_atomic_numbers()[0]]*2.5
+    i = neighbor_list('i', at, r)
+    coord = np.bincount(i)
+    stat = np.bincount(coord, minlength=12)
+
+    return stat, coord
 '''desc_SOAP = Descriptor("soap l_max=10 n_max=10 \
 delta=0.5 atom_sigma=0.5 zeta=4 central_weight=1.0 \
 f0=0.0 cutoff=5.0 cutoff_transition_width=1.0 \
@@ -271,9 +281,8 @@ def abs_virial_error(GAP, ax=None, title=None):
         leg = True
         fig, ax = plt.subplots()
 
-    for i in range(len(GAP.config_labels)):
-        ax.scatter(np.array(GAP.data_dict['QM_V_v'][i]), abs(np.array(GAP.data_dict['V_err_v'][i])),
-                   marker='.', s=12, color=colors[i], label=GAP.config_labels[i])
+    ax.scatter(np.array(GAP.data_dict['QM_V_v'][i]), abs(np.array(GAP.data_dict['V_err_v'][i])),
+               marker='.', s=12, color=colors[i], label=GAP.config_labels[i])
     ax.set(xlabel='DFT Forces / $\mathrm{eV\;Å^{-1}}$',
            ylabel='Abs GAP error / $\mathrm{eV\;Å^{-1}}$',
            title=title)
@@ -289,8 +298,8 @@ def abs_virial_error(GAP, ax=None, title=None):
 def dens_error_plot(GAP, title=None):
     fig, ax = plt.subplots(1,2)
 
-    x = [np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e, np.array(flatten(GAP.data_dict['QM_F_v']))]
-    y = [abs(np.array(flatten(GAP.data_dict['E_err_v']))*1000), abs(np.array(flatten(GAP.data_dict['F_err_v'])))]
+    x = [np.array(flatten(GAP.data_dict['QM_E_v'])) - GAP.zero_e, np.array(GAP.data_dict['QM_F_v'])]
+    y = [abs(np.array(GAP.data_dict['E_err_v'])*1000), abs(np.array(GAP.data_dict['F_err_v']))]
     xy = [np.vstack([x[0], y[0]]),
           np.vstack([x[1], y[1]])]
     z = [gaussian_kde(xy[0])(xy[0]), gaussian_kde(xy[1])(xy[1])]
