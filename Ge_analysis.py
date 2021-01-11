@@ -42,6 +42,26 @@ def read_dat(filey, head=True):
     return dat
 
 
+def get_castep_E(file):
+    '''Gets the basis-set corrected total energy from .castep'''
+    with open(file) as f:
+        for a in f.readlines():
+            if re.search(" Total energy", a):
+                return extract_float(a)
+        print('Warning: no energy found')
+        return 1
+
+
+def extract_float(a):
+    '''Extracts the last float in a string'''
+    for t in a.split():
+        try:
+            E = float(t)
+        except ValueError:
+            pass
+    return E
+
+
 def rms_dict(x_ref, x_pred):
     """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
 
@@ -629,13 +649,19 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
         '10      # max search depth/2 for ring stats\n' +
         '15      # max search depth for chain stats\n' +
         '#######################################\n' +
-        '{} {}    3.2  # cutoff radius for g(r) partials\n'.format(rings_in_def['species'][0],
-                                                                   rings_in_def['species'][0]) +
+        '{} {}    {}  # cutoff radius for g(r) partials\n'.format(rings_in_def['species'][0],
+                                                                   rings_in_def['species'][0],
+                                                                  rings_in_def['cutoffs'][0]) +
         'Grtot   {}   # cutoff for total g(r)\n'.format(rings_in_def['Grtot']) +
         '#######################################\n'
         )
     os.chdir(rdir)
     exit = os.system('{} rings.in >rings.log 2>&1'.format(rings_command))
+    if exit \
+            != 0:
+        with open('ring.log', 'r') as f:
+            for i in f.readlines():
+                print(f)
     os.chdir('../')
     return exit
 

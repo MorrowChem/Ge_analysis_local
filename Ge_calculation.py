@@ -332,7 +332,8 @@ class MD_run:
     def structure_factors(self, selection=None, rings_dir='',
                           discard=False, read_only=False,
                           opts={}, rings_in={},
-                          do_bin_fit=False, bin_args=None):
+                          do_bin_fit=False, bin_args=None,
+                          overwrite=False):
         '''Calculates structure factors and PDFs for selection of MD run, by calling rings
         function from Ge_analysis.py
         Parameters:
@@ -353,6 +354,14 @@ class MD_run:
             raise FileExistsError('rings_dir does not exist')
         elif not os.path.isdir(rings_dir):
             os.makedirs(rings_dir)
+        elif overwrite and os.path.isdir(rings_dir):
+            for filename in os.listdir(rings_dir):
+                file_path=os.path.join(rings_dir, filename)
+                try:
+                    rmtree(file_path)
+                except:
+                    'Overwrite failed'
+
         wd = os.getcwd()
         os.chdir(rings_dir)
         self.rings_dir = os.getcwd()
