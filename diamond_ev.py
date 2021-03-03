@@ -51,7 +51,6 @@ for i, val in enumerate(structs):
     calc.merge_param('/data/chem-amais/hert5155/Ge/template.param')
     calc.param.task = 'GeometryOptimization'
     calc.param.elec_energy_tol = 1e-5
-    calc.param.fine_grid_scale = 1
 
     calc._directory = directory
     calc._rename_existing_dir = False
@@ -60,16 +59,16 @@ for i, val in enumerate(structs):
     calc._set_atoms = True
 
     cell = deepcopy(val.get_cell())
-    out = [None]
+    out = None
 
-    if calc._label + '.castep' not in os.listdir('geom'):
+    if calc._label + '.castep' in os.listdir('geom'):
         try:
-            out = iocastep.read_seed(os.path.join('geom', calc._label + '.castep'))
-            print('Existing .castep found and read. Warnings associated: {}'.format(out[0].calc._warnings))
+            out = iocastep.read_seed(os.path.join('geom', calc._label + '.castep'))[0]
+            print('Existing .castep found and read. Warnings associated: {}'.format(out.calc._warnings))
         except:
             print('.castep found, but can\'t be read correctly so reoptimising geometry')
 
-    if calc.dryrun_ok() and out[0] is None:
+    if calc.dryrun_ok() and out is None:
         print('%s : %s ' % (val.calc._label, val.get_potential_energy()))
         out = iocastep.read_seed(os.path.join('geom', calc._label))
     else:

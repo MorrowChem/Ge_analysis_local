@@ -53,7 +53,7 @@ def write_cfg_db(f, a, force_name='dft_force', virial_name='dft_virial', energy_
     Params: set the key words for the forces, energy, and virials if they differ from the defaults above
     """
     if not hasattr(f, 'read'):
-        f = open(f)
+        f = open(f, 'w')
         close = True
     else:
         close = False
@@ -102,10 +102,10 @@ def write_cfg_db(f, a, force_name='dft_force', virial_name='dft_virial', energy_
                 f.write('Feature    {}    {}\n'.format(str(i).replace('\n', ''),
                                                        str(j).replace('\n', '')))
         f.write('END_CFG\n\n')
-        f.seek(0)
+    f.seek(0)
 
-        if close:
-            f.close()
+    if close:
+        f.close()
 
 
 def read_cfg_db(fileobj, index=slice(0,None), Type_Ar_map=None,

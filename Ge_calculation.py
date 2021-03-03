@@ -278,27 +278,32 @@ class GAP:
 
 class MD_run:
 
-    def __init__(self, run_dir, label=None):
+    def __init__(self, run_dir, label=None, read_dat=True):
         self.run_dir = run_dir
-        with open(glob(run_dir + '/log*')[0]) as f:
-            out = f.readlines()
-        flag = 0
-        for i, val in enumerate(out):
-            test = val.split()
-            test.append('')
-            if test[0] == 'Step':
-                if not hasattr(self, 'dat'):
-                    self.dat = [[] for j in range(len(out[i+1].split()))]
-                    self.dat_head = val.split()
-                flag = 1
-                continue
-            if flag:
-                try:
-                    for j, num in enumerate(val.split()):
-                        self.dat[j].append(float(num))
-                except:
-                    flag = 0
-        self.dat = np.array(self.dat) # turn into a DataFrame with header
+
+        if read_dat:
+            with open(glob(run_dir + '/log*')[0]) as f:
+                out = f.readlines()
+            flag = 0
+            for i, val in enumerate(out):
+                test = val.split()
+                test.append('')
+                if test[0] == 'Step':
+                    if not hasattr(self, 'dat'):
+                        self.dat = [[] for j in range(len(out[i+1].split()))]
+                        self.dat_head = val.split()
+                    flag = 1
+                    continue
+                if flag:
+                    try:
+                        for j, num in enumerate(val.split()):
+                            self.dat[j].append(float(num))
+                    except:
+                        flag = 0
+            self.dat = np.array(self.dat) # turn into a DataFrame with header
+            self.df = pd.DataFrame(self.dat[1:].T, columns=self.dat_head[1:], index=self.dat[0].astype(int))
+        else:
+            self.dat = [None]
         self.configs = []
         temp = []
         self.timesteps = []
@@ -308,11 +313,15 @@ class MD_run:
             self.timesteps.append(int(i.split('/')[-1].split('.')[1]))
         self.configs = [i for _, i in sorted(zip(self.timesteps, temp))]
         self.timesteps.sort()
-        self.df = pd.DataFrame(self.dat[1:].T, columns=self.dat_head[1:], index=self.dat[0].astype(int))
         # should drop dupes based on index (more independent of log setup)
-        self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
-        self.df.insert(0, 'Configs', self.configs)
-        self.df.drop(index=0, inplace=True)
+        if read_dat:
+            self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
+            self.df.insert(0, 'Configs', self.configs)
+            self.df.drop(index=0, inplace=True)
+        else:
+            self.df = pd.DataFrame(index=self.timesteps)
+            self.df.insert(0, 'Configs', self.configs)
+
 
         if label:
             self.label = label
@@ -411,7 +420,7 @@ class MD_run:
         if s_selection:
             a = [self.Sq_x[i] for i in s_selection]
             b = [self.Sq_n[i] for i in s_selection]
-            self.Sq_av_T = np.average([self.dat[3][int(self.Sq_timesteps[i])] for i in s_selection])
+            # self.Sq_av_T = np.average([self.dat[3][int(self.Sq_timesteps[i])] for i in s_selection])
         else:
             a = self.Sq_x
             b = self.Sq_n
