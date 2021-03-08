@@ -9,6 +9,8 @@ import pickle
 from quippy.potential import Potential
 from quippy.descriptors import Descriptor
 from ase import Atoms
+from ase import build
+import warnings
 from ase.io import write, read
 from sklearn import decomposition
 from ase.geometry.analysis import Analysis
@@ -24,6 +26,14 @@ from copy import deepcopy
 import re
 from ase.neighborlist import neighbor_list
 from ase.data import covalent_radii
+import pandas as pd
+from ase.lattice import hexagonal, tetragonal, orthorhombic
+from ase.constraints import StrainFilter, UnitCellFilter, ExpCellFilter, FixAtoms
+from ase.spacegroup.symmetrize import FixSymmetry
+from ase.optimize import BFGS
+from ase.data import covalent_radii, atomic_numbers
+import warnings
+from ase.spacegroup.symmetrize import check_symmetry
 
 
 def read_dat(filey, head=True):
@@ -674,25 +684,222 @@ class Imma_factory(orthorhombic.BodyCenteredOrthorhombicFactory):
     xtal_name='Imma'
     bravais_basis=[[0.0641, 0.0000, 0.7500], [0.4359, 0.5000, 0.7500]]
 
+# class CrystTest:
+#
+#     def __init__(self, pots, element,
+#                  extra_configs=[], extra_labels=[], n=10,
+#                  opt=True, silent=False, load=False,
+#                  traj=False):
+#         '''pots: list of potentials
+#         element: element used for the pots (needs updating for multicomponent systems
+#         extra_configs/labels for the non-supported crystal structures (see add_config method)
+#         n: number of V points calculated per crystal structure
+#         opt: bool, optimize the crystal structures? Need to implement separate opt for
+#         each pot if desired
+#         silent: bool, silence output'''
+#         if not isinstance(pots, list):
+#             self.pots = [pots]
+#         else:
+#             self.pots = pots
+#         if load:
+#             return
+#
+#         bSn_fact = bSn_factory()
+#         bSn = Atoms(bSn_fact(symbol=element, latticeconstant={'a':5.2, 'c':2.87}))
+#
+#         Imma_fact = Imma_factory()
+#         Imma = Imma_fact(symbol=element, latticeconstant={'a':2.87, 'b':4.99, 'c':5.30})
+#
+#         structs = [bulk(element, crystalstructure='fcc', a=3.8, cubic=True),
+#                    bulk(element, crystalstructure='diamond', a=5.43,  cubic=True),
+#                    bulk(element, crystalstructure='hcp', a=3, c=5),
+#                    bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
+#                    bulk(element, crystalstructure='sc', a=3.0),
+#                    Atoms(hexagonal.Hexagonal(symbol=element, latticeconstant={'a':3.0, 'c':3.0})),
+#                    bSn,
+#                    Imma] + \
+#                   [deepcopy(i) for i in extra_configs]
+#
+#         labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh', 'bSn', 'Imma'] + extra_labels
+#
+#         cells = [[] for i in range(len(pots))]
+#         E = [[[] for j in range(len(structs))] for i in range(len(pots))]
+#         V = [[] for j in range(len(structs))]
+#         for j, p in enumerate(self.pots):
+#             copy_structs = deepcopy(structs)
+#             for ct, val in enumerate(copy_structs):
+#                 if opt and ct < 8:
+#                     val.set_calculator(p)
+#                     uf = StrainFilter(val)
+#                     opt = BFGS(uf, logfile='/dev/null')
+#                     opt.run(0.05)
+#                     val.set_calculator(None)
+#                 cells[j].append(val.get_cell())
+#         if not silent:
+#             print('opts done')
+#
+#         for j, p in enumerate(self.pots):
+#             copy_structs = deepcopy(structs)
+#             for ct, val in enumerate(copy_structs):
+#                 for i in np.linspace(0.95, 1.05, n):
+#                     val.set_cell(i*cells[j][ct])
+#                     val.set_calculator(p)
+#                     E[j][ct].append(val.get_potential_energy()/len(val))
+#                     if j == 0:
+#                         V[ct].append(val.get_volume()/len(val))
+#             if not silent:
+#                 print('pot {0} done'.format(p.name))
+#
+#         dat = {'Structure':structs, 'Volumes':V}
+#         for i, val in enumerate(self.pots):
+#             dat.update({val.name:E[i]})
+#         self.df = DataFrame(dat, index=labels)
+#
+#     def add_config(self, config, label, opt=False, n=10):
+#
+#         config = deepcopy(config)
+#         if opt:
+#             config.set_calculator(self.pots[0])
+#             uf = UnitCellFilter(config)
+#             opt = BFGS(uf, logfile='dump')
+#             opt.run(0.05)
+#             config.set_calculator(None)
+#         cell = config.get_cell()
+#
+#         E = [[] for i in self.pots]; V = []
+#         for j, p in enumerate(self.pots):
+#             for i in np.linspace(0.95, 1.05, n):
+#                 config.set_cell(i*cell)
+#                 config.set_calculator(p)
+#                 E[j].append(config.get_potential_energy()/len(config))
+#                 if j == 0:
+#                     V.append(config.get_volume()/len(config))
+#             print('pot {0} done'.format(p.name))
+#
+#         dat = {'Structure':[config], 'Volumes':[V]}
+#         for i, val in enumerate(self.pots):
+#             dat.update({val.name:[E[i]]})
+#         tdf = DataFrame(dat, index=[label])
+#         self.df = self.df.append(tdf)
+#
+#     def add_config_by_mpid(self):
+#         return
+#
+#     def calc_HP(self, ps, pf, pn, opt_freq=4, subset=slice(0, 8, None)):
+#         p = np.linspace(ps, pf, pn)
+#         pea = p*0.05/8
+#         copy_structs = deepcopy(self.df['Structure'][subset])
+#         # consider initializing below as NaNs for pandas
+#         v = [[np.zeros(pn) for i in range(len(self.df))] for j in range(len(self.pots))]
+#         H = [[np.zeros(pn) for i in range(len(self.df))] for j in range(len(self.pots))]
+#         for j, pot in enumerate(self.pots):
+#             for ct, val in enumerate(copy_structs):
+#                 val.set_calculator(pot)
+#                 for i in range(len(p)):
+#                     if i % opt_freq == 0:
+#                         #val.set_constraint(FixAtoms(mask=[True for atom in val]))
+#                         #uf = ExpCellFilter(val, scalar_pressure=pea[i], hydrostatic_strain=True)
+#                         uf = ExpCellFilter(val, scalar_pressure=pea[i], hydrostatic_strain=True)
+#                         opt = BFGS(uf, logfile='/dev/null')
+#                         opt.run(0.05, steps=20)
+#                     v[j][ct][i] = (vt := val.get_volume()/len(val))
+#                     H[j][ct][i] = val.get_potential_energy()/len(val) + pea[i]*vt
+#                 print('struct {} done'.format(self.df.index[ct]))
+#
+#             print('\npot {0} done\n'.format(pot.name))
+#             self.df['H(P) {}'.format(pot.name)] = H[j]
+#         self.df['P'] = [p for i in range(len(self.df))]
+#
+#         return
+#
+#     def save(self, outfile):
+#         for i in flatten(self.df['Structure']):
+#             i.calc = None
+#         f = open(outfile, 'wb')
+#         pickle.dump(self.df, f)
+#         f.close()
+#
+#     def load(self, infile):
+#         f = open(infile, 'rb')
+#         self.df = pickle.load(f)
+#
+#
+#     def add_pot(self):
+#         return
+#
+#     def plot_EV(self):
+#         return
+
+
+
+class Cmca_factory(orthorhombic.BaseCenteredOrthorhombicFactory):
+    xtal_name='Cmca'
+    bravais_basis=[[0.717993, 0.282007, 0.5     ],
+                   [0.217993, 0.782007, 0.      ],
+                   [0.282007, 0.717993, 0.5     ],
+                   [0.782007, 0.217993, 0.      ],
+                   [0.331168, 0.331168, 0.829096],
+                   [0.668832, 0.668832, 0.170904],
+                   [0.168832, 0.168832, 0.329096],
+                   [0.831168, 0.831168, 0.670904]]
+
+class bSn_factory(tetragonal.CenteredTetragonalFactory):
+    xtal_name='bSn'
+    bravais_basis=[[0, 0.5, 0.25], [0.0, 0.0, 0.5]]
+
+class Imma_factory(orthorhombic.BodyCenteredOrthorhombicFactory):
+    xtal_name='Imma'
+    bravais_basis=[[0.0641, 0.0000, 0.7500], [0.4359, 0.5000, 0.7500]]
+
 class CrystTest:
+    '''Centre for the analysis of crystal structure minima using ASE calculators
+
+    Data is returned in a pandas DataFrame, indexed by the crystal structures
+                        Default V   V           E           V           E
+                Atoms   1st pot     1st pot     1st pot     2nd pot     2nd pot
+    --------------------------------------------------------------------------
+    fcc     .
+    bcc     .
+    diamond .
+    .       .
+    .       .
+    .       .
+    TODO:
+        Automatic scaling of lattice parameter initial guesses using covalent radii
+        Ability to add custom crystal structures
+        Better error handling for unconverged geometries
+
+        '''
 
     def __init__(self, pots, element,
-                 extra_configs=[], extra_labels=[], n=10,
-                 opt=True, silent=False, load=False,
-                 traj=False):
-        '''pots: list of potentials
-        element: element used for the pots (needs updating for multicomponent systems
-        extra_configs/labels for the non-supported crystal structures (see add_config method)
+                 extra_configs=[], extra_labels=[], n=10, opt=True, silent=False,
+                 load=False, start_cells = {}, steps=100):
+        '''pots: list of ase calculator objects (currently GAPs and MTPs). Strings will be
+                    interpreted as GAP param_filenames
+        element: element used for the pots (multicomponent systems not yet supported)
+        extra_configs/labels: custom crystal structures for evaluation (see add_config method)
         n: number of V points calculated per crystal structure
-        opt: bool, optimize the crystal structures? Need to implement separate opt for
-        each pot if desired
-        silent: bool, silence output'''
+        opt: bool, optimize the crystal structures? If a particular calculator is unstable, add this using
+            add_pot()
+        silent: bool, silence output
+
+        '''
         if not isinstance(pots, list):
             self.pots = [pots]
         else:
             self.pots = pots
-        if load:
-            return
+        if load: # awaiting implementation
+            raise NotImplementedError('Hang tight, coming soon')
+
+        for i in range(len(pots)):
+            if not hasattr(pots[i], 'calculate'):
+                # assume is the filename (str) of a GAP from typical analysis
+                pots[i] = Potential(param_filename=pots[i])
+
+        # Need a better way of guessing the initial latice parameters - e.g. scaling by atomic radius
+        # based on True Si data
+        e_r = covalent_radii[atomic_numbers[element]]
+        Si_r = covalent_radii[14]
 
         bSn_fact = bSn_factory()
         bSn = Atoms(bSn_fact(symbol=element, latticeconstant={'a':5.2, 'c':2.87}))
@@ -700,50 +907,61 @@ class CrystTest:
         Imma_fact = Imma_factory()
         Imma = Imma_fact(symbol=element, latticeconstant={'a':2.87, 'b':4.99, 'c':5.30})
 
-        structs = [bulk(element, crystalstructure='fcc', a=3.8, cubic=True),
-                   bulk(element, crystalstructure='diamond', a=5.43,  cubic=True),
-                   bulk(element, crystalstructure='hcp', a=3, c=5),
-                   bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
-                   bulk(element, crystalstructure='sc', a=3.0),
+        structs = [build.bulk(element, crystalstructure='fcc', a=3.0, cubic=True),
+                   build.bulk(element, crystalstructure='diamond', a=5.0,  cubic=True),
+                   build.bulk(element, crystalstructure='hcp', a=3, c=5),
+                   build.bulk(element, crystalstructure='bcc', a=3.0, cubic=True),
+                   build.bulk(element, crystalstructure='sc', a=3.0),
                    Atoms(hexagonal.Hexagonal(symbol=element, latticeconstant={'a':3.0, 'c':3.0})),
                    bSn,
                    Imma] + \
                   [deepcopy(i) for i in extra_configs]
 
-        labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh', 'bSn', 'Imma'] + extra_labels
+        self.labels = ['fcc', 'dia', 'hcp', 'bcc', 'sc', 'sh', 'bSn', 'Imma'] + extra_labels
+        self.opt_structs = []
 
+        # Optimise the unit cell vectors if required
         cells = [[] for i in range(len(pots))]
-        E = [[[] for j in range(len(structs))] for i in range(len(pots))]
-        V = [[] for j in range(len(structs))]
-        for j, p in enumerate(self.pots):
+        for j, pot in enumerate(self.pots):
             copy_structs = deepcopy(structs)
             for ct, val in enumerate(copy_structs):
-                if opt and ct < 8:
-                    val.set_calculator(p)
-                    uf = StrainFilter(val)
+                if opt:
+                    val.set_calculator(pot)
+                    uf = StrainFilter(val) # should ensure only the lattice can move, not atomic positions
                     opt = BFGS(uf, logfile='/dev/null')
-                    opt.run(0.05)
+                    opt.run(0.05, steps=steps)
+                    if not opt.converged():
+                        warnings.warn(('Warning: pot \'{}\' failed to converge on structure {}\n' + \
+                                       'in {} steps').format(pot.name, val, steps))
+                        val.set_cell(np.NaN*np.ones(3)) # flag unconverged geometry
                     val.set_calculator(None)
                 cells[j].append(val.get_cell())
+                if j == 0:
+                    self.opt_structs.append(val)
         if not silent:
             print('opts done')
 
-        for j, p in enumerate(self.pots):
+        # Evaluate the E/V curves on the optimised cells
+        E = [[[] for j in range(len(structs))] for i in range(len(pots))]
+        V = [[[] for j in range(len(structs))] for i in range(len(pots))]
+        for j, pot in enumerate(self.pots):
             copy_structs = deepcopy(structs)
             for ct, val in enumerate(copy_structs):
                 for i in np.linspace(0.95, 1.05, n):
-                    val.set_cell(i*cells[j][ct])
-                    val.set_calculator(p)
+                    val.set_cell(i*cells[j][ct], scale_atoms=True)
+                    val.set_calculator(pot)
                     E[j][ct].append(val.get_potential_energy()/len(val))
-                    if j == 0:
-                        V[ct].append(val.get_volume()/len(val))
-            if not silent:
-                print('pot {0} done'.format(p.name))
+                    V[j][ct].append(val.get_volume()/len(val))
 
-        dat = {'Structure':structs, 'Volumes':V}
+            if not silent:
+                print('pot {0} done'.format(pot.name))
+
+        # Construct a DataFrame with the data
+        dat = {'Structure':structs, 'Volumes':V[0]}
         for i, val in enumerate(self.pots):
-            dat.update({val.name:E[i]})
-        self.df = DataFrame(dat, index=labels)
+            dat.update({val.name +  '_V' : V[i], val.name + '_E' : E[i]})
+        print(dat)
+        self.df = pd.DataFrame(dat, index=self.labels)
 
     def add_config(self, config, label, opt=False, n=10):
 
@@ -769,13 +987,21 @@ class CrystTest:
         dat = {'Structure':[config], 'Volumes':[V]}
         for i, val in enumerate(self.pots):
             dat.update({val.name:[E[i]]})
-        tdf = DataFrame(dat, index=[label])
+        tdf = pd.DataFrame(dat, index=[label])
         self.df = self.df.append(tdf)
 
     def add_config_by_mpid(self):
         return
 
     def calc_HP(self, ps, pf, pn, opt_freq=4, subset=slice(0, 8, None)):
+        '''Calculates the Enthalpy/Pressure curves for the structures.
+        ps: float Starting pressure / GPa
+        pf: float Final pressure
+        pn: int number of pressure points
+        opt_freq: how often is the geom reoptimised w.r.t. pressure points
+        subset: slice which crystal structures to include'''
+
+
         p = np.linspace(ps, pf, pn)
         pea = p*0.05/8
         copy_structs = deepcopy(self.df['Structure'][subset])
@@ -792,6 +1018,9 @@ class CrystTest:
                         uf = ExpCellFilter(val, scalar_pressure=pea[i], hydrostatic_strain=True)
                         opt = BFGS(uf, logfile='/dev/null')
                         opt.run(0.05, steps=20)
+                        if not opt.converged():
+                            warnings.warn('Warning: {} did not converge at pressure {}'.format(
+                                self.labels[ct],p[i]))
                     v[j][ct][i] = (vt := val.get_volume()/len(val))
                     H[j][ct][i] = val.get_potential_energy()/len(val) + pea[i]*vt
                 print('struct {} done'.format(self.df.index[ct]))
@@ -814,11 +1043,50 @@ class CrystTest:
         self.df = pickle.load(f)
 
 
-    def add_pot(self):
-        return
+    def add_pot(self, pot, opt=True, steps=100, n=10):
+
+        if not hasattr(pot, 'calculate'):
+            # assume is the filename (str) of a GAP from typical analysis
+            print('Interpreting {} as a GAP'.format(pot))
+            pot = Potential(param_filename=pot)
+            pot.name = os.path.splitext(os.path.basename(pot))[0]
+
+        self.pots.append(pot)
+        cells = []
+
+        if opt:
+            copy_structs = deepcopy(self.df['Structure'])
+            for ct, val in enumerate(copy_structs):
+                if opt and ct < 8:
+                    val.set_calculator(pot)
+                    uf = StrainFilter(val)
+                    opt = BFGS(uf, logfile='/dev/null')
+                    opt.run(0.05, steps=steps)
+                    if not opt.converged():
+                        warnings.warn(('Warning: pot \'{}\' failed to converge on structure {}\n' + \
+                                       'in {} steps').format(pot.name, val, steps))
+                    val.set_calculator(None)
+                cells.append(val.get_cell())
+        else:
+            cells = [i.get_cell() for i in self.opt_structs]
+
+        E = [[] for j in range(len(self.df['Structure']))]
+        V = [[] for j in range(len(self.df['Structure']))]
+        copy_structs = deepcopy(self.df['Structure'])
+        for ct, val in enumerate(copy_structs):
+            val.set_calculator(pot)
+            for i in np.linspace(0.95, 1.05, n):
+                val.set_cell(i*cells[ct], scale_atoms=True)
+                E[ct].append(val.get_potential_energy()/len(val))
+                V[ct].append(val.get_volume()/len(val))
+
+        self.df = self.df.join(pd.DataFrame({pot.name+'_V':V, pot.name+'_E':E}, index=self.labels))
+
+
 
     def plot_EV(self):
         return
+
 
 def kernel_compare(cfgs, comp,
                    desc=Descriptor('soap average=T l_max=6 n_max=12 \
@@ -867,3 +1135,16 @@ def print_DB_stats(atoms, by_config_type=True):
                 print('{:<12d}{:<12d}{:<11.1f}'.format(sizes[j], freq[j], 100*sizes[j]*freq[j]/tot))
             print('-'*36+'\n')
     return
+
+
+def pad_rstats(rs):
+    max = 0
+    for i in rs:
+        if max < len(i):
+            max = len(i)
+    max += 2
+
+    for ct, i in enumerate(rs):
+        if len(i) < max:
+            rs[ct] = np.pad(i, (0, max - len(i)))
+    return np.array(rs)
