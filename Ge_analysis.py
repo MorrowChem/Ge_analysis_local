@@ -1088,20 +1088,39 @@ class CrystTest:
         return
 
 
+
 def kernel_compare(cfgs, comp,
-                   desc=Descriptor('soap average=T l_max=6 n_max=12 \
-                                   atom_sigma=0.5 cutoff=5.0 \
-                                   cutoff_transition_width=1.0 central_weight=1.0'),
-                   zeta=4):
+                         desc=None,
+                         zeta=4, similarity=False, average=True):
     '''calculates the average/std dev similarity kernel between a set of
     configs and a reference.
     '''
+    if desc is None:
+        desc_str = 'soap l_max=6 n_max=12 \
+                   atom_sigma=0.5 cutoff=5.0 \
+                   cutoff_transition_width=1.0 central_weight=1.0'
+        if average:
+            desc_str += ' average=T'
+        else:
+            desc_str += ' average=F'
+    else:
+        desc_str = desc
+    desc = Descriptor(desc_str)
     descs = np.array(desc.calc_descriptor(cfgs))
-    descs = descs.reshape(descs.shape[0::2])
     comp_desc = desc.calc_descriptor(comp)[0]
-    # norm = np.einsum('ik,ik->i', descs, descs)
-    # norm_comp = np.dot(comp_desc, comp_desc)
-    k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+    print(descs.shape, comp_desc.shape)
+
+    if 'average=F' in desc_str:
+        if similarity:
+            k = np.einsum('ikj,j', descs, comp_desc)**zeta
+        else:
+            k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+    else:
+        if similarity:
+            k = np.einsum('ikj,j', descs, comp_desc)**zeta
+        else:
+            k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+
 
     return k
 

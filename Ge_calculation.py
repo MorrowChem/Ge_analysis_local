@@ -27,6 +27,7 @@ import os
 from shutil import rmtree
 import pandas as pd
 from collections.abc import Iterable
+from ase.io.extxyz import write_xyz
 
 class GAP:
 
@@ -278,7 +279,7 @@ class GAP:
 
 class MD_run:
 
-    def __init__(self, run_dir, label=None, read_dat=True):
+    def __init__(self, run_dir, label=None, read_dat=True, write_info=True):
         self.run_dir = run_dir
 
         if read_dat:
@@ -302,6 +303,7 @@ class MD_run:
                         flag = 0
             self.dat = np.array(self.dat) # turn into a DataFrame with header
             self.df = pd.DataFrame(self.dat[1:].T, columns=self.dat_head[1:], index=self.dat[0].astype(int))
+
         else:
             self.dat = [None]
         self.configs = []
@@ -318,6 +320,10 @@ class MD_run:
             self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
             self.df.insert(0, 'Configs', self.configs)
             self.df.drop(index=0, inplace=True)
+
+            # if write_info: # Do this for ovito visualisation
+            #     for i, val in enumerate(self.dat):
+
         else:
             self.df = pd.DataFrame(index=self.timesteps)
             self.df.insert(0, 'Configs', self.configs)
@@ -328,6 +334,10 @@ class MD_run:
         else:
             self.label = run_dir.split('/')[-2]
         return
+
+    def write(self, f):
+
+        write_xyz(f, self.configs)
 
     def get_rings_command(self, rings_command=''):
         """Abstract the quest for a castep_command string."""
