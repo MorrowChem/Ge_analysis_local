@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f6ac91e0-988f-4500-b5e7-55346c832d57" name="trydimite">
+        <fileTransfer rootFolder="/home/tridymite/vld/hert5155" accessType="SFTP" host="tridymite.chem.ox.ac.uk" port="22" sshConfigId="d7847ab0-0ec3-41fe-9017-4a26b29d3faf" sshConfig="hert5155@tridymite.chem.ox.ac.uk:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

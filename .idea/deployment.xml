@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="hert5155@tridymite.chem.ox.ac.uk:22 key" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="hert5155@tridymite.chem.ox.ac.uk:22 key">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_952" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="trydimite">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/u/vld/hert5155/jup_remote/Ge_analysis" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/u/vld/hert5155/miniconda3/envs/Q" local="$USER_HOME$/miniconda3/envs/Q" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

@@ -135,7 +135,7 @@ def cn_count(at, r=None):
         r = covalent_radii[at.get_atomic_numbers()[0]]*2.5
     i = neighbor_list('i', at, r)
     coord = np.bincount(i)
-    stat = np.bincount(coord, minlength=12)
+    stat = np.bincount(coord, minlength=16)
 
     return stat, coord
 '''desc_SOAP = Descriptor("soap l_max=10 n_max=10 \
@@ -1108,18 +1108,12 @@ def kernel_compare(cfgs, comp,
     desc = Descriptor(desc_str)
     descs = np.array(desc.calc_descriptor(cfgs))
     comp_desc = desc.calc_descriptor(comp)[0]
-    print(descs.shape, comp_desc.shape)
+    # print(descs.shape, comp_desc.shape)
 
-    if 'average=F' in desc_str:
-        if similarity:
-            k = np.einsum('ikj,j', descs, comp_desc)**zeta
-        else:
-            k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+    if similarity:
+        k = np.einsum('ikj,j', descs, comp_desc)**zeta
     else:
-        if similarity:
-            k = np.einsum('ikj,j', descs, comp_desc)**zeta
-        else:
-            k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+        k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
 
 
     return k

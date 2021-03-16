@@ -337,7 +337,7 @@ class MD_run:
 
     def write(self, f):
 
-        write_xyz(f, self.configs)
+        write_xyz(f, self.df['Configs'].tolist())
 
     def get_rings_command(self, rings_command=''):
         """Abstract the quest for a castep_command string."""
