@@ -279,11 +279,21 @@ class GAP:
 
 class MD_run:
 
-    def __init__(self, run_dir, label=None, read_dat=True, write_info=True):
+    def __init__(self, run_dir, label=None, read_dat=True, write_info=True, format='lammps', pot=None):
         self.run_dir = run_dir
-
-        if read_dat:
-            with open(glob(run_dir + '/log*')[0]) as f:
+        
+        self.pot = pot
+        
+        if format=='xyz':
+            with open(run_dir, 'r') as f:
+                self.configs = list(read_xyz(f, index=slice(0, None)))
+            
+            # set up dataframe
+            
+            return
+        
+        if read_dat and format=='lammps':
+            with open(glob(run_dir + '/log*')[0], 'r') as f:
                 out = f.readlines()
             flag = 0
             for i, val in enumerate(out):
@@ -318,7 +328,17 @@ class MD_run:
         # should drop dupes based on index (more independent of log setup)
         if read_dat:
             self.df.drop_duplicates(subset=self.df.columns[-1], inplace=True)
-            self.df.insert(0, 'Configs', self.configs)
+            try:
+                self.df.insert(0, 'Configs', self.configs)
+            except:
+                print('Configs len {} and index len {} {} do not match\nMD probably crashed, attempting to trim configs list'.format(len(self.configs), 
+                                                                                   len(self.df.index), 
+                                                                                   self.df.index[-1]))
+                try:
+                    self.df.insert(0, 'Configs', self.configs[:(len(self.df.index) - len(self.configs))])
+                except:
+                    print('still a problem, configs omitted')
+                # TODO: calculate values for the last config with a potential
             self.df.drop(index=0, inplace=True)
 
             # if write_info: # Do this for ovito visualisation
