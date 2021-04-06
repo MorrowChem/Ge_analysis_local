@@ -387,7 +387,7 @@ class MTP(FileIOCalculator):
     TODO: A faster implementation for lists of atoms would be to write a single cfg for all of them
     """
 
-    def __init__(self, potential_file='pot.mtp', potential_name=None, mtp_command=None):
+    def __init__(self, potential_file='pot.mtp', potential_name=None, mtp_command=None, train=None):
 
         #self.__name__ = 'MTP'
         if not os.path.isfile(potential_file):
@@ -395,18 +395,20 @@ class MTP(FileIOCalculator):
 
         self.potential_file = potential_file
         self.name = potential_name
+        self.train = train
 
         if mtp_command is None:
             mtp_command = get_mtp_command()
 
         FileIOCalculator.__init__(self, command=mtp_command,
                                  discard_results_on_any_change=True)
-        self.implemented_properties = ['energy', 'forces', 'stress']
+        self.implemented_properties = ['energy', 'forces', 'stress', 'grade']
         self._calls = 0
         # self._input = NamedTemporaryFile(mode='w+', suffix='.cfg')
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
 
-    def calculate(self, atoms, properties=['energy', 'forces', 'stress'], system_changes=all_changes):
+    def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
+                  system_changes=all_changes, train=None, timeout=10):
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -415,15 +417,35 @@ class MTP(FileIOCalculator):
             os.makedirs(self._directory)
 
         for i in properties:
-            if i not in ['energy', 'forces', 'stress']:
+            if i not in self.implemented_properties:
                 return PropertyNotImplementedError('{} not implemented in MTP code'.format(i))
 
         if system_changes != [] and system_changes != None:
             input = NamedTemporaryFile(mode='w+', suffix='.cfg')
             output = NamedTemporaryFile(mode='w+', suffix='.cfg')
             self.write_input(input)
-            self.run(input, output)
-            self.read_results(output)
+            self.run(input, output, timeout)
+            if 'grade' in properties:
+                if train is None:
+                    if self.train is None:
+                        raise AttributeError('No training database supplied for grade calculation')
+                    else:
+                        train = self.train
+
+                if not isinstance(train, str) or isinstance(train, list):
+                    self.write_input(train)
+
+                output_grade = NamedTemporaryFile(mode='w+', suffix='.cfg')
+                als_grade = NamedTemporaryFile(mode='w+', suffix='.als')
+                self.calc_grade(train, input, output_grade, als_grade, timeout)
+
+                self.read_results(output, properties=['energy', 'force', 'stress', 'grade'], grade_file=output_grade)
+
+                output_grade.close()
+                als_grade.close()
+            else:
+                self.read_results(output)
+
 
             input.close()
             output.close()
@@ -435,11 +457,23 @@ class MTP(FileIOCalculator):
         # 'magmom': 0.0,
         # 'magmoms': np.zeros(len(atoms))}
 
-    def run(self, input, output):
+    def run(self, input, output, timeout):
 
         self._calls += 1
         efs_command = [self.command, 'calc-efs', self.potential_file, input.name, output.name]
-        out = subprocess.run(efs_command, capture_output=True, text=True, timeout=10)
+        out = subprocess.run(efs_command, capture_output=True, text=True, timeout=timeout)
+
+        if out.stdout:
+            print('mlp call stdout:\n{}'.format(out.stdout))
+        if out.stderr:
+            print('mlp call stderr:\n{}'.format(out.stderr))
+        out.check_returncode()
+
+    def calc_grade(self, train, input, output, als_output, timeout):
+
+        calc_grade_command = [self.command, 'calc-grade', self.potential_file,
+                              train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+        out = subprocess.run(calc_grade_command, capture_output=True, text=True, timeout=timeout)
 
         if out.stdout:
             print('mlp call stdout:\n{}'.format(out.stdout))
@@ -461,7 +495,7 @@ class MTP(FileIOCalculator):
         write_cfg_db(input.file, [atoms],
                      force_name='forces', virial_name='stress', energy_name='energy')
 
-    def read_results(self, output):
+    def read_results(self, output, properties=['energy', 'forces', 'stress'], grade_file=None):
 
         temp_atoms = next(
             read_cfg_db(output.file, index=0,
@@ -472,3 +506,12 @@ class MTP(FileIOCalculator):
         self.results['energy'] = temp_atoms.info['energy']
         self.results['forces'] = temp_atoms.arrays['forces']
         self.results['stress'] = temp_atoms.info['stress']
+
+        if 'grade' in properties:
+            temp_atoms = next(
+                read_cfg_db(grade_file.file, index=0,
+                            energy_label='energy',
+                            force_label='forces',
+                            stress_label='stress')
+            )
+            self.results['MV_grade'] = float(temp_atoms.info['MV_grade'])
