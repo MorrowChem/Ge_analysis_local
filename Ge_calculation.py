@@ -27,7 +27,7 @@ import os
 from shutil import rmtree
 import pandas as pd
 from collections.abc import Iterable
-from ase.io.extxyz import write_xyz
+from ase.io.extxyz import write_xyz, read_xyz
 
 class GAP:
 
@@ -283,12 +283,20 @@ class MD_run:
         self.run_dir = run_dir
         
         self.pot = pot
+        if label:
+            self.label = label
+        else:
+            self.label = run_dir.split('/')[-2]
         
         if format=='xyz':
             with open(run_dir, 'r') as f:
                 self.configs = list(read_xyz(f, index=slice(0, None)))
             
             # set up dataframe
+            info_head = list(self.configs[0].info.keys())
+            infos = {j:[i.info[j] for i in self.configs] for j in info_head}
+            self.df = pd.DataFrame(data=infos, index=infos['timestep'])
+            
             
             return
         
@@ -349,15 +357,11 @@ class MD_run:
             self.df.insert(0, 'Configs', self.configs)
 
 
-        if label:
-            self.label = label
-        else:
-            self.label = run_dir.split('/')[-2]
         return
 
     def write(self, f):
-
-        write_xyz(f, self.df['Configs'].tolist())
+        with open(f, 'w') as file:
+            write_xyz(file, self.df['Configs'].tolist())
 
     def get_rings_command(self, rings_command=''):
         """Abstract the quest for a castep_command string."""
