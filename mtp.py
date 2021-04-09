@@ -21,6 +21,7 @@ from ase.atoms import Atoms
 # from ase.constraints import FixAtoms, FixCartesian
 from ase.io.formats import index2range
 from io import StringIO, UnsupportedOperation
+from copy import deepcopy
 
 
 atom_data_dtype_map = {
@@ -493,7 +494,7 @@ class MTP(FileIOCalculator):
         if atoms_list is None:
             atoms = [self.atoms.copy()]
         else:
-            atoms = atoms_list
+            atoms = deepcopy(atoms_list)
 
         for i in atoms:
             i.info['energy'] = 0.0
