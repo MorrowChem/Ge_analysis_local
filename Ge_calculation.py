@@ -298,7 +298,7 @@ class MD_run:
             info_head = list(self.configs[-1].info.keys())
             infos = {j:[i.info[j] for i in self.configs] for j in info_head}
             self.df = pd.DataFrame(data=infos, index=infos['timestep'])
-            
+            self.df.insert(0, 'Configs', self.configs)
             
             return
         
