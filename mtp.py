@@ -111,11 +111,14 @@ def write_cfg_db(f, a, force_name='dft_force', virial_name='dft_virial', energy_
 def read_cfg_db(fileobj, index=slice(0,None), Type_Ar_map=None,
                     energy_label='dft_energy',
                     force_label='dft_force',
-                    stress_label='dft_virial'):
+                    stress_label='dft_virial',
+                temp_file=False):
 
     if isinstance(fileobj, str):
         fileobj = open(fileobj)
         close = True
+    else:
+        close = False
 
     if not isinstance(index, int) and not isinstance(index, slice):
         raise TypeError('Index argument is neither slice nor integer!')
@@ -168,7 +171,7 @@ def read_cfg_db(fileobj, index=slice(0,None), Type_Ar_map=None,
         yield _read_cfg_frame(fileobj, natoms, Type_Ar_map,
                               energy_label, force_label, stress_label)
 
-    if close:
+    if close and not temp_file:
         fileobj.close()
 
 
@@ -469,30 +472,35 @@ class MTP(FileIOCalculator):
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def calc_grade(self, train, input, output, als_output, timeout):
+    def calc_grade(self, train, input, output, als_output, timeout, silence=True):
 
         calc_grade_command = [self.command, 'calc-grade', self.potential_file,
                               train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
         out = subprocess.run(calc_grade_command, capture_output=True, text=True, timeout=timeout)
 
-        if out.stdout:
+        if out.stdout and not silence:
             print('mlp call stdout:\n{}'.format(out.stdout))
-        if out.stderr:
+        if out.stderr and not silence:
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def write_input(self, input):
+    def write_input(self, input, atoms_list=None):
 
-        null_results = {'energy': 0.0,
-                        'forces': np.zeros((len(self.atoms), 3)),
-                        'stress': np.zeros(6)}
+        # null_results = {'energy': 0.0,
+        #                 'forces': np.zeros((len(self.atoms), 3)),
+        #                 'stress': np.zeros(6)}
 
-        atoms = self.atoms.copy()
-        atoms.info['energy'] = 0.0
-        atoms.arrays['forces'] = np.zeros((len(self.atoms), 3))
-        atoms.info['stress'] = np.zeros(6)
+        if atoms_list is None:
+            atoms = [self.atoms.copy()]
+        else:
+            atoms = atoms_list
 
-        write_cfg_db(input.file, [atoms],
+        for i in atoms:
+            i.info['energy'] = 0.0
+            i.arrays['forces'] = np.zeros((len(i), 3))
+            i.info['stress'] = np.zeros(6)
+
+        write_cfg_db(input.file, atoms,
                      force_name='forces', virial_name='stress', energy_name='energy')
 
     def read_results(self, output, properties=['energy', 'forces', 'stress'], grade_file=None):
@@ -515,3 +523,36 @@ class MTP(FileIOCalculator):
                             stress_label='stress')
             )
             self.results['MV_grade'] = float(temp_atoms.info['MV_grade'])
+
+    def calc_grade_bulk(self, at_list, train=None, timeout=600):
+
+
+        if train is None:
+            if self.train is None:
+                raise AttributeError('No training database supplied for grade calculation')
+            else:
+                train = self.train
+        else:
+            if not isinstance(train, str) or isinstance(train, list):
+                self.write_input(train)
+
+        input = NamedTemporaryFile(mode='w+', suffix='.cfg')
+        output_grade = NamedTemporaryFile(mode='w+', suffix='.cfg')
+        als_grade = NamedTemporaryFile(mode='w+', suffix='.als')
+
+        self.write_input(input, atoms_list=at_list)
+        self.calc_grade(train, input, output_grade, als_grade, timeout)
+
+        temp_atoms =  list(read_cfg_db(output_grade.file,
+                        energy_label='energy',
+                        force_label='forces',
+                        stress_label='stress',
+                        temp_file=True)
+        )
+        output_grade.close()
+        als_grade.close()
+        input.close()
+
+        grades = [float(i.info['MV_grade']) for i in temp_atoms]
+
+        return grades
