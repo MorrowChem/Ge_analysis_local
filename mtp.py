@@ -412,7 +412,7 @@ class MTP(FileIOCalculator):
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
 
     def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
-                  system_changes=all_changes, train=None, timeout=10):
+                  system_changes=all_changes, train=None, timeout=10, parallel=True):
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -428,7 +428,7 @@ class MTP(FileIOCalculator):
             input = NamedTemporaryFile(mode='w+', suffix='.cfg')
             output = NamedTemporaryFile(mode='w+', suffix='.cfg')
             self.write_input(input)
-            self.run(input, output, timeout)
+            self.run(input, output, timeout, parallel=parallel)
             if 'grade' in properties:
                 if train is None:
                     if self.train is None:
@@ -461,10 +461,18 @@ class MTP(FileIOCalculator):
         # 'magmom': 0.0,
         # 'magmoms': np.zeros(len(atoms))}
 
-    def run(self, input, output, timeout):
+    def run(self, input, output, timeout, parallel=True):
 
         self._calls += 1
-        efs_command = [self.command, 'calc-efs', self.potential_file, input.name, output.name]
+        if 'OMP_NUM_THREADS' not in os.environ.keys():
+            os.environ['OMP_NUM_THREADS'] = '1'
+        if parallel:
+            # '/usr/local/mpich3/bin/mpirun'
+            efs_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command,
+                           'calc-efs', self.potential_file, input.name, output.name]
+        else:
+            efs_command = [self.command, 'calc-efs', self.potential_file, input.name, output.name]
+
         out = subprocess.run(efs_command, capture_output=True, text=True, timeout=timeout)
 
         if out.stdout:
@@ -473,10 +481,18 @@ class MTP(FileIOCalculator):
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def calc_grade(self, train, input, output, als_output, timeout, silence=True):
+    def calc_grade(self, train, input, output, als_output, timeout, silence=True, parallel=True):
 
-        calc_grade_command = [self.command, 'calc-grade', self.potential_file,
-                              train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+        if 'OMP_NUM_THREADS' not in os.environ.keys():
+            os.environ['OMP_NUM_THREADS'] = '1'
+        if parallel:
+            calc_grade_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command, 'calc-grade', self.potential_file,
+                                  train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+
+        else:
+            calc_grade_command = [self.command, 'calc-grade', self.potential_file,
+                                  train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+
         out = subprocess.run(calc_grade_command, capture_output=True, text=True, timeout=timeout)
 
         if out.stdout and not silence:
@@ -525,7 +541,7 @@ class MTP(FileIOCalculator):
             )
             self.results['MV_grade'] = float(temp_atoms.info['MV_grade'])
 
-    def calc_grade_bulk(self, at_list, train=None, timeout=600):
+    def calc_grade_bulk(self, at_list, train=None, timeout=600, parallel=True):
 
 
         if train is None:
@@ -542,7 +558,7 @@ class MTP(FileIOCalculator):
         als_grade = NamedTemporaryFile(mode='w+', suffix='.als')
 
         self.write_input(input, atoms_list=at_list)
-        self.calc_grade(train, input, output_grade, als_grade, timeout)
+        self.calc_grade(train, input, output_grade, als_grade, timeout, parallel=parallel)
 
         temp_atoms =  list(read_cfg_db(output_grade.file,
                         energy_label='energy',
