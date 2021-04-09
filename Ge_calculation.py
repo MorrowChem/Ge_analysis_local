@@ -280,8 +280,7 @@ class GAP:
 class MD_run:
 
     def __init__(self, run_dir, label=None, read_dat=True, 
-                 write_info=True, format='lammps', pot=None,
-                configs_only=False):
+                 write_info=True, format='lammps', pot=None):
         
         self.run_dir = run_dir
         
@@ -296,14 +295,9 @@ class MD_run:
                 self.configs = list(read_xyz(f, index=slice(0, None)))
             
             # set up dataframe
-            info_head = list(self.configs[0].info.keys())
-            
-            if configs_only:
-                infos = {'timestep':[i.info['timestep'] for i in self.configs]}
-                self.df = pd.DataFrame(data={'Configs':self.configs}, index=infos['timestep'])
-            else:
-                infos = {j:[i.info[j] for i in self.configs] for j in info_head}
-                self.df = pd.DataFrame(data=infos, index=infos['timestep'])
+            info_head = list(self.configs[-1].info.keys())
+            infos = {j:[i.info[j] for i in self.configs] for j in info_head}
+            self.df = pd.DataFrame(data=infos, index=infos['timestep'])
             
             
             return
