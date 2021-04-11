@@ -22,6 +22,14 @@ from ase.atoms import Atoms
 from ase.io.formats import index2range
 from io import StringIO, UnsupportedOperation
 from copy import deepcopy
+from ase.calculators.lammpslib import LAMMPSlib
+import numpy as np
+import os
+import subprocess
+from tempfile import NamedTemporaryFile
+
+from ase.calculators.calculator import FileIOCalculator, all_changes, compare_atoms, PropertyNotImplementedError
+from ase.parallel import paropen
 
 
 atom_data_dtype_map = {
@@ -351,13 +359,6 @@ def _read_cfg_frame(lines, natoms, Type_Ar_map,
     return atoms
 
 
-import numpy as np
-import os
-import subprocess
-from tempfile import NamedTemporaryFile
-
-from ase.calculators.calculator import FileIOCalculator, all_changes, compare_atoms, PropertyNotImplementedError
-from ase.parallel import paropen
 
 
 def get_mtp_command(mtp_command=''):
@@ -412,7 +413,8 @@ class MTP(FileIOCalculator):
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
 
     def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
-                  system_changes=all_changes, train=None, timeout=10, parallel=True):
+                  system_changes=all_changes, train=None, timeout=10, parallel=True,
+                  method='mlp'):
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -423,6 +425,11 @@ class MTP(FileIOCalculator):
         for i in properties:
             if i not in self.implemented_properties:
                 return PropertyNotImplementedError('{} not implemented in MTP code'.format(i))
+
+        if method == 'lammps':
+
+            self.calc_lammps(self.atoms)
+            return
 
         if system_changes != [] and system_changes != None:
             input = NamedTemporaryFile(mode='w+', suffix='.cfg')
@@ -573,3 +580,21 @@ class MTP(FileIOCalculator):
         grades = [float(i.info['MV_grade']) for i in temp_atoms]
 
         return grades
+
+    def calc_lammps(self, atoms):
+
+        ini = NamedTemporaryFile(mode='w+', suffix='.ini', delete=True)
+        lout = NamedTemporaryFile(mode='w+', suffix='.out', delete=True)
+        ini_str = 'mtp-filename {}\nselect FALSE'.format(self.potential_file)
+        ini.write(ini_str)
+        ini.seek(0)
+        pair_style = "pair_style mlip {}".format(ini.name)
+        pair_coeff = 'pair_coeff * *'
+        cmds = [pair_style, pair_coeff]
+        lammps = LAMMPSlib(lmpcmds=cmds, log_file='test.log', keep_alive=False)
+        lammps.calculate(atoms, properties=['energy', 'forces', 'stress'],
+                         system_changes=['energy', 'forces', 'stress'])
+        self.results = lammps.results
+
+        ini.close()
+        lout.close()
