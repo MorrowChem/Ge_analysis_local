@@ -297,7 +297,12 @@ class MD_run:
             # set up dataframe
             info_head = list(self.configs[-1].info.keys())
             infos = {j:[i.info[j] for i in self.configs] for j in info_head}
-            self.df = pd.DataFrame(data=infos, index=infos['timestep'])
+            if 'timestep' in infos.keys():
+                self.df = pd.DataFrame(data=infos, index=infos['timestep'])
+            else:
+                print('Warning: xyz does not contain timestep information!\n'
+                      'Defaulting to index')
+                self.df = pd.DataFrame(data=infos)
             self.df.insert(0, 'Configs', self.configs)
             
             return
