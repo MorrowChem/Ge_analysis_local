@@ -21,6 +21,15 @@ from ase.atoms import Atoms
 # from ase.constraints import FixAtoms, FixCartesian
 from ase.io.formats import index2range
 from io import StringIO, UnsupportedOperation
+from copy import deepcopy
+from ase.calculators.lammpslib import LAMMPSlib
+import numpy as np
+import os
+import subprocess
+from tempfile import NamedTemporaryFile
+
+from ase.calculators.calculator import FileIOCalculator, all_changes, compare_atoms, PropertyNotImplementedError
+from ase.parallel import paropen
 
 
 atom_data_dtype_map = {
@@ -111,11 +120,14 @@ def write_cfg_db(f, a, force_name='dft_force', virial_name='dft_virial', energy_
 def read_cfg_db(fileobj, index=slice(0,None), Type_Ar_map=None,
                     energy_label='dft_energy',
                     force_label='dft_force',
-                    stress_label='dft_virial'):
+                    stress_label='dft_virial',
+                temp_file=False):
 
     if isinstance(fileobj, str):
         fileobj = open(fileobj)
         close = True
+    else:
+        close = False
 
     if not isinstance(index, int) and not isinstance(index, slice):
         raise TypeError('Index argument is neither slice nor integer!')
@@ -168,7 +180,7 @@ def read_cfg_db(fileobj, index=slice(0,None), Type_Ar_map=None,
         yield _read_cfg_frame(fileobj, natoms, Type_Ar_map,
                               energy_label, force_label, stress_label)
 
-    if close:
+    if close and not temp_file:
         fileobj.close()
 
 
@@ -347,13 +359,6 @@ def _read_cfg_frame(lines, natoms, Type_Ar_map,
     return atoms
 
 
-import numpy as np
-import os
-import subprocess
-from tempfile import NamedTemporaryFile
-
-from ase.calculators.calculator import FileIOCalculator, all_changes, compare_atoms, PropertyNotImplementedError
-from ase.parallel import paropen
 
 
 def get_mtp_command(mtp_command=''):
@@ -408,7 +413,8 @@ class MTP(FileIOCalculator):
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
 
     def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
-                  system_changes=all_changes, train=None, timeout=10):
+                  system_changes=all_changes, train=None, timeout=10, parallel=True,
+                  method='mlp'):
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -420,11 +426,16 @@ class MTP(FileIOCalculator):
             if i not in self.implemented_properties:
                 return PropertyNotImplementedError('{} not implemented in MTP code'.format(i))
 
+        if method == 'lammps':
+
+            self.calc_lammps(self.atoms)
+            return
+
         if system_changes != [] and system_changes != None:
             input = NamedTemporaryFile(mode='w+', suffix='.cfg')
             output = NamedTemporaryFile(mode='w+', suffix='.cfg')
             self.write_input(input)
-            self.run(input, output, timeout)
+            self.run(input, output, timeout, parallel=parallel)
             if 'grade' in properties:
                 if train is None:
                     if self.train is None:
@@ -457,10 +468,18 @@ class MTP(FileIOCalculator):
         # 'magmom': 0.0,
         # 'magmoms': np.zeros(len(atoms))}
 
-    def run(self, input, output, timeout):
+    def run(self, input, output, timeout, parallel=True):
 
         self._calls += 1
-        efs_command = [self.command, 'calc-efs', self.potential_file, input.name, output.name]
+        if 'OMP_NUM_THREADS' not in os.environ.keys():
+            os.environ['OMP_NUM_THREADS'] = '1'
+        if parallel:
+            # '/usr/local/mpich3/bin/mpirun'
+            efs_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command,
+                           'calc-efs', self.potential_file, input.name, output.name]
+        else:
+            efs_command = [self.command, 'calc-efs', self.potential_file, input.name, output.name]
+
         out = subprocess.run(efs_command, capture_output=True, text=True, timeout=timeout)
 
         if out.stdout:
@@ -469,30 +488,43 @@ class MTP(FileIOCalculator):
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def calc_grade(self, train, input, output, als_output, timeout):
+    def calc_grade(self, train, input, output, als_output, timeout, silence=True, parallel=True):
 
-        calc_grade_command = [self.command, 'calc-grade', self.potential_file,
-                              train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+        if 'OMP_NUM_THREADS' not in os.environ.keys():
+            os.environ['OMP_NUM_THREADS'] = '1'
+        if parallel:
+            calc_grade_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command, 'calc-grade', self.potential_file,
+                                  train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+
+        else:
+            calc_grade_command = [self.command, 'calc-grade', self.potential_file,
+                                  train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
+
         out = subprocess.run(calc_grade_command, capture_output=True, text=True, timeout=timeout)
 
-        if out.stdout:
+        if out.stdout and not silence:
             print('mlp call stdout:\n{}'.format(out.stdout))
-        if out.stderr:
+        if out.stderr and not silence:
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def write_input(self, input):
+    def write_input(self, input, atoms_list=None):
 
-        null_results = {'energy': 0.0,
-                        'forces': np.zeros((len(self.atoms), 3)),
-                        'stress': np.zeros(6)}
+        # null_results = {'energy': 0.0,
+        #                 'forces': np.zeros((len(self.atoms), 3)),
+        #                 'stress': np.zeros(6)}
 
-        atoms = self.atoms.copy()
-        atoms.info['energy'] = 0.0
-        atoms.arrays['forces'] = np.zeros((len(self.atoms), 3))
-        atoms.info['stress'] = np.zeros(6)
+        if atoms_list is None:
+            atoms = [self.atoms.copy()]
+        else:
+            atoms = deepcopy(atoms_list)
 
-        write_cfg_db(input.file, [atoms],
+        for i in atoms:
+            i.info['energy'] = 0.0
+            i.arrays['forces'] = np.zeros((len(i), 3))
+            i.info['stress'] = np.zeros(6)
+
+        write_cfg_db(input.file, atoms,
                      force_name='forces', virial_name='stress', energy_name='energy')
 
     def read_results(self, output, properties=['energy', 'forces', 'stress'], grade_file=None):
@@ -515,3 +547,54 @@ class MTP(FileIOCalculator):
                             stress_label='stress')
             )
             self.results['MV_grade'] = float(temp_atoms.info['MV_grade'])
+
+    def calc_grade_bulk(self, at_list, train=None, timeout=600, parallel=True):
+
+
+        if train is None:
+            if self.train is None:
+                raise AttributeError('No training database supplied for grade calculation')
+            else:
+                train = self.train
+        else:
+            if not isinstance(train, str) or isinstance(train, list):
+                self.write_input(train)
+
+        input = NamedTemporaryFile(mode='w+', suffix='.cfg')
+        output_grade = NamedTemporaryFile(mode='w+', suffix='.cfg')
+        als_grade = NamedTemporaryFile(mode='w+', suffix='.als')
+
+        self.write_input(input, atoms_list=at_list)
+        self.calc_grade(train, input, output_grade, als_grade, timeout, parallel=parallel)
+
+        temp_atoms =  list(read_cfg_db(output_grade.file,
+                        energy_label='energy',
+                        force_label='forces',
+                        stress_label='stress',
+                        temp_file=True)
+        )
+        output_grade.close()
+        als_grade.close()
+        input.close()
+
+        grades = [float(i.info['MV_grade']) for i in temp_atoms]
+
+        return grades
+
+    def calc_lammps(self, atoms):
+
+        ini = NamedTemporaryFile(mode='w+', suffix='.ini', delete=True)
+        lout = NamedTemporaryFile(mode='w+', suffix='.out', delete=True)
+        ini_str = 'mtp-filename {}\nselect FALSE'.format(self.potential_file)
+        ini.write(ini_str)
+        ini.seek(0)
+        pair_style = "pair_style mlip {}".format(ini.name)
+        pair_coeff = 'pair_coeff * *'
+        cmds = [pair_style, pair_coeff]
+        lammps = LAMMPSlib(lmpcmds=cmds, log_file='test.log', keep_alive=False)
+        lammps.calculate(atoms, properties=['energy', 'forces', 'stress'],
+                         system_changes=['energy', 'forces', 'stress'])
+        self.results = lammps.results
+
+        ini.close()
+        lout.close()
