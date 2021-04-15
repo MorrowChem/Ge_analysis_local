@@ -1113,7 +1113,7 @@ def kernel_compare(cfgs, comp,
     if similarity:
         k = np.einsum('ikj,j', descs, comp_desc)**zeta
     else:
-        k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+        k = np.array(2 - 2*np.einsum('ikj,j', descs, comp_desc)**zeta)
 
 
     return k
