@@ -1093,30 +1093,38 @@ def kernel_compare(cfgs, comp,
                          desc=None,
                          zeta=4, similarity=False, average=True):
     '''calculates the average/std dev similarity kernel between a set of
-    configs and a reference.
+    configs and a reference (or set of references).
     '''
     if desc is None:
         desc_str = 'soap l_max=6 n_max=12 \
                    atom_sigma=0.5 cutoff=5.0 \
                    cutoff_transition_width=1.0 central_weight=1.0'
+    else:
+        desc_str = desc
+
+    if ' average=' not in desc_str:
         if average:
             desc_str += ' average=T'
         else:
             desc_str += ' average=F'
-    else:
-        desc_str = desc
+
+    if not isinstance(comp, list):
+        comp = [comp]
+    
     desc = Descriptor(desc_str)
     descs = np.array(desc.calc_descriptor(cfgs))
-    comp_desc = desc.calc_descriptor(comp)[0]
-    # print(descs.shape, comp_desc.shape)
+
+    comp_desc = Descriptor(desc_str.replace(' average=F', ' average=T'))
+    comp_descs = np.array(comp_desc.calc_descriptor(comp)) # currently averages over comparison atoms
+    print(comp_descs.shape)
 
     if similarity:
-        k = np.einsum('ikj,j', descs, comp_desc)**zeta
+        k = np.einsum('ij,k...j', descs, comp_descs)**zeta
     else:
-        k = np.array(2 - 2*np.einsum('ikj,j', descs, comp_desc)**zeta)
+        k = np.array(2 - 2*np.einsum('ij,k...j', descs, comp_descs)**zeta)
 
 
-    return k
+    return k.T.squeeze()
 
 def print_DB_stats(atoms, by_config_type=True):
     print('Size statistics:\n'+'-'*36)

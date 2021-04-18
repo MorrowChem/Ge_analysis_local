@@ -101,38 +101,6 @@ def V_p_BM(P, xtal, calc, traj_name='tmp', n=20):
     return bm_volumes, bm_energies
 
 
-def kernel_compare(cfgs, comp,
-                         desc=None,
-                         zeta=4, similarity=False, average=True):
-    '''calculates the average/std dev similarity kernel between a set of
-    configs and a reference (or set of references).
-    '''
-    if desc is None:
-        desc_str = 'soap l_max=6 n_max=12 \
-                   atom_sigma=0.5 cutoff=5.0 \
-                   cutoff_transition_width=1.0 central_weight=1.0'
-        if average:
-            desc_str += ' average=T'
-        else:
-            desc_str += ' average=F'
-    else:
-        desc_str = desc
-    desc = Descriptor(desc_str)
-    
-    if not isinstance(comp, list):
-        comp = [comp]
-
-    descs = np.array(desc.calc_descriptor(cfgs))
-    comp_desc = np.array([i[0] for i in desc.calc_descriptor(comp)]) # currently only looks at first atom of xtal
-#     print(descs.shape, comp_desc.shape)
-
-    if similarity:
-        k = np.einsum('ij,kj', descs, comp_desc)**zeta
-    else:
-        k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
-
-
-    return k.T
 
 
 def GAP_calc(r, ind, pot, local_variance=True):
