@@ -1116,7 +1116,6 @@ def kernel_compare(cfgs, comp,
 
     comp_desc = Descriptor(desc_str.replace(' average=F', ' average=T'))
     comp_descs = np.array(comp_desc.calc_descriptor(comp)) # currently averages over comparison atoms
-    print(comp_descs.shape)
 
     if similarity:
         k = np.einsum('ij,k...j', descs, comp_descs)**zeta
