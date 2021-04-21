@@ -101,69 +101,41 @@ def V_p_BM(P, xtal, calc, traj_name='tmp', n=20):
     return bm_volumes, bm_energies
 
 
-def kernel_compare(cfgs, comp,
-                         desc=None,
-                         zeta=4, similarity=False, average=True):
-    '''calculates the average/std dev similarity kernel between a set of
-    configs and a reference (or set of references).
-    '''
-    if desc is None:
-        desc_str = 'soap l_max=6 n_max=12 \
-                   atom_sigma=0.5 cutoff=5.0 \
-                   cutoff_transition_width=1.0 central_weight=1.0'
-        if average:
-            desc_str += ' average=T'
-        else:
-            desc_str += ' average=F'
-    else:
-        desc_str = desc
-    desc = Descriptor(desc_str)
-    
-    if not isinstance(comp, list):
-        comp = [comp]
-
-    descs = np.array(desc.calc_descriptor(cfgs))
-    comp_desc = np.array([i[0] for i in desc.calc_descriptor(comp)]) # currently only looks at first atom of xtal
-#     print(descs.shape, comp_desc.shape)
-
-    if similarity:
-        k = np.einsum('ij,kj', descs, comp_desc)**zeta
-    else:
-        k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
 
 
-    return k.T
-
-
-def GAP_18_calc(r, ind, local_variance=True):
+def GAP_calc(r, ind, pot, local_variance=True):
     try:
         if local_variance:
-            GAP_18_pot.calculate(r.df['Configs'][ind], properties=['energy', 'energies', 'forces', 'stress'],
+            pot.calculate(r.df['Configs'][ind], properties=['energy', 'energies', 'forces', 'stress'],
                                 args_str='local_gap_variance', copy_all_results=True)
         else:
-            GAP_18_pot.calculate(r.df['Configs'][ind], properties=['energy', 'energies', 'forces', 'stress'],
+            pot.calculate(r.df['Configs'][ind], properties=['energy', 'energies', 'forces', 'stress'],
                                 copy_all_results=True)
-        r.df['Configs'][ind].info['{}_energy'.format('GAP18')] = GAP_18_pot.results['energy']
-        r.df['Configs'][ind].info['{}_virial'.format('GAP18')] = GAP_18_pot.results['stress']
-        r.df['Configs'][ind].arrays['{}_force'.format('GAP18')] = GAP_18_pot.results['forces']
-        r.df['Configs'][ind].arrays['{}_energies'.format('GAP18')] = GAP_18_pot.results['energies']
+        r.df['Configs'][ind].info['{}_energy'.format('GAP18')] = pot.results['energy']
+        r.df['Configs'][ind].info['{}_virial'.format('GAP18')] = pot.results['stress']
+        r.df['Configs'][ind].arrays['{}_force'.format('GAP18')] = pot.results['forces']
+        r.df['Configs'][ind].arrays['{}_energies'.format('GAP18')] = pot.results['energies']
 
         if local_variance:
-            r.df['Configs'][ind].arrays['{}_variance'.format('GAP18')] = GAP_18_pot.extra_results['atoms']['local_gap_variance']
+            r.df['Configs'][ind].arrays['{}_variance'.format('GAP18')] = pot.extra_results['atoms']['local_gap_variance']
     except:
         e = sys.exc_info()[0]
         print('calculation of config {} failed for some reason\n{}\n'.format(ind, e))
+        traceback.print_exc()
 
     r.df['Configs'][ind].set_calculator(None)
     
 
-def MTP_calc(r, ind, pot, grade=True, debug=False):
+def MTP_calc(r, ind, pot, grade=True, debug=False, method='mlp'):
 
     try:
         if grade:
+            if method=='lammps':
+                raise AttributeError('grade not implemented for lammps')
             pot.calculate(r.df['Configs'][ind], properties=['energy', 'forces', 'stress', 'grade'], timeout=3600)
         else:
-            pot.calculate(r.df['Configs'][ind], properties=['energy', 'forces', 'stress'], timeout=36000)
+            pot.calculate(r.df['Configs'][ind], properties=['energy', 'forces', 'stress'],
+            timeout=36000, method=method)
     
         r.df['Configs'][ind].info['{}_energy'.format(pot.name)] = pot.results['energy']
         r.df['Configs'][ind].info['{}_virial'.format(pot.name)] = pot.results['stress']

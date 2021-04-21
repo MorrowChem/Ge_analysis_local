@@ -308,7 +308,7 @@ class MD_run:
             return
         
         if read_dat and format=='lammps':
-            with open(glob(run_dir + '/log*')[0], 'r') as f:
+            with open(glob(os.path.join(run_dir,'log*'))[0], 'r') as f:
                 out = f.readlines()
             flag = 0
             for i, val in enumerate(out):
@@ -334,7 +334,7 @@ class MD_run:
         self.configs = []
         temp = []
         self.timesteps = []
-        for i in glob(run_dir + '/NPT/*.cfg'):
+        for i in glob(os.path.join(run_dir,'NPT/*.cfg')):
             temp.append(read_cfg(i))
             temp[-1].info['file'] = i
             self.timesteps.append(int(i.split('/')[-1].split('.')[1]))
