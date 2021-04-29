@@ -1117,9 +1117,9 @@ def kernel_compare(cfgs, comp,
     comp_descs = np.array(comp_desc.calc_descriptor(comp)) # currently averages over comparison atoms
 
     if similarity:
-        k = np.einsum('ij,k...j', descs, comp_descs)**zeta
+        k = np.einsum('i...j,k...j', descs, comp_descs)**zeta
     else:
-        k = np.array(2 - 2*np.einsum('ij,k...j', descs, comp_descs)**zeta)
+        k = np.array(2 - 2*np.einsum('i...j,k...j', descs, comp_descs)**zeta)
 
 
     return k.T.squeeze()
