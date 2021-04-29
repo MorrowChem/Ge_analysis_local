@@ -416,6 +416,7 @@ class MTP(FileIOCalculator):
     def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
                   system_changes=all_changes, train=None, timeout=10,
                   method='mlp', **kwargs):
+
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -429,7 +430,7 @@ class MTP(FileIOCalculator):
 
         if method == 'lammps':
 
-            self.calc_lammps(self.atoms)
+            self.calc_lammps(self.atoms, parallel=parallel, np=np)
             return
 
         if system_changes != [] and system_changes != None:
@@ -582,7 +583,11 @@ class MTP(FileIOCalculator):
 
         return grades
 
-    def calc_lammps(self, atoms):
+    def calc_lammps(self, atoms, parallel, np):
+        
+        if parallel:
+            from mpi4py import MPI
+
 
         ini = NamedTemporaryFile(mode='w+', suffix='.ini', delete=True)
         lout = NamedTemporaryFile(mode='w+', suffix='.out', delete=True)
