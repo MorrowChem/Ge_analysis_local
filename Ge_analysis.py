@@ -1088,7 +1088,6 @@ class CrystTest:
         return
 
 
-
 def kernel_compare(cfgs, comp,
                          desc=None,
                          zeta=4, similarity=False, average=True):
