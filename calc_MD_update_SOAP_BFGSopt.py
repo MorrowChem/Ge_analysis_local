@@ -36,9 +36,25 @@ from calc_all_lib import *
 # mtps (with lammps calc?)
 # calculate/use elasic constants instead of isotropic contraction (current definition of H_xs)
 # similarities with different descriptors
+############### Run to run parameters #######################################
+inplace=True
+GAP=True; calc_args=''
+local_variance=True
+
 
 init_xyz = sys.argv[1]
-#init_xyz = 'min1.5_u16_fw0.1_sw0.001_1k.xyz'
+'''extra_mtps = [MTP(sys.argv[2], mtp_command=r'/u/vld/hert5155/mlip-2/bin/mlp',
+              potential_name=sys.argv[2],
+              train='/u/vld/hert5155/Si_research/GAP_to_MTP/PQ1k_GAP18_GAP18labelled/PQ/PQ_GAP18labelled_train.cfg')]'''
+extra_mtps = []
+
+print('inplace: ',inplace,
+      '\nGAP: ', GAP,
+      '\nlv: ', local_variance,
+      '\nxyz: ', init_xyz,
+      '\nmtps: ', extra_mtps, flush=True)
+############ should be able to set with arguments or input file #############
+
 if init_xyz[-4:] == '.xyz':
     lab = init_xyz[:-4]
     r = MD_run(init_xyz, label=lab, format='xyz')
@@ -49,24 +65,28 @@ else:
         r.df['Configs'][ind].info['timestep'] = ind
         for j, val in enumerate(r.df.iloc[i][1:]):
             r.df['Configs'][ind].info[r.df.columns[j+1]] = val
-'''
-extra_mtps = [MTP('u16_m1.5_fw0.1_PQ1k_scratch.mtp', mtp_command=r'/u/vld/hert5155/mlip-2/bin/mlp',
-              potential_name='u16_m1.5_fw0.1_PQ1k_scratch.mtp',
-              train='/u/vld/hert5155/Si_research/GAP_to_MTP/PQ1k_GAP18_GAP18labelled/PQ/PQ_GAP18labelled_train.cfg')]
-'''
-extra_mtps = []
+
 
 job_size = len(r.df.index)
 print('job_size: {} configs'.format(job_size), flush=True)
 
-#GAP_18_pot = Potential(param_filename='/u/vld/hert5155/Si_research/GAP-18_ref/gp_iter6_sparse9k.xml')
-for i, ind in enumerate(r.df.index):
+if GAP:
+    if local_variance:
+        calc_args='local_gap_variance'
 
-    '''# calculate with GAP-18 if not already there
-    if '{}_energy'.format('GAP18') in r.df['Configs'][ind].info.keys():
-        print('skipping GAP-calc of {}'.format(i))
-    else:
-        GAP_calc(r, ind, GAP_18_pot, local_variance=True)
+    GAP_18_pot = Potential(param_filename='/u/vld/hert5155/Si_research/GAP-18_ref/gp_iter6_sparse9k.xml',
+                          calc_args=calc_args)
+
+for i, ind in enumerate(r.df.index):
+    
+    if GAP:
+    # calculate with GAP-18 if not already there
+        if '{}_energy'.format('GAP18') in r.df['Configs'][ind].info.keys() \
+           and (not local_variance or '{}_variance'.format('GAP18') in r.df['Configs'][ind].info.keys()):
+            
+            print('skipping GAP-calc of {}'.format(i))
+        else:
+            GAP_calc(r, ind, GAP_18_pot, local_variance=True)
     
     # calculate with extra MTPs if not already there
     for j, val in enumerate(extra_mtps):
@@ -78,7 +98,7 @@ for i, ind in enumerate(r.df.index):
             print('skipping MTP_{}-calc of {}'.format(j,i))
         else:
             MTP_calc(r, ind, val, grade=False, debug=True, method='lammps')
-            update_progress(i/job_size)'''
+            update_progress(i/job_size)
 
 # bulk grade calculation
 if False:
@@ -125,7 +145,7 @@ Hs = es + Ps * vols
 for i in range(len(Hs)):
     base_H = [min(i) for i in Hs.T]
     stable_xtal = [comp_labels[np.argmin(i)] for i in Hs.T]
-print('Enthalpies and volumes of crystals calculated', flush=True)
+print('Enthalpies and volumes of crystals calculated\nBeginning kernel evaluations', flush=True)
 
 comps_copy = deepcopy(comps)
 for i, ind in enumerate(r.df.index):
@@ -172,9 +192,22 @@ if 'cn' not in r.df['Configs'][r.df.index[0]].info.keys():
         else:
             print('Problem with cn counting for config {}'.format(i))
 
+if inplace:
+    with open(os.path.join('{}.xyz'.format(lab)), 'w') as f:
+        write_xyz(f, r.df['Configs'].tolist())
+else:
+    with open(os.path.join('{}_relabel_SOAP_B.xyz'.format(lab)), 'w') as f:
+        write_xyz(f, r.df['Configs'].tolist())
+
+
+for j, val in enumerate(r.df['Configs'][r.df.index[0]].info.keys()):
+    r.df[val] = [struct.info[val] for struct in r.df['Configs']]
+
 write_df = r.df.drop(columns='Configs')
 
-with open(os.path.join('{}_relabel_SOAP_B.xyz'.format(lab)), 'w') as f:
-    write_xyz(f, r.df['Configs'].tolist())
-with open(os.path.join('{}_relabel_SOAP_B.json'.format(lab)), 'w') as f:
-    write_df.to_json(f)
+if inplace:
+    with open(os.path.join('{}.json'.format(lab)), 'w') as f:
+        write_df.to_json(f)
+else:
+    with open(os.path.join('{}_relabel_SOAP_B.json'.format(lab)), 'w') as f:
+        write_df.to_json(f)

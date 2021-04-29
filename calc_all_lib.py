@@ -104,6 +104,7 @@ def V_p_BM(P, xtal, calc, traj_name='tmp', n=20):
 
 
 def GAP_calc(r, ind, pot, local_variance=True):
+    '''Calculates and appends results of GAP pot to MD_run object r (must have Dataframe)'''
     try:
         if local_variance:
             pot.calculate(r.df['Configs'][ind], properties=['energy', 'energies', 'forces', 'stress'],
