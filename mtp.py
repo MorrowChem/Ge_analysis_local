@@ -392,7 +392,7 @@ class MTP(FileIOCalculator):
     TODO: A faster implementation for lists of atoms would be to write a single cfg for all of them
     """
 
-    def __init__(self, potential_file='pot.mtp', potential_name=None, mtp_command=None, train=None):
+    def __init__(self, potential_file='pot.mtp', potential_name=None, mtp_command=None, train=None, parallel=True):
 
         #self.__name__ = 'MTP'
         if not os.path.isfile(potential_file):
@@ -401,6 +401,7 @@ class MTP(FileIOCalculator):
         self.potential_file = potential_file
         self.name = potential_name
         self.train = train
+        self.parallel = parallel
 
         if mtp_command is None:
             mtp_command = get_mtp_command()
@@ -413,8 +414,8 @@ class MTP(FileIOCalculator):
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
 
     def calculate(self, atoms, properties=['energy', 'forces', 'stress'],
-                  system_changes=all_changes, train=None, timeout=10, parallel=True,
-                  method='mlp'):
+                  system_changes=all_changes, train=None, timeout=10,
+                  method='mlp', **kwargs):
         if atoms is not None:
             self.atoms = atoms.copy()
         elif self.atoms is None:
@@ -435,7 +436,7 @@ class MTP(FileIOCalculator):
             input = NamedTemporaryFile(mode='w+', suffix='.cfg')
             output = NamedTemporaryFile(mode='w+', suffix='.cfg')
             self.write_input(input)
-            self.run(input, output, timeout, parallel=parallel)
+            self.run(input, output, timeout)
             if 'grade' in properties:
                 if train is None:
                     if self.train is None:
@@ -468,12 +469,12 @@ class MTP(FileIOCalculator):
         # 'magmom': 0.0,
         # 'magmoms': np.zeros(len(atoms))}
 
-    def run(self, input, output, timeout, parallel=True):
+    def run(self, input, output, timeout):
 
         self._calls += 1
         if 'OMP_NUM_THREADS' not in os.environ.keys():
             os.environ['OMP_NUM_THREADS'] = '1'
-        if parallel:
+        if self.parallel:
             # '/usr/local/mpich3/bin/mpirun'
             efs_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command,
                            'calc-efs', self.potential_file, input.name, output.name]
@@ -488,11 +489,11 @@ class MTP(FileIOCalculator):
             print('mlp call stderr:\n{}'.format(out.stderr))
         out.check_returncode()
 
-    def calc_grade(self, train, input, output, als_output, timeout, silence=True, parallel=True):
+    def calc_grade(self, train, input, output, als_output, timeout, silence=True):
 
         if 'OMP_NUM_THREADS' not in os.environ.keys():
             os.environ['OMP_NUM_THREADS'] = '1'
-        if parallel:
+        if self.parallel:
             calc_grade_command = ['mpirun', '-np', os.environ['OMP_NUM_THREADS'], self.command, 'calc-grade', self.potential_file,
                                   train, input.name, output.name, '--als-filename={}'.format(als_output.name)]
 
@@ -565,7 +566,7 @@ class MTP(FileIOCalculator):
         als_grade = NamedTemporaryFile(mode='w+', suffix='.als')
 
         self.write_input(input, atoms_list=at_list)
-        self.calc_grade(train, input, output_grade, als_grade, timeout, parallel=parallel)
+        self.calc_grade(train, input, output_grade, als_grade, timeout)
 
         temp_atoms =  list(read_cfg_db(output_grade.file,
                         energy_label='energy',
