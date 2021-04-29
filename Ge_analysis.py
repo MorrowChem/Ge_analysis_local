@@ -34,7 +34,6 @@ from ase.optimize import BFGS
 from ase.data import covalent_radii, atomic_numbers
 import warnings
 from ase.spacegroup.symmetrize import check_symmetry
-from os.path import join
 
 
 def read_dat(filey, head=True):
@@ -48,8 +47,6 @@ def read_dat(filey, head=True):
     for i in lines[s:]:
         d = i.split()
         for j, val in enumerate(d):
-            if '*' in val:
-                val = np.NaN
             dat[j].append(float(val))
     dat = np.array(dat)
     return dat
@@ -525,19 +522,20 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
     be more efficient than running multiple instances on different structures.'''
     os.mkdir(rdir)
     if 'data' not in os.listdir(rdir):
-        os.mkdir(join(rdir,'data'))
+        os.mkdir(rdir + '/data')
     if cfg_file:
         f = read_cfg(cfg_file)
         print(f.get_atomic_numbers()[0])
         #f.set_atomic_numbers([14 for i in range(len(f))])
         nf = cfg_file.split('/')[-1][:-4] + '.pdb'
-        write_proteindatabank(join(rdir, 'data', nf), f)
+        write_proteindatabank(rdir + '/data/' + nf, f)
     if atoms:
         f = atoms
         #f.set_atomic_numbers([3 for i in range(len(f))]) # need to make automatic
         nf = f.info['file'].split('/')[-1][:-4] + '.pdb'
-        write_proteindatabank(join(rdir,'data',nf), f)
-
+        write_proteindatabank(rdir + '/data/' + nf, f)
+    N = len(f)
+    #Nchem = f.get_chemical_symbols()
     cell = f.get_cell()
     if len(cell) == 3:
         cell = cell.tolist()
@@ -597,7 +595,7 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
             options[i] = opts[i]
 
 
-    with open(join(rdir,'options'), 'w') as file:
+    with open(rdir + '/options', 'w') as file:
         file.write('#######################################\n' +
                    'R.I.N.G.S. options file       #\n' +
                    '#######################################\n')
@@ -622,18 +620,13 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
                 if i in ['Dxout', 'TrajOut']:
                     file.write('-----------------------\n')
         file.write('######################################\n')
-    
-    species = list(f.symbols.species())
-    N = len(species)
-    cutoffs = [0.0 for i in range(int(0.5*N*(N+1)))]
-    
+
     rings_in_def = {
-        'label' : 'unlabelled',
-        'species' : ' '.join(species),
+        'label' : 'amorphous Ge',
+        'species' : ['Ge'],
         'MD_timestep' : 1,
-        #'cutoffs' : [3.2 for i in f.symbols.species()], # in format 1:1, 1:2, ... 1:n, 2:2, 2:3.. n:3
-        'cutoffs' : cutoffs,
-        'Grtot' : 0.0,
+        'cutoffs' : [3.2], # in format 1:1, 1:2, ... 1:n, 2:2, 2:3.. n:3
+        'Grtot' : 3.2,
         'real_disc' : 200,
         'recip_disc' : 500,
         'max_mod_recip' : 25
@@ -641,14 +634,14 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
     for i in rings_in:
         rings_in_def[i] = rings_in[i]
 
-    with open(join(rdir,'rings.in'), 'w') as file:
+    with open(rdir + '/rings.in', 'w') as file:
         '''Some parts of this could do with automation/user access via
         a dictionary. Left for now'''
         file.write('# R.I.N.G.S input file ######\n#\n#\n' +
         '{}\n'.format(rings_in_def['label']) +  # automate
-        '{} # natom\n'.format(len(f)) +
+        '{} # natom\n'.format(N) +
         '1  # number of chemical species\n' +
-        rings_in_def['species'] + '# chemical species\n' +
+        str('{} '*len(rings_in_def['species'])).format(*rings_in_def['species']) + '# chemical species\n' +
         '{}  # number of M.D. steps\n'.format(cfg_N) +
         '1 \n' +
         '{}    {}    {}\n'.format(*cell[0]) +
@@ -666,21 +659,19 @@ def rings(rdir, cfg_file=None, atoms=None, opts={}, rings_in={}, rings_command='
         '10      # max search depth/2 for ring stats\n' +
         '15      # max search depth for chain stats\n' +
         '#######################################\n' +
-        ''.join(['{} {}    {}  # cutoff radius for g(r) partials\n'.format(species[i],
-                                                                   species[j],
-                                                                  cutoffs[i+j]) 
-                  for i in range(N) for j in range(N) if j>=i]) +
+        '{} {}    {}  # cutoff radius for g(r) partials\n'.format(rings_in_def['species'][0],
+                                                                   rings_in_def['species'][0],
+                                                                  rings_in_def['cutoffs'][0]) +
         'Grtot   {}   # cutoff for total g(r)\n'.format(rings_in_def['Grtot']) +
         '#######################################\n'
         )
     os.chdir(rdir)
-#     if 'Gr_tot' in rings_in
-    exit = os.system('printf "%s\n" y y | {} rings.in >rings.log 2>&1'.format(rings_command))
+    exit = os.system('{} rings.in >rings.log 2>&1'.format(rings_command))
     if exit \
             != 0:
-        with open('rings.log', 'r') as f:
+        with open('ring.log', 'r') as f:
             for i in f.readlines():
-                print(i)
+                print(f)
     os.chdir('../')
     return exit
 
@@ -1097,35 +1088,41 @@ class CrystTest:
         return
 
 
-
 def kernel_compare(cfgs, comp,
                          desc=None,
                          zeta=4, similarity=False, average=True):
     '''calculates the average/std dev similarity kernel between a set of
-    configs and a reference.
+    configs and a reference (or set of references).
     '''
     if desc is None:
         desc_str = 'soap l_max=6 n_max=12 \
                    atom_sigma=0.5 cutoff=5.0 \
                    cutoff_transition_width=1.0 central_weight=1.0'
+    else:
+        desc_str = desc
+
+    if ' average=' not in desc_str:
         if average:
             desc_str += ' average=T'
         else:
             desc_str += ' average=F'
-    else:
-        desc_str = desc
+
+    if not isinstance(comp, list):
+        comp = [comp]
+    
     desc = Descriptor(desc_str)
     descs = np.array(desc.calc_descriptor(cfgs))
-    comp_desc = desc.calc_descriptor(comp)[0]
-    # print(descs.shape, comp_desc.shape)
+
+    comp_desc = Descriptor(desc_str.replace(' average=F', ' average=T'))
+    comp_descs = np.array(comp_desc.calc_descriptor(comp)) # currently averages over comparison atoms
 
     if similarity:
-        k = np.einsum('ikj,j', descs, comp_desc)**zeta
+        k = np.einsum('ij,k...j', descs, comp_descs)**zeta
     else:
-        k = np.array(2 - 2*np.einsum('ij,j', descs, comp_desc)**zeta)
+        k = np.array(2 - 2*np.einsum('ij,k...j', descs, comp_descs)**zeta)
 
 
-    return k
+    return k.T.squeeze()
 
 def print_DB_stats(atoms, by_config_type=True):
     print('Size statistics:\n'+'-'*36)
