@@ -1,0 +1,2425 @@
+[W 2021-03-16 22:19:39.772 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2021-03-16 22:19:39.772 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2021-03-16 22:19:39.772 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[I 2021-03-16 22:19:39.778 LabApp] JupyterLab extension loaded from /u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/jupyterlab
+[I 2021-03-16 22:19:39.778 LabApp] JupyterLab application directory is /home/tridymite/vld/hert5155/miniconda3/envs/Q/share/jupyter/lab
+[I 22:19:39.781 NotebookApp] Serving notebooks from local directory: /home/tridymite/vld/hert5155/jup_remote/Ge_analysis
+[I 22:19:39.781 NotebookApp] Jupyter Notebook 6.1.4 is running at:
+[I 22:19:39.781 NotebookApp] http://localhost:8890/?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733
+[I 22:19:39.781 NotebookApp]  or http://127.0.0.1:8890/?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733
+[I 22:19:39.781 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 22:19:39.783 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/tridymite/vld/hert5155/.local/share/jupyter/runtime/nbserver-2719-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8890/?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733
+     or http://127.0.0.1:8890/?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733
+[I 22:20:56.765 NotebookApp] 302 GET /?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733 (::1) 0.32ms
+[W 22:22:22.306 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:22:26.973 NotebookApp] Kernel started: e41a882e-cba4-4535-b28e-c548691990d3, name: python3
+[I 22:24:27.009 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:24:27.030 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:26:26.999 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:26:27.000 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:28:27.081 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:28:27.082 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:30:27.016 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:30:27.017 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:34:16.540 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:34:16.541 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:34:27.028 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:34:27.029 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[W 22:55:57.334 NotebookApp] WebSocket ping timeout after 119987 ms.
+[I 22:56:02.337 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 06:41:38.152 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 06:41:39.628 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 06:41:39.638 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 06:42:58.955 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 06:42:58.956 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:02:58.911 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:02:58.912 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:04:58.953 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:04:58.954 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:06:58.951 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:06:58.952 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:08:58.932 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:08:58.933 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:14:58.915 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:14:58.916 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:16:58.907 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:16:58.908 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:18:58.898 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:18:58.900 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:20:59.004 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:20:59.005 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:22:58.927 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:22:58.928 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:29:32.551 NotebookApp] Saving file at /Ge_calculation.py
+[I 07:29:47.654 NotebookApp] Saving file at /Ge_calculation.py
+[I 07:30:58.951 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:30:58.952 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:32:58.932 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:32:58.933 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:34:58.933 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:34:58.934 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:36:58.933 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:36:58.934 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[W 07:37:46.895 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:38:58.997 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:38:58.998 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:40:59.201 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:40:59.202 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:44:59.026 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:44:59.027 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:56:59.012 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:56:59.014 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 07:58:58.963 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:58:58.964 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 08:00:58.952 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 08:00:58.953 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[W 08:43:51.806 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 08:44:09.639 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 08:44:14.645 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[W 16:49:34.407 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:34.408 NotebookApp] Couldn't authenticate WebSocket connection
+[W 16:49:34.408 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:34.408 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:34.413 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=32871d55800b45cdb09952c88a9c2d2e (::1) 10.07ms referer=None
+[W 16:49:41.684 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.685 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.686 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.687 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.687 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.688 NotebookApp] Clearing invalid/expired login cookie username-localhost-8890
+[W 16:49:41.688 NotebookApp] 403 POST /api/contents/MTP_from_GAP.ipynb/trust (::1) 5.41ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:49:49.820 NotebookApp] 403 POST /api/contents/MTP_from_GAP.ipynb/trust (::1) 3.93ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:49:53.563 NotebookApp] Couldn't authenticate WebSocket connection
+[W 16:49:53.565 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=32871d55800b45cdb09952c88a9c2d2e (::1) 5.72ms referer=None
+[W 16:50:16.043 NotebookApp] Couldn't authenticate WebSocket connection
+[W 16:50:16.045 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=32871d55800b45cdb09952c88a9c2d2e (::1) 3.50ms referer=None
+[W 16:50:20.314 NotebookApp] Forbidden
+[W 16:50:20.315 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615966666634 (::1) 2.10ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:50:20.442 NotebookApp] Forbidden
+[W 16:50:20.443 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 86.64ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:50:31.931 NotebookApp] Couldn't authenticate WebSocket connection
+[W 16:50:31.933 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=32871d55800b45cdb09952c88a9c2d2e (::1) 5.52ms referer=None
+[I 16:50:41.566 NotebookApp] 302 GET /edit/Ge_calculation.py (::1) 1.83ms
+[W 16:51:00.797 NotebookApp] Forbidden
+[W 16:51:00.798 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615933342100 (::1) 2.09ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:51:00.931 NotebookApp] Forbidden
+[W 16:51:00.932 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 102.37ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:51:53.765 NotebookApp] Forbidden
+[W 16:51:53.765 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615966666635 (::1) 0.57ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:51:53.862 NotebookApp] Forbidden
+[W 16:51:53.862 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 66.92ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:51:55.182 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.86ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:52:22.541 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 1.10ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:52:32.334 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.87ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:53:00.274 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.88ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:53:00.780 NotebookApp] Forbidden
+[W 16:53:00.781 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615933342101 (::1) 0.57ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:53:00.908 NotebookApp] Forbidden
+[W 16:53:00.909 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 101.85ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:53:03.624 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.89ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:53:12.474 NotebookApp] Forbidden
+[W 16:53:12.474 NotebookApp] 403 GET /api/sessions?_=1615933257119 (::1) 0.55ms referer=http://localhost:8890/tree
+[W 16:53:12.478 NotebookApp] Forbidden
+[W 16:53:12.478 NotebookApp] 403 GET /api/terminals?_=1615933257120 (::1) 0.38ms referer=http://localhost:8890/tree
+[W 16:53:31.792 NotebookApp] Couldn't authenticate WebSocket connection
+[W 16:53:31.793 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=32871d55800b45cdb09952c88a9c2d2e (::1) 1.46ms referer=None
+[W 16:53:53.775 NotebookApp] Forbidden
+[W 16:53:53.775 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615966666636 (::1) 0.59ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:53:53.884 NotebookApp] Forbidden
+[W 16:53:53.884 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 85.86ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:54:11.922 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.94ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:54:21.539 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.86ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[W 16:55:00.776 NotebookApp] Forbidden
+[W 16:55:00.777 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1615933342102 (::1) 0.58ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:55:00.905 NotebookApp] Forbidden
+[W 16:55:00.905 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 92.67ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 16:55:01.133 NotebookApp] 401 POST /login?next=%2Fedit%2FGe_calculation.py (::1) 0.97ms referer=http://localhost:8890/login?next=%2Fedit%2FGe_calculation.py
+[I 16:55:05.233 NotebookApp] 302 GET /?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733%20::%20/home/tridymite/vld/hert5155/jup_remote/Ge_analysis (::1) 0.44ms
+[I 16:55:05.254 NotebookApp] 302 GET /tree?token=2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733%20::%20/home/tridymite/vld/hert5155/jup_remote/Ge_analysis (::1) 0.48ms
+[I 16:55:27.050 NotebookApp] 302 POST /login?next=%2Ftree%3Ftoken%3D2c5a39c62401fd71e0084a7e8ec04db2870c6d1265a1a733%2520%3A%3A%2520%2Fhome%2Ftridymite%2Fvld%2Fhert5155%2Fjup_remote%2FGe_analysis (::1) 0.76ms
+[I 16:55:53.437 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:57:53.385 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:59:53.351 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:48:48.017 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:48.018 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:48.382 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:48.383 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:48.608 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:48.609 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:48.849 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:48.851 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:49.075 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:49.076 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:49.275 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:49.276 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:49.453 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:49.455 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:49.696 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:49.767 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:49.956 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:49.957 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:50.180 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:50.181 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:50.362 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:50.363 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:50.558 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:50.560 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:50.757 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:50.758 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:50.949 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:50.950 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:51.128 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:51.130 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:51.319 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:51.320 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:51.507 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:51.508 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:51.698 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:51.699 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:51.891 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:51.892 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:52.096 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:52.100 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:52.294 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:52.303 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:52.483 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:52.484 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:52.678 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:52.680 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:52.869 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:52.870 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:53.058 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:53.059 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:53.277 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:53.281 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:53.466 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:53.467 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:53.624 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:53.625 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:53.839 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:53.842 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:54.049 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:54.050 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:54.236 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:54.237 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:54.461 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:54.464 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:54.674 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:54.676 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:54.880 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:54.882 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:55.071 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:55.072 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:55.262 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:55.264 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:55.458 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:55.459 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:55.659 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:55.660 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:55.847 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:55.848 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:56.035 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:56.036 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:56.220 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:56.221 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:56.418 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:56.422 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:56.604 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:56.605 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:56.797 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:56.837 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.025 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:57.026 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.214 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:57.215 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.424 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:57.425 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.621 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:57.622 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.811 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:57.812 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:57.999 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.000 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:58.192 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.193 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:58.368 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.369 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:58.562 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.563 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:58.750 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.751 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:58.937 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:58.938 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:48:59.122 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:48:59.123 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:51:28.971 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:51:28.972 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 18:58:17.245 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 18:58:17.246 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 19:04:38.824 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 19:04:38.825 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 21:22:02.702 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 21:22:02.704 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[I 22:10:29.102 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 22:10:29.103 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[W 22:10:40.419 NotebookApp] Notebook MTP_from_GAP.ipynb is not trusted
+[W 04:01:47.567 NotebookApp] WebSocket ping timeout after 119996 ms.
+[W 04:01:59.300 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 04:02:04.302 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 04:03:48.036 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[W 08:41:48.037 NotebookApp] WebSocket ping timeout after 119378 ms.
+[W 08:41:48.935 NotebookApp] WebSocket ping timeout after 119762 ms.
+[I 08:41:53.936 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:2e0e062c92d34f519680e009dc777756
+[I 22:07:48.160 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:2e0e062c92d34f519680e009dc777756
+[I 01:42:24.086 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:42:22.920 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:10:08.462 NotebookApp] Creating new notebook in 
+[I 14:10:09.870 NotebookApp] Kernel started: c50a55a0-8c59-4edb-88f6-8da0a40bf7ce, name: python3
+[I 14:12:10.329 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:20:49.085 NotebookApp] Creating new notebook in 
+[I 14:20:51.010 NotebookApp] Kernel started: b96f3f94-7a31-44e2-ae4e-b792c3419de0, name: python3
+[I 14:22:10.350 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:22:51.177 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:24:51.172 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:26:10.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:28:10.036 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:30:10.046 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:32:10.039 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:34:09.978 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:38:10.007 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:40:10.094 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:42:10.098 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:44:10.033 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:44:52.422 NotebookApp] Saving file at /Ge_calculation.py
+[I 14:46:10.317 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:46:42.384 NotebookApp] Saving file at /Ge_calculation.py
+[I 14:48:03.222 NotebookApp] Saving file at /Ge_calculation.py
+[I 14:48:10.408 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:50:10.019 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:52:09.998 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:54:10.304 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:56:10.017 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:58:09.988 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:00:09.989 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:02:10.018 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:04:09.983 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:06:09.996 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:08:09.986 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:10:10.001 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:12:10.031 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:14:10.027 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:16:10.010 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:24:10.012 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:26:10.179 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:28:10.032 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:30:10.001 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:32:10.166 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:34:10.055 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:36:10.043 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:38:10.007 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:40:09.989 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:42:09.990 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:44:10.004 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:48:10.040 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:44:10.048 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:46:10.045 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:48:10.006 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:50:09.979 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:52:09.995 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:54:09.983 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:56:09.982 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:58:09.999 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:00:10.013 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:02:09.971 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:04:09.983 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:06:10.007 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:08:09.991 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:10:09.983 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:12:09.984 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:14:09.987 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:16:09.990 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:18:09.977 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:20:09.988 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:22:09.999 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:24:09.987 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:26:10.060 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:28:10.028 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:30:10.020 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:32:09.990 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:34:09.980 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:36:09.987 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:38:10.013 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:40:09.976 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:42:09.985 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:44:10.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:46:09.997 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:48:09.979 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:50:10.004 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:22:10.004 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:24:10.019 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:26:10.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:28:10.034 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:30:10.034 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:32:10.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:34:10.141 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:36:10.056 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:38:10.123 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:42:10.103 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:44:10.068 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:46:10.062 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:48:10.097 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:50:10.114 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:52:10.137 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:54:10.153 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:56:10.263 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:58:10.212 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:00:10.235 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:04:10.311 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:08:10.262 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:10:10.278 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:12:10.315 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:20:44.209 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 21:56:10.277 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:26:10.290 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:28:10.231 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:30:10.311 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:32:10.281 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:38:10.265 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:39:27.962 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:39:34.612 NotebookApp] Saving file at /Ge_analysis.py
+[I 22:46:10.690 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:02:10.286 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:04:10.275 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:06:10.218 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:08:10.342 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:10:10.349 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:12:50.823 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 08:14:50.829 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 08:34:10.363 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:36:10.265 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:38:10.264 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:48:10.353 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:50:10.281 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:52:10.330 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:54:10.444 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:56:10.266 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:58:10.284 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:06:10.339 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:08:10.247 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:10:10.300 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:14:10.300 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:16:10.273 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:44:10.274 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:46:10.319 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:48:10.303 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:50:10.357 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:52:10.264 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:54:10.303 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:56:10.305 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:58:10.417 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:00:10.268 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:02:10.316 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:04:10.362 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:16:58.635 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:18:10.265 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:20:10.299 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:22:10.257 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:24:10.279 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:26:10.289 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:28:10.609 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:30:10.275 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:30:53.240 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:31:41.425 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:10:10.293 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:12:10.306 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:14:10.358 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:16:10.335 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:18:10.255 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:20:10.336 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:22:10.337 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:24:10.313 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:26:10.257 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:28:10.294 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:30:10.262 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:32:10.260 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:08:10.295 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+Operating system error: Cannot allocate memory
+Allocation would exceed memory limit
+WARNING: Potential_initialise using default init_args "Potential xml_label=GAP_2017_6_17_60_4_3_56_165"
+WARNING: Potential_initialise using default init_args "Potential xml_label=GAP_2017_6_17_60_4_3_56_165"
+WARNING: Potential_calc: cutoff of Atoms object (-1.0000000000000000) < Potential cutoff (5.0000000000000000) - increasing it now
+WARNING: Potential_initialise using default init_args "Potential xml_label=GAP_2017_6_17_60_4_3_56_165"
+[I 18:09:39.875 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel c50a55a0-8c59-4edb-88f6-8da0a40bf7ce restarted
+[I 18:10:10.426 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:12:10.367 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:14:10.294 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:16:10.304 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:18:10.354 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:22:10.317 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:24:10.314 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:26:10.340 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:20:10.293 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:22:10.280 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:24:10.277 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:26:10.280 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:28:11.107 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:30:10.300 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:32:10.381 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:36:10.375 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:38:10.280 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:40:10.331 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:42:10.416 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:44:10.348 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:46:10.263 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:46:16.210 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:48:10.328 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:50:10.325 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:52:10.271 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:18:10.295 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:20:10.277 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:42:10.302 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:44:10.333 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:46:10.368 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:48:10.337 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:48:39.697 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:50:10.291 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 20:50:20.386 NotebookApp] Notebook Si_myDB_reg_testing.ipynb is not trusted
+[I 20:50:23.977 NotebookApp] Kernel started: 2354d462-179b-4f89-b754-3feed86381b5, name: python3
+[I 20:52:10.298 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:52:24.311 NotebookApp] Saving file at /Si_myDB_reg_testing.ipynb
+[W 20:52:24.314 NotebookApp] Notebook Si_myDB_reg_testing.ipynb is not trusted
+[I 20:54:10.338 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:54:10.405 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:56:10.388 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:58:10.405 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:00:10.275 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:01:09.861 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:02:10.252 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:06:10.279 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 09:41:18.161 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 09:41:21.319 NotebookApp] WebSocket ping timeout after 119992 ms.
+[W 09:41:24.393 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 09:41:26.322 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ddbb078a4f3b4c6180c16edf57f00922
+[I 09:41:29.396 NotebookApp] Starting buffering for 2354d462-179b-4f89-b754-3feed86381b5:482d2602b05c4361998da23673f73b82
+[W 09:41:40.465 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 09:41:45.467 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[W 09:41:46.268 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 09:41:51.270 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 13:00:51.865 NotebookApp] Restoring connection for 2354d462-179b-4f89-b754-3feed86381b5:482d2602b05c4361998da23673f73b82
+[I 13:01:20.077 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:01:20.218 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 13:01:53.492 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 13:01:53.511 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 13:01:54.088 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ddbb078a4f3b4c6180c16edf57f00922
+[I 13:03:19.975 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:05:19.901 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:07:19.917 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:09:19.959 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:11:19.874 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:13:19.892 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:15:19.902 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:15:25.439 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 13:17:21.866 NotebookApp] WebSocket ping timeout after 119997 ms.
+[W 13:17:22.010 NotebookApp] WebSocket ping timeout after 119996 ms.
+[W 13:17:22.811 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 13:17:23.514 NotebookApp] WebSocket ping timeout after 119997 ms.
+[W 13:17:24.089 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 13:17:26.869 NotebookApp] Starting buffering for 2354d462-179b-4f89-b754-3feed86381b5:482d2602b05c4361998da23673f73b82
+[I 13:17:27.814 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:901e6fd922d5450c93272316889cf730
+[I 13:17:28.516 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 13:17:29.092 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ddbb078a4f3b4c6180c16edf57f00922
+[I 12:49:25.317 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 12:50:05.159 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 12:52:05.111 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 12:54:05.103 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 12:56:05.078 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 12:58:05.077 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:00:05.099 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:04:05.061 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:06:05.080 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:08:05.118 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:14:05.056 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:14:29.477 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 13:16:25.318 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 13:16:30.320 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 15:49:28.869 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 15:49:39.384 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:49:53.969 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 15:49:53.989 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 15:51:12.591 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 16:13:53.991 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 16:13:58.994 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 16:17:00.907 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+[I 17:41:07.579 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 17:41:46.144 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 17:41:46.165 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 17:42:59.368 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:50:59.249 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:52:59.303 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:54:59.291 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:56:59.323 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:58:59.342 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:00:59.305 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:02:59.317 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:04:59.281 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:06:59.361 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:08:59.257 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:10:59.318 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:12:59.328 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:14:59.306 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:16:59.333 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:18:59.328 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:20:59.273 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:22:59.337 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:24:59.251 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:26:59.265 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:28:59.306 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:30:59.323 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:32:59.247 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:34:59.254 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:36:59.265 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:38:59.276 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:40:59.266 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:42:59.248 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:44:59.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:46:59.288 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:48:59.253 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:50:59.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:52:59.259 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:54:59.288 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:56:59.254 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:58:59.270 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:00:59.273 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:02:59.271 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:04:59.636 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:06:59.637 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:08:59.625 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:10:59.285 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:12:59.280 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:14:59.268 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:16:59.356 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:18:23.474 NotebookApp] Saving file at /Ge_calculation.py
+[I 19:18:59.281 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:20:59.272 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:22:59.299 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:24:59.280 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:26:59.261 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:28:59.282 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:30:59.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:32:59.274 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:34:59.275 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:36:59.241 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:38:59.245 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:40:59.517 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:42:59.260 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:44:59.261 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:46:59.284 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:48:59.269 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:50:59.287 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:54:59.276 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:58:59.308 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:02:59.251 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:06:59.241 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:08:59.283 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:12:59.328 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:20:59.289 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:28:59.296 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:36:59.267 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:38:59.237 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:48:59.291 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:02:59.328 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:16:59.253 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:18:59.300 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:36:59.287 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:58:59.369 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:24:59.408 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 22:29:33.932 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel c50a55a0-8c59-4edb-88f6-8da0a40bf7ce restarted
+[I 22:30:59.278 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 04:01:46.167 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 04:01:51.173 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 04:05:47.869 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 07:04:59.260 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:05:10.959 NotebookApp] Saving file at /Ge_calculation.py
+[I 07:06:59.240 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:08:59.269 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:10:59.298 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:12:59.242 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:14:59.331 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:16:59.262 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:18:59.336 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:20:59.239 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:22:59.270 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:24:59.246 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:38:59.260 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:40:59.232 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:42:59.240 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:44:59.325 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:46:59.262 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:48:59.234 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:50:59.225 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:52:59.291 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:58:59.282 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:00:59.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:02:59.256 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:04:59.300 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:08:59.332 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:10:59.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:20:59.345 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 09:16:47.872 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 09:16:52.875 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[I 18:11:49.831 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[W 18:34:19.830 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 18:34:24.837 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:bdb4fc6d22c6425b80e3f6d658887199
+[W 18:21:45.557 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 18:21:50.619 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[W 18:21:55.182 NotebookApp] WebSocket ping timeout after 119954 ms.
+[I 18:22:00.184 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[W 18:22:07.763 NotebookApp] WebSocket ping timeout after 119989 ms.
+[I 18:22:12.766 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 18:24:45.275 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 18:24:45.277 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 18:24:45.386 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 18:26:47.781 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 18:47:15.277 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 18:47:15.277 NotebookApp] WebSocket ping timeout after 119991 ms.
+[W 18:47:15.387 NotebookApp] WebSocket ping timeout after 119987 ms.
+[I 18:47:20.280 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 18:47:20.281 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 18:47:20.390 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 13:18:59.635 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 13:19:03.746 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 13:19:03.774 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 13:19:08.817 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 13:19:08.831 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 13:20:47.757 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:21:08.048 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:29:08.019 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 13:47:33.748 NotebookApp] WebSocket ping timeout after 119993 ms.
+[W 13:47:33.774 NotebookApp] WebSocket ping timeout after 119876 ms.
+[I 13:47:38.751 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 13:47:38.777 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[W 13:47:38.832 NotebookApp] WebSocket ping timeout after 119939 ms.
+[I 13:47:43.835 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 04:07:15.333 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+[I 09:25:21.063 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[W 04:01:51.132 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 04:01:56.165 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 04:05:51.820 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[W 09:24:51.821 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 09:24:56.823 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 14:00:54.594 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 14:06:22.617 NotebookApp] Saving file at /Ge_calculation.py
+[I 14:32:48.003 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:34:48.202 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:38:49.194 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:08:38.970 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:08:48.223 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 15:08:48.223 NotebookApp] Replaying 1 buffered messages
+[I 15:10:38.994 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:12:38.988 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:14:38.998 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:16:38.861 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 16:40:18.224 NotebookApp] WebSocket ping timeout after 119916 ms.
+[I 16:40:23.225 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[W 16:40:24.595 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 16:40:29.597 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 10:02:16.691 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[I 10:02:25.259 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 10:03:24.933 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:05:25.760 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:07:24.773 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 10:30:46.693 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 10:30:51.751 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:e3d4b99b2890473c912acaaac41ac7ad
+[W 10:30:55.260 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 10:31:00.261 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 11:47:26.711 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 11:49:03.810 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:51:03.509 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:53:04.765 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:55:03.369 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 13:38:26.712 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 13:38:31.714 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 15:56:18.274 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 15:56:20.949 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 15:56:20.962 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 15:57:24.773 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:25:26.635 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:27:25.624 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:28:39.140 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 16:31:16.127 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[IPKernelApp] ERROR | Exception in message handler:
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-18-bda4b189fdec>", line 1, in <module>
+    GAP_18_PQ.df['Configs']
+NameError: name 'GAP_18_PQ' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2045, in showtraceback
+    stb = value._render_traceback_()
+AttributeError: 'NameError' object has no attribute '_render_traceback_'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 3338, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 3435, in run_code
+    self.showtraceback(running_compiled_code=True)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2047, in showtraceback
+    stb = self.InteractiveTB.structured_traceback(etype,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1436, in structured_traceback
+    return FormattedTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1336, in structured_traceback
+    return VerboseTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1193, in structured_traceback
+    formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1151, in format_exception_as_a_whole
+    last_unique, recursion_repeat = find_recursion(orig_etype, evalue, records)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 451, in find_recursion
+    return len(records), 0
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2045, in showtraceback
+    stb = value._render_traceback_()
+AttributeError: 'TypeError' object has no attribute '_render_traceback_'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2923, in _run_cell
+    return runner(coro)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 3146, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 3357, in run_ast_nodes
+    self.showtraceback()
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2047, in showtraceback
+    stb = self.InteractiveTB.structured_traceback(etype,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1436, in structured_traceback
+    return FormattedTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1336, in structured_traceback
+    return VerboseTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1211, in structured_traceback
+    formatted_exceptions += self.format_exception_as_a_whole(etype, evalue, etb, lines_of_context,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1151, in format_exception_as_a_whole
+    last_unique, recursion_repeat = find_recursion(orig_etype, evalue, records)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 451, in find_recursion
+    return len(records), 0
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2045, in showtraceback
+    stb = value._render_traceback_()
+AttributeError: 'TypeError' object has no attribute '_render_traceback_'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/kernelbase.py", line 268, in dispatch_shell
+    yield gen.maybe_future(handler(stream, idents, msg))
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 762, in run
+    value = future.result()
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 769, in run
+    yielded = self.gen.throw(*exc_info)  # type: ignore
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/kernelbase.py", line 542, in execute_request
+    reply_content = yield gen.maybe_future(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 762, in run
+    value = future.result()
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 234, in wrapper
+    yielded = ctx_run(next, result)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/ipkernel.py", line 306, in do_execute
+    res = shell.run_cell(code, store_history=store_history, silent=silent)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/zmqshell.py", line 536, in run_cell
+    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2877, in run_cell
+    result = self._run_cell(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2928, in _run_cell
+    self.showtraceback(running_compiled_code=True)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/interactiveshell.py", line 2047, in showtraceback
+    stb = self.InteractiveTB.structured_traceback(etype,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1436, in structured_traceback
+    return FormattedTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1336, in structured_traceback
+    return VerboseTB.structured_traceback(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1211, in structured_traceback
+    formatted_exceptions += self.format_exception_as_a_whole(etype, evalue, etb, lines_of_context,
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 1151, in format_exception_as_a_whole
+    last_unique, recursion_repeat = find_recursion(orig_etype, evalue, records)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/ultratb.py", line 451, in find_recursion
+    return len(records), 0
+TypeError: object of type 'NoneType' has no len()
+[I 16:33:16.133 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[IPKernelApp] ERROR | Exception in message handler:
+Traceback (most recent call last):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/kernelbase.py", line 268, in dispatch_shell
+    yield gen.maybe_future(handler(stream, idents, msg))
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 762, in run
+    value = future.result()
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/tornado/gen.py", line 234, in wrapper
+    yielded = ctx_run(next, result)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/kernelbase.py", line 583, in complete_request
+    matches = yield gen.maybe_future(self.do_complete(code, cursor_pos))
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/ipkernel.py", line 360, in do_complete
+    return self._experimental_do_complete(code, cursor_pos)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/ipykernel/ipkernel.py", line 385, in _experimental_do_complete
+    completions = list(_rectify_completions(code, raw_completions))
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/completer.py", line 484, in rectify_completions
+    completions = list(completions)
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/completer.py", line 1818, in completions
+    for c in self._completions(text, offset, _timeout=self.jedi_compute_type_timeout/1000):
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/completer.py", line 1861, in _completions
+    matched_text, matches, matches_origin, jedi_matches = self._complete(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/completer.py", line 2029, in _complete
+    completions = self._jedi_matches(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/IPython/core/completer.py", line 1373, in _jedi_matches
+    interpreter = jedi.Interpreter(
+  File "/u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/jedi/api/__init__.py", line 859, in __init__
+    project=Project(os.getcwd()), **kwds)
+FileNotFoundError: [Errno 2] No such file or directory
+[I 16:35:16.113 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:37:16.130 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:39:16.115 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:41:16.115 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:43:16.086 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:45:16.090 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:47:16.073 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:53:24.895 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:55:24.967 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:57:26.968 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:59:25.598 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:03:24.840 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:05:24.653 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:07:25.532 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:09:16.121 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:11:16.961 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:11:25.621 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:11:29.305 NotebookApp] Saving file at /Ge_calculation.py
+[I 17:12:00.889 NotebookApp] Saving file at /Ge_calculation.py
+[I 17:12:37.178 NotebookApp] Saving file at /Ge_calculation.py
+[I 17:13:24.903 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:57:25.151 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:59:16.200 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:59:25.953 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:01:16.181 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:03:16.183 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:05:16.177 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:07:16.195 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:59:25.263 NotebookApp] Saving file at /Ge_calculation.py
+[W 20:24:09.141 NotebookApp] WebSocket ping timeout after 119991 ms.
+[I 20:24:14.143 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[W 20:24:20.964 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 20:24:25.966 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:36:39.030 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 07:37:00.935 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:37:52.889 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 07:38:00.695 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:40:00.713 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:51:21.065 NotebookApp] Saving file at /Ge_calculation.py
+[I 07:54:28.340 NotebookApp] Saving file at /Ge_calculation.py
+[I 08:04:16.431 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 08:04:21.594 NotebookApp] Kernel restarted: e41a882e-cba4-4535-b28e-c548691990d3
+[I 08:04:21.745 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 08:05:52.187 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:07:52.280 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:09:52.139 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:42:00.777 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:44:00.793 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 09:24:30.937 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 09:24:35.944 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[W 09:24:51.746 NotebookApp] WebSocket ping timeout after 119949 ms.
+[I 09:24:56.750 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 09:29:46.347 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 09:29:46.531 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[W 09:31:16.348 NotebookApp] WebSocket ping timeout after 90001 ms.
+[W 09:31:16.533 NotebookApp] WebSocket ping timeout after 90001 ms.
+[I 09:31:21.350 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 09:31:21.534 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 09:32:01.511 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 09:32:01.907 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[W 12:19:01.512 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 12:19:01.909 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 12:19:06.515 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 12:19:06.911 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:1bff4d1d97654af18bab3159b0297e89
+[I 16:18:11.713 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 16:19:12.616 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:21:12.512 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:23:12.241 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:27:12.401 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:29:12.217 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:31:12.234 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:33:12.212 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:35:12.234 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:37:12.235 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:39:12.237 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:41:12.220 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:43:12.221 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:45:12.235 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:47:12.206 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:49:12.289 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:51:12.211 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:53:12.224 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:55:12.329 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 17:59:11.716 NotebookApp] WebSocket ping timeout after 119986 ms.
+[I 17:59:16.719 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 18:04:43.704 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[W 18:37:43.705 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 18:37:48.707 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 16:53:37.768 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 16:54:51.109 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:56:51.038 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:00:51.068 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:16:51.010 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:18:51.027 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:20:51.046 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:04:51.054 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:06:51.347 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:10:51.003 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:12:51.084 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:14:51.015 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:16:51.042 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:18:51.041 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:20:51.042 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:22:51.086 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:50:51.099 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:24:50.999 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:30:51.007 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:32:50.992 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:14:51.004 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:16:51.032 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:18:51.014 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:20:51.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:22:51.042 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:24:51.027 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:26:51.059 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:28:51.087 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:30:51.054 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:32:51.127 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:34:51.215 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:40:51.418 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:44:51.269 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:52:51.239 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 18:22:51.331 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 22:20:07.769 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 22:20:12.795 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:24:49.754 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:24:53.202 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:24:53.217 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 07:25:38.229 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:27:39.024 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 07:31:38.209 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:19:38.054 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:47:38.000 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:49:37.983 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:51:38.017 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:53:38.024 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:55:38.043 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:33:38.123 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:35:38.097 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:37:38.097 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:03:38.369 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:11:38.264 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[W 11:33:53.218 NotebookApp] WebSocket ping timeout after 119926 ms.
+[I 11:33:58.220 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6dc42702b26c49ca9cb708c14c7b71cc
+[I 15:21:35.272 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:23:35.029 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:25:35.141 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:27:35.030 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:29:35.267 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:31:35.089 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:33:35.013 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:35:35.035 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:37:35.042 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:39:34.990 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:41:35.006 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:43:35.076 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:45:35.149 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:47:35.317 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:51:35.203 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:53:35.138 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:55:35.024 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:57:35.027 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:59:35.081 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:01:35.454 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:03:35.366 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:05:35.093 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:25:35.197 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:27:35.049 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:29:35.075 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:31:35.018 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:37:35.412 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:39:35.056 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:41:35.161 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:43:35.077 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:11:35.061 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:55:35.202 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:57:35.273 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:41:35.068 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 20:43:34.996 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 21:03:18.996 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel c50a55a0-8c59-4edb-88f6-8da0a40bf7ce restarted
+[I 13:39:35.346 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:41:35.108 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:43:35.193 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:45:35.532 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:49:35.394 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:51:35.013 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:58:16.048 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel c50a55a0-8c59-4edb-88f6-8da0a40bf7ce restarted
+[I 13:59:35.130 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:15:35.136 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:15:56.285 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:799f3b293d2240fcae608f50f97c04b7
+[I 15:15:56.697 NotebookApp] Kernel restarted: c50a55a0-8c59-4edb-88f6-8da0a40bf7ce
+[I 15:15:56.738 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:799f3b293d2240fcae608f50f97c04b7
+[I 15:15:56.738 NotebookApp] Replaying 3 buffered messages
+[I 15:17:35.492 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:19:35.117 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:27:35.201 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:51:35.305 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:53:35.106 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 16:35:35.269 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:05:44.103 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:799f3b293d2240fcae608f50f97c04b7
+[I 08:16:06.948 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 08:18:03.097 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:26:03.098 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 08:26:37.194 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 08:28:38.073 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[W 08:32:03.164 NotebookApp] Forbidden
+[W 08:32:03.166 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358702 (::1) 60.69ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:32:03.213 NotebookApp] Forbidden
+[W 08:32:03.213 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.19ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:34:03.054 NotebookApp] Forbidden
+[W 08:34:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358703 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:34:03.069 NotebookApp] Forbidden
+[W 08:34:03.069 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.72ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:34:48.672 NotebookApp] Forbidden
+[W 08:34:48.672 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358704 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:34:48.700 NotebookApp] Forbidden
+[W 08:34:48.700 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.33ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:36:03.055 NotebookApp] Forbidden
+[W 08:36:03.055 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358705 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:36:03.076 NotebookApp] Forbidden
+[W 08:36:03.077 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.31ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:38:03.055 NotebookApp] Forbidden
+[W 08:38:03.055 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358706 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:38:03.076 NotebookApp] Forbidden
+[W 08:38:03.076 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.94ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[I 08:38:43.951 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:9b2db8df9d2b4e58966de1048cd6d83b
+[W 08:38:43.957 NotebookApp] Forbidden
+[W 08:38:43.957 NotebookApp] 403 POST /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/restart (::1) 0.52ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:38:44.034 NotebookApp] Forbidden
+[W 08:38:44.034 NotebookApp] 403 DELETE /api/sessions/932fde6b-ace3-4f50-8072-021aab5012c6 (::1) 56.88ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:38:44.045 NotebookApp] Forbidden
+[W 08:38:44.045 NotebookApp] 403 POST /api/sessions (::1) 0.43ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:38:47.919 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:38:47.923 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 4.98ms referer=None
+[W 08:38:49.962 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:38:49.962 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.40ms referer=None
+[W 08:38:54.003 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:38:54.003 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.41ms referer=None
+[W 08:39:02.039 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:39:02.040 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.67ms referer=None
+[W 08:39:18.071 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:39:18.072 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.64ms referer=None
+[W 08:39:50.102 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:39:50.103 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 2.08ms referer=None
+[W 08:40:03.054 NotebookApp] Forbidden
+[W 08:40:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358707 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:40:03.083 NotebookApp] Forbidden
+[W 08:40:03.083 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 8.92ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:40:54.136 NotebookApp] Couldn't authenticate WebSocket connection
+[W 08:40:54.136 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.67ms referer=None
+[W 08:42:03.055 NotebookApp] Forbidden
+[W 08:42:03.055 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358708 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:42:03.077 NotebookApp] Forbidden
+[W 08:42:03.077 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.93ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:44:03.055 NotebookApp] Forbidden
+[W 08:44:03.056 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358709 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:44:03.077 NotebookApp] Forbidden
+[W 08:44:03.077 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.05ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:46:03.054 NotebookApp] Forbidden
+[W 08:46:03.055 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358710 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:46:03.076 NotebookApp] Forbidden
+[W 08:46:03.076 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.38ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:48:03.054 NotebookApp] Forbidden
+[W 08:48:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358711 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:48:03.074 NotebookApp] Forbidden
+[W 08:48:03.074 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.39ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:50:03.063 NotebookApp] Forbidden
+[W 08:50:03.063 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358712 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:50:03.098 NotebookApp] Forbidden
+[W 08:50:03.098 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.56ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:52:03.060 NotebookApp] Forbidden
+[W 08:52:03.060 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358713 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:52:03.094 NotebookApp] Forbidden
+[W 08:52:03.094 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.88ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:54:03.054 NotebookApp] Forbidden
+[W 08:54:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358714 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:54:03.073 NotebookApp] Forbidden
+[W 08:54:03.073 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.90ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:56:03.054 NotebookApp] Forbidden
+[W 08:56:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358715 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:56:03.077 NotebookApp] Forbidden
+[W 08:56:03.077 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.78ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:58:03.056 NotebookApp] Forbidden
+[W 08:58:03.056 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358716 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 08:58:03.077 NotebookApp] Forbidden
+[W 08:58:03.077 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.99ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:00:03.059 NotebookApp] Forbidden
+[W 09:00:03.059 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358717 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:00:03.095 NotebookApp] Forbidden
+[W 09:00:03.095 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 13.14ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:02:03.053 NotebookApp] Forbidden
+[W 09:02:03.053 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358718 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:02:03.079 NotebookApp] Forbidden
+[W 09:02:03.079 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.66ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:04:03.057 NotebookApp] Forbidden
+[W 09:04:03.058 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358719 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:04:03.082 NotebookApp] Forbidden
+[W 09:04:03.082 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.86ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:06:03.056 NotebookApp] Forbidden
+[W 09:06:03.056 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358720 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:06:03.081 NotebookApp] Forbidden
+[W 09:06:03.081 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.24ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:08:03.075 NotebookApp] Forbidden
+[W 09:08:03.075 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358721 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:08:03.111 NotebookApp] Forbidden
+[W 09:08:03.111 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.19ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:10:03.062 NotebookApp] Forbidden
+[W 09:10:03.062 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358722 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:10:03.089 NotebookApp] Forbidden
+[W 09:10:03.089 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.36ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:12:03.053 NotebookApp] Forbidden
+[W 09:12:03.053 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358723 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:12:03.076 NotebookApp] Forbidden
+[W 09:12:03.076 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 5.81ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:14:03.054 NotebookApp] Forbidden
+[W 09:14:03.054 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358724 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:14:03.075 NotebookApp] Forbidden
+[W 09:14:03.075 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.47ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:16:03.067 NotebookApp] Forbidden
+[W 09:16:03.067 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358725 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:16:03.096 NotebookApp] Forbidden
+[W 09:16:03.096 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.89ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:18:03.052 NotebookApp] Forbidden
+[W 09:18:03.053 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358726 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:18:03.073 NotebookApp] Forbidden
+[W 09:18:03.074 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.26ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:20:03.062 NotebookApp] Forbidden
+[W 09:20:03.062 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358727 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:20:03.100 NotebookApp] Forbidden
+[W 09:20:03.100 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.88ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:22:03.060 NotebookApp] Forbidden
+[W 09:22:03.061 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358728 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:22:03.085 NotebookApp] Forbidden
+[W 09:22:03.085 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 6.94ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:24:03.063 NotebookApp] Forbidden
+[W 09:24:03.064 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358729 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:24:03.102 NotebookApp] Forbidden
+[W 09:24:03.102 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.56ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:26:03.055 NotebookApp] Forbidden
+[W 09:26:03.055 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358730 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:26:03.087 NotebookApp] Forbidden
+[W 09:26:03.087 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.08ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:28:03.061 NotebookApp] Forbidden
+[W 09:28:03.061 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358731 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:28:03.088 NotebookApp] Forbidden
+[W 09:28:03.088 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 4.42ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:30:03.059 NotebookApp] Forbidden
+[W 09:30:03.059 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358732 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:30:03.084 NotebookApp] Forbidden
+[W 09:30:03.084 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.96ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:32:03.060 NotebookApp] Forbidden
+[W 09:32:03.060 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358733 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:32:03.095 NotebookApp] Forbidden
+[W 09:32:03.095 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.13ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:34:03.061 NotebookApp] Forbidden
+[W 09:34:03.061 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358734 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:34:03.095 NotebookApp] Forbidden
+[W 09:34:03.095 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.40ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:36:03.064 NotebookApp] Forbidden
+[W 09:36:03.065 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358735 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:36:03.102 NotebookApp] Forbidden
+[W 09:36:03.102 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.88ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:38:03.062 NotebookApp] Forbidden
+[W 09:38:03.062 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358736 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:38:03.083 NotebookApp] Forbidden
+[W 09:38:03.083 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.57ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:40:03.063 NotebookApp] Forbidden
+[W 09:40:03.063 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358737 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:40:03.101 NotebookApp] Forbidden
+[W 09:40:03.101 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 5.18ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:42:03.067 NotebookApp] Forbidden
+[W 09:42:03.068 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358738 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:42:03.109 NotebookApp] Forbidden
+[W 09:42:03.109 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.39ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:44:03.066 NotebookApp] Forbidden
+[W 09:44:03.066 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358739 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:44:03.103 NotebookApp] Forbidden
+[W 09:44:03.103 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.09ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:46:03.057 NotebookApp] Forbidden
+[W 09:46:03.057 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358740 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:46:03.089 NotebookApp] Forbidden
+[W 09:46:03.089 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.48ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:48:03.057 NotebookApp] Forbidden
+[W 09:48:03.057 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358741 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:48:03.078 NotebookApp] Forbidden
+[W 09:48:03.078 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.51ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:50:03.070 NotebookApp] Forbidden
+[W 09:50:03.070 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358742 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:50:03.109 NotebookApp] Forbidden
+[W 09:50:03.110 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.68ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:52:03.057 NotebookApp] Forbidden
+[W 09:52:03.057 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358743 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:52:03.097 NotebookApp] Forbidden
+[W 09:52:03.098 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 19.57ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:54:03.061 NotebookApp] Forbidden
+[W 09:54:03.061 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358744 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:54:03.097 NotebookApp] Forbidden
+[W 09:54:03.097 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.95ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:56:03.058 NotebookApp] Forbidden
+[W 09:56:03.059 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358745 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:56:03.103 NotebookApp] Forbidden
+[W 09:56:03.103 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.12ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:57:58.543 NotebookApp] Couldn't authenticate WebSocket connection
+[W 09:57:58.544 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.73ms referer=None
+[W 09:58:03.056 NotebookApp] Forbidden
+[W 09:58:03.056 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358746 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:58:03.085 NotebookApp] Forbidden
+[W 09:58:03.086 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 1.29ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:59:44.444 NotebookApp] Couldn't authenticate WebSocket connection
+[W 09:59:44.444 NotebookApp] 403 GET /api/kernels/e41a882e-cba4-4535-b28e-c548691990d3/channels?session_id=9b2db8df9d2b4e58966de1048cd6d83b (::1) 1.69ms referer=None
+[W 09:59:51.570 NotebookApp] Forbidden
+[W 09:59:51.570 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358747 (::1) 0.55ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 09:59:51.588 NotebookApp] Forbidden
+[W 09:59:51.588 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 2.75ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 10:00:03.061 NotebookApp] Forbidden
+[W 10:00:03.062 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358748 (::1) 0.53ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 10:00:03.100 NotebookApp] Forbidden
+[W 10:00:03.100 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 0.97ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 10:00:21.890 NotebookApp] Forbidden
+[W 10:00:21.891 NotebookApp] 403 GET /api/contents/MTP_from_GAP.ipynb?content=0&_=1618557358749 (::1) 0.54ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[I 10:00:21.955 NotebookApp] 302 GET /notebooks/MTP_from_GAP.ipynb (::1) 57.60ms
+[W 10:00:21.959 NotebookApp] Forbidden
+[W 10:00:21.959 NotebookApp] 403 PUT /api/contents/MTP_from_GAP.ipynb (::1) 3.68ms referer=http://localhost:8890/notebooks/MTP_from_GAP.ipynb
+[W 10:00:29.969 NotebookApp] 401 POST /login?next=%2Fnotebooks%2FMTP_from_GAP.ipynb (::1) 56.24ms referer=http://localhost:8890/login?next=%2Fnotebooks%2FMTP_from_GAP.ipynb
+[I 10:01:30.671 NotebookApp] 302 POST /login?next=%2Fnotebooks%2FMTP_from_GAP.ipynb (::1) 57.27ms
+[I 10:02:54.280 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 10:02:59.385 NotebookApp] Kernel restarted: e41a882e-cba4-4535-b28e-c548691990d3
+[I 10:02:59.419 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 10:03:33.853 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:05:33.784 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:06:50.823 NotebookApp] Kernel interrupted: e41a882e-cba4-4535-b28e-c548691990d3
+[I 10:07:33.774 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:09:33.782 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:11:33.774 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:13:33.774 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:35:33.848 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:37:33.788 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:39:33.799 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:41:33.806 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 19:07:47.799 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 19:07:52.803 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[W 19:07:59.419 NotebookApp] WebSocket ping timeout after 119993 ms.
+[I 19:08:04.422 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[W 19:08:08.017 NotebookApp] WebSocket ping timeout after 119906 ms.
+[I 19:08:13.020 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 19:11:56.830 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 19:11:57.081 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 19:11:57.108 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 22:17:30.800 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 22:19:30.807 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 22:21:30.775 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 22:23:30.784 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 22:25:30.779 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 22:27:30.784 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 09:34:26.574 NotebookApp] Creating new notebook in 
+[I 09:34:28.312 NotebookApp] Kernel started: dbda7582-d17b-4a28-84aa-834c96b4efb4, name: python3
+[I 09:35:45.422 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:36:29.067 NotebookApp] Saving file at /Untitled.ipynb
+[I 09:37:45.779 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:38:28.160 NotebookApp] Saving file at /Untitled.ipynb
+[I 10:02:29.052 NotebookApp] Saving file at /Untitled.ipynb
+[I 10:03:45.317 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:16:28.158 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:18:28.161 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:20:28.170 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:22:28.178 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:26:28.165 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:28:28.172 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:30:28.152 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:32:28.150 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:34:28.165 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:36:28.198 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:38:28.155 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:40:28.182 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:42:28.161 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:44:28.186 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 13:36:28.194 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 13:38:28.159 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 13:40:28.186 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 13:42:28.191 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 14:52:28.192 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 14:54:28.184 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 14:56:28.185 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 14:58:28.184 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:00:28.192 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:02:28.201 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:04:28.184 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:13:45.392 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:15:45.207 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:17:45.236 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:19:45.234 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:23:45.210 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:25:45.297 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:27:45.413 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:29:45.365 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:31:45.420 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:33:45.250 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:35:45.334 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:37:45.244 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:39:47.139 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 15:40:28.191 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:42:28.190 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:44:28.195 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:46:28.227 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 16:11:40.572 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 16:20:28.193 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 16:22:28.201 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 16:24:28.209 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 18:18:28.209 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[W 05:01:56.832 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 05:01:57.083 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 05:01:57.109 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 05:01:58.877 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 05:02:01.842 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 05:02:02.086 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 05:02:02.111 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 05:02:03.880 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:c5cd9bae2c6146a88c71fbb9def15420
+[I 05:03:59.589 NotebookApp] Restoring connection for dbda7582-d17b-4a28-84aa-834c96b4efb4:c5cd9bae2c6146a88c71fbb9def15420
+[I 05:04:00.168 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 05:04:00.369 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 05:04:00.394 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 10:19:45.756 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:38:53.566 NotebookApp] Creating new notebook in 
+[I 10:38:55.824 NotebookApp] Kernel started: 9e086eed-d79c-489c-9f13-781b5d70a536, name: python3
+[I 10:40:56.074 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:41:45.536 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:43:45.630 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:45:45.436 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:47:45.775 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:49:45.380 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:51:45.336 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:53:45.415 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:55:45.406 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 10:57:45.443 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:02:35.698 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel c50a55a0-8c59-4edb-88f6-8da0a40bf7ce restarted
+[I 14:03:26.041 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 14:03:26.068 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 14:03:46.086 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:05:45.497 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:17:45.694 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:19:45.438 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:21:45.429 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:33:45.330 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:15:45.409 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 19:17:45.238 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:57:30.804 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 09:57:46.056 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:59:30.791 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:01:30.789 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:43:33.043 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:6091cb84d43d416283493bcace5e20bb
+[I 11:43:33.749 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:c5cd9bae2c6146a88c71fbb9def15420
+[I 11:43:33.764 NotebookApp] Starting buffering for 9e086eed-d79c-489c-9f13-781b5d70a536:5f6bd96103194b388293cada2b593991
+[I 13:27:27.208 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:07:27.234 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:09:27.214 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:11:28.092 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:13:27.214 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:15:27.205 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:17:27.250 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:19:27.217 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:21:27.221 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+usage: ase [-h] [--version] [-T]
+           {help,info,test,gui,db,run,band-structure,build,dimensionality,eos,ulm,find,nebplot,nomad-upload,nomad-get,convert,reciprocal,completion,diff,exec}
+           ...
+ase: error: TclError: no display name and no $DISPLAY environment variable
+To get a full traceback, use: ase -T gui ...
+[I 16:23:27.221 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:25:27.209 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:29:22.870 NotebookApp] Starting buffering for 9e086eed-d79c-489c-9f13-781b5d70a536:157888b361eb416fb8f50104757eec82
+[I 16:29:23.586 NotebookApp] Kernel restarted: 9e086eed-d79c-489c-9f13-781b5d70a536
+[I 16:29:23.605 NotebookApp] Restoring connection for 9e086eed-d79c-489c-9f13-781b5d70a536:157888b361eb416fb8f50104757eec82
+[I 16:29:23.605 NotebookApp] Replaying 3 buffered messages
+[I 16:29:27.203 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 16:29:50.465 NotebookApp] 404 GET /static/nglview-js-widgets.js?v=20210316221939 (::1) 72.40ms referer=http://localhost:8890/notebooks/GAP_to_MTP_rss.ipynb
+[I 16:31:27.221 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:33:27.203 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 2021-04-21 16:35:45.708 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2021-04-21 16:35:45.708 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2021-04-21 16:35:45.708 LabApp] 'port' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[I 2021-04-21 16:35:45.713 LabApp] JupyterLab extension loaded from /u/vld/hert5155/miniconda3/envs/Q/lib/python3.8/site-packages/jupyterlab
+[I 2021-04-21 16:35:45.713 LabApp] JupyterLab application directory is /home/tridymite/vld/hert5155/miniconda3/envs/Q/share/jupyter/lab
+[I 16:35:45.716 NotebookApp] Serving notebooks from local directory: /home/tridymite/vld/hert5155/jup_remote/Ge_analysis
+[I 16:35:45.716 NotebookApp] Jupyter Notebook 6.1.4 is running at:
+[I 16:35:45.716 NotebookApp] http://localhost:8891/?token=60100333647e25a06ae80c086a8a6941998bad33e541922b
+[I 16:35:45.716 NotebookApp]  or http://127.0.0.1:8891/?token=60100333647e25a06ae80c086a8a6941998bad33e541922b
+[I 16:35:45.716 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 16:35:45.718 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/tridymite/vld/hert5155/.local/share/jupyter/runtime/nbserver-6307-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8891/?token=60100333647e25a06ae80c086a8a6941998bad33e541922b
+     or http://127.0.0.1:8891/?token=60100333647e25a06ae80c086a8a6941998bad33e541922b
+[I 16:39:54.117 NotebookApp] 302 GET /?token=60100333647e25a06ae80c086a8a6941998bad33e541922b (::1) 1.33ms
+[I 16:40:26.885 NotebookApp] Kernel started: 9b6e2a59-33c7-4952-aa70-1f7540daee3a, name: python3
+[I 16:40:34.511 NotebookApp] Starting buffering for 9e086eed-d79c-489c-9f13-781b5d70a536:157888b361eb416fb8f50104757eec82
+[W 16:41:56.923 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1): No such file or directory: a4c733ec4baef9ad3896d4e34a8a5448.png
+[W 16:41:56.925 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1) 4.01ms referer=http://localhost:8890/notebooks/GAP_to_MTP_rss.ipynb
+[I 16:41:59.133 NotebookApp] Starting buffering for 9e086eed-d79c-489c-9f13-781b5d70a536:71604f5f108d40a88e0fb35010a4ab1b
+[I 16:41:59.153 NotebookApp] Kernel shutdown: 9e086eed-d79c-489c-9f13-781b5d70a536
+[I 16:42:11.904 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:fba36154394d4ee38039c50d43787c9b
+[I 16:42:12.322 NotebookApp] Kernel restarted: 9b6e2a59-33c7-4952-aa70-1f7540daee3a
+[I 16:42:12.342 NotebookApp] Restoring connection for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:fba36154394d4ee38039c50d43787c9b
+[I 16:42:12.342 NotebookApp] Replaying 3 buffered messages
+[I 16:42:26.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:44:26.925 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:48:22.156 NotebookApp] Saving file at /mtp.py
+[I 16:49:03.523 NotebookApp] Saving file at /mtp.py
+[I 16:50:27.097 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:58:18.775 NotebookApp] Saving file at /mtp.py
+[I 16:58:26.921 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:00:27.059 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:01:50.457 NotebookApp] Saving file at /mtp.py
+[I 17:02:23.368 NotebookApp] Saving file at /mtp.py
+[I 17:02:26.908 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:02:40.933 NotebookApp] Saving file at /mtp.py
+[W 17:03:04.407 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1): No such file or directory: a4c733ec4baef9ad3896d4e34a8a5448.png
+[W 17:03:04.421 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1) 16.33ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 17:04:26.905 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:06:26.918 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:08:26.920 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:12:26.897 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:14:26.922 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:16:26.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 17:17:22.934 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1): No such file or directory: 73a1fd052c9d84c0ee0bea3ee85892ed.png
+[W 17:17:22.935 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1) 1.17ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 17:18:26.905 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:20:26.912 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:22:26.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:24:26.925 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 08:36:26.956 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 08:38:26.932 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 08:40:26.918 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 08:42:26.928 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:32:26.922 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:56:26.915 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:58:26.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:00:26.934 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:02:26.917 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:04:26.918 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:06:26.908 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 19:45:21.775 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 19:45:24.330 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 19:45:26.777 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:2508cb888aa04614b411e1411863010a
+[I 19:45:29.333 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[W 19:45:30.369 NotebookApp] WebSocket ping timeout after 119993 ms.
+[W 19:45:30.394 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 19:45:35.372 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 19:45:35.396 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[W 19:45:42.343 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 19:45:47.348 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:fba36154394d4ee38039c50d43787c9b
+[I 20:12:22.564 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:2508cb888aa04614b411e1411863010a
+[I 20:12:26.211 NotebookApp] Restoring connection for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 20:12:27.090 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 20:12:27.101 NotebookApp] Restoring connection for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 20:12:29.581 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 20:12:30.574 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 20:13:43.787 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 20:14:53.741 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:15:44.602 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 20:18:53.749 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:20:53.706 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:22:53.708 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:24:53.706 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:26:53.716 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:28:53.710 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:44:53.734 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:46:53.735 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:48:53.748 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:52:53.704 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:54:53.710 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:56:53.703 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 20:58:53.704 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 21:00:54.568 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 21:01:43.733 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 21:03:43.734 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 21:05:43.730 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[W 21:42:27.103 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 21:42:29.583 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 21:42:30.576 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 21:42:32.105 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 21:42:34.585 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 21:42:35.578 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[W 21:42:52.565 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 21:42:57.567 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:2508cb888aa04614b411e1411863010a
+[I 09:57:32.538 NotebookApp] Restoring connection for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 09:57:56.021 NotebookApp] Restoring connection for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 09:58:03.456 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 10:01:56.186 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:03:56.193 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:05:57.094 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:12:46.191 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:14:46.213 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:16:46.202 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:18:46.184 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:20:46.209 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:22:46.215 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:24:46.193 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:26:46.195 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:28:46.205 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:30:46.204 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:32:46.193 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:34:46.221 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:36:46.226 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:38:46.210 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:40:46.242 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:42:46.208 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:44:46.226 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:46:46.218 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:48:46.231 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:50:46.246 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:52:46.210 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:54:46.235 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:56:46.227 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 10:58:46.233 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:00:46.233 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:02:46.213 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:04:46.205 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:06:46.377 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:08:47.094 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:12:46.284 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:14:46.235 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:16:47.078 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:18:46.207 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:20:46.216 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:22:46.244 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 11:24:32.734 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:2508cb888aa04614b411e1411863010a
+[I 11:26:44.785 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:28:44.165 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:30:44.153 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 11:35:56.160 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:43:56.162 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:45:56.155 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:47:56.166 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:49:53.648 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:49:56.232 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:51:56.166 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:53:56.192 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:55:56.178 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:57:56.173 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:59:56.166 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:01:56.181 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:03:56.177 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:05:56.159 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:13:56.165 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:15:56.480 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:24:44.217 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:26:44.316 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:28:44.289 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:30:44.408 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:32:44.335 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:34:44.276 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:36:44.243 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:38:44.383 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:40:44.420 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:42:44.252 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:44:44.294 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:46:44.274 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:48:44.452 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:50:44.248 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:52:38.174 NotebookApp] Restoring connection for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:fba36154394d4ee38039c50d43787c9b
+[I 14:52:44.797 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 14:57:48.925 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:59:48.902 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:01:48.891 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:03:48.894 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:05:48.907 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:07:48.909 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:17:48.926 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:19:48.893 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:21:48.894 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:23:48.890 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:25:49.042 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:26:46.223 NotebookApp] Saving file at /GAP_to_MTP_SOAPsearch.ipynb
+[I 15:27:49.024 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:33:48.897 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:35:48.883 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:37:48.889 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:39:48.899 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:43:48.915 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:45:48.904 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:49:48.893 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:51:48.914 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:53:48.891 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:55:48.910 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:57:48.892 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:59:48.889 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:01:48.884 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:03:48.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:04:06.407 NotebookApp] Creating new directory in 
+[I 16:04:37.459 NotebookApp] Creating new notebook in /RMC
+[I 16:04:39.086 NotebookApp] Kernel started: 76989c6c-01fb-40e8-a8fb-811bc8e33115, name: python3
+[I 16:06:39.022 NotebookApp] Saving file at /RMC/RMC_scratch.ipynb
+[I 16:15:48.913 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:27:12.999 NotebookApp] Starting buffering for 76989c6c-01fb-40e8-a8fb-811bc8e33115:fecb346306ea4c2d91c10d7e0ae47271
+[W 16:27:13.839 NotebookApp] 404 GET /api/contents/RMC?type=directory&_=1619019594679 (::1): No such file or directory: RMC
+[W 16:27:13.840 NotebookApp] No such file or directory: RMC
+[W 16:27:13.841 NotebookApp] 404 GET /api/contents/RMC?type=directory&_=1619019594679 (::1) 2.93ms referer=http://localhost:8891/tree/RMC
+[I 17:05:48.906 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:07:48.912 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:09:48.925 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:11:48.910 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:13:48.892 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:15:48.911 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:17:48.912 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 07:48:52.831 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 07:50:52.764 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 07:52:52.783 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:14:52.781 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:16:52.801 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:18:52.779 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 09:24:45.405 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 07:26:04.360 NotebookApp] Notebook Si_myDB_reg_testing.ipynb is not trusted
+[I 10:43:54.429 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:2508cb888aa04614b411e1411863010a
+[I 10:43:54.579 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:cf334aae89974e638d9b229fa3a38bd0
+[I 10:45:26.385 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:fba36154394d4ee38039c50d43787c9b
+[I 10:56:49.432 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:ec26e51e54c9472186aac9bfbb8aa0c4
+[I 12:18:05.590 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:18:33.524 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:22:27.684 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:23:03.467 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:28:06.147 NotebookApp] Saving file at /Ge_analysis.py
+[W 12:36:18.437 NotebookApp] 404 GET /static/edit/js/main.min.js.map (::1) 3.94ms referer=None
+[I 12:38:33.345 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:39:33.466 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:40:03.906 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:41:07.844 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:42:22.395 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:42:41.374 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:49:56.243 NotebookApp] Saving file at /Ge_analysis.py
+[I 12:52:48.033 NotebookApp] Saving file at /Ge_analysis.py
+[I 13:01:34.153 NotebookApp] Saving file at /Ge_analysis.py
+[I 13:06:33.939 NotebookApp] Saving file at /Ge_analysis.py
+[I 13:29:26.616 NotebookApp] Saving file at /Ge_analysis.py
+[W 04:01:37.824 NotebookApp] WebSocket ping timeout after 119993 ms.
+[I 04:01:42.885 NotebookApp] Starting buffering for 2354d462-179b-4f89-b754-3feed86381b5:637cb214cfb84996b008329d700e8c80
+[W 04:01:54.169 NotebookApp] WebSocket ping timeout after 119996 ms.
+[W 04:01:56.023 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 04:02:01.026 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:f5cb99af26654a228feff5ed3286f71f
+[I 04:03:39.509 NotebookApp] Restoring connection for 2354d462-179b-4f89-b754-3feed86381b5:637cb214cfb84996b008329d700e8c80
+[W 09:40:54.213 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1): No such file or directory: a4c733ec4baef9ad3896d4e34a8a5448.png
+[W 09:40:54.219 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1) 7.53ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 09:42:51.222 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:50:51.180 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:52:51.169 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:54:51.152 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:56:51.162 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 09:58:51.170 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:00:51.145 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 10:00:52.020 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1): No such file or directory: 73a1fd052c9d84c0ee0bea3ee85892ed.png
+[W 10:00:52.020 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1) 1.25ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 10:02:51.183 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:04:51.174 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:06:51.152 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:08:51.140 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:10:51.159 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:24:52.040 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:48:51.269 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:50:51.159 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:52:51.173 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:54:51.186 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:56:51.181 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:58:51.185 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:00:51.158 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:02:51.185 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 11:02:53.952 NotebookApp] 404 GET /notebooks/971364734f3b603e5d363a2634898b42.png (::1): No such file or directory: 971364734f3b603e5d363a2634898b42.png
+[W 11:02:53.955 NotebookApp] 404 GET /notebooks/971364734f3b603e5d363a2634898b42.png (::1) 59.76ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[W 11:03:03.147 NotebookApp] 404 GET /notebooks/bf27228a7d3957983584fa7698121ea1.png (::1): No such file or directory: bf27228a7d3957983584fa7698121ea1.png
+[W 11:03:03.148 NotebookApp] 404 GET /notebooks/bf27228a7d3957983584fa7698121ea1.png (::1) 1.13ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 11:04:51.234 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:06:51.181 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:08:51.195 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:10:51.159 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:12:51.232 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:14:51.271 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:16:52.096 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:18:52.115 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:36:51.287 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:38:51.397 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:40:51.323 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:52:30.857 NotebookApp] Saving file at /Ge_analysis.py
+[I 11:52:52.888 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:53:05.328 NotebookApp] Saving file at /Ge_analysis.py
+[I 11:54:51.168 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 12:25:26.182 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:40bea442cb974bce939ffed59c36f4c4
+[W 12:25:45.688 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1): No such file or directory: a4c733ec4baef9ad3896d4e34a8a5448.png
+[W 12:25:45.688 NotebookApp] 404 GET /notebooks/a4c733ec4baef9ad3896d4e34a8a5448.png (::1) 1.40ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 12:27:32.657 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 12:30:37.078 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 12:41:38.363 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 12:52:37.477 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 12:59:58.745 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1): No such file or directory: 73a1fd052c9d84c0ee0bea3ee85892ed.png
+[W 12:59:58.746 NotebookApp] 404 GET /notebooks/73a1fd052c9d84c0ee0bea3ee85892ed.png (::1) 1.18ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 13:03:44.211 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 13:04:42.847 NotebookApp] 404 GET /notebooks/971364734f3b603e5d363a2634898b42.png (::1): No such file or directory: 971364734f3b603e5d363a2634898b42.png
+[W 13:04:42.847 NotebookApp] 404 GET /notebooks/971364734f3b603e5d363a2634898b42.png (::1) 1.10ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 13:14:38.022 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 13:25:37.414 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 13:36:37.352 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 13:47:37.428 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 13:58:37.347 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 14:01:47.802 NotebookApp] 404 GET /notebooks/bf27228a7d3957983584fa7698121ea1.png (::1): No such file or directory: bf27228a7d3957983584fa7698121ea1.png
+[W 14:01:47.803 NotebookApp] 404 GET /notebooks/bf27228a7d3957983584fa7698121ea1.png (::1) 1.16ms referer=http://localhost:8891/notebooks/GAP_to_MTP_rss.ipynb
+[I 14:09:37.296 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:20:37.325 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:31:37.375 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:42:37.344 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:44:42.713 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:c36d86666c4048218fc528481827e14c
+[I 14:47:27.617 NotebookApp] Restoring connection for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:c36d86666c4048218fc528481827e14c
+[I 14:51:46.095 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 14:53:37.425 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:04:37.398 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:15:37.323 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 15:59:37.416 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:10:37.558 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:21:37.320 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:32:37.736 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:43:37.392 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 16:54:37.385 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 17:00:29.492 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:02:28.820 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 17:04:28.123 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 09:24:12.321 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 09:26:12.286 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:10:12.276 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:12:12.220 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 10:19:37.452 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 10:52:37.403 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[I 11:03:37.450 NotebookApp] Saving file at /GAP_to_MTP_rss.ipynb
+[W 12:47:35.557 NotebookApp] 404 GET /static/notebook/js/main.min.js.map (::1) 5.00ms referer=None
+[I 12:48:12.249 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:50:12.238 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:52:12.309 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:26:12.261 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:28:12.338 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:29:01.923 NotebookApp] Creating new notebook in 
+[I 13:29:05.193 NotebookApp] Kernel started: afc764cd-f61c-4d66-b46e-94c84698718e, name: python3
+[I 13:30:12.264 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:30:29.814 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:31:05.201 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:33:06.083 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:34:29.635 NotebookApp] Saving file at /MTP_from_GAP_PQ.ipynb
+[I 13:35:05.200 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:37:05.158 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:39:05.166 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:41:05.140 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:05:05.208 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:09:05.184 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:11:05.191 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:13:05.255 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:15:05.150 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:17:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:19:05.205 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:21:05.160 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:23:05.186 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:25:05.336 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:27:05.179 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:29:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:31:05.222 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:33:05.163 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:35:05.199 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:37:05.174 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:39:05.151 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:41:05.186 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:47:05.174 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:49:05.180 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:51:05.159 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:53:05.309 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:55:05.177 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:57:05.196 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 15:05:05.178 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 15:07:06.924 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:09:37.139 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:12:07.150 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:17:05.159 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 15:19:06.182 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 15:23:06.514 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:09:05.221 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:11:05.185 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:13:05.184 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:15:05.197 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:17:05.149 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:19:05.154 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:21:05.182 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:23:05.322 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:25:05.256 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:27:05.201 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:29:05.186 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:31:05.208 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:33:05.303 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:35:05.178 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:37:05.207 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:39:05.206 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:41:05.271 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:03:05.162 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:05:05.193 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:19:05.199 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:21:05.190 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:23:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:25:05.202 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:29:05.157 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:31:05.176 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:33:05.217 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:35:05.232 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:37:05.244 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:39:05.181 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:41:05.162 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:43:05.237 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:45:06.051 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:47:05.193 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:49:05.207 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:51:05.183 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 19:53:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 20:05:06.086 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:19:06.110 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:21:05.161 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:23:05.158 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:25:05.179 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:27:05.166 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:41:05.156 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:43:05.175 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:51:05.176 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:53:05.152 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:55:05.199 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:57:05.172 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 08:59:05.189 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:57:05.170 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:59:05.178 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:01:05.180 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:03:05.168 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:05:05.196 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:07:05.181 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:09:05.208 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:11:05.177 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:13:05.197 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:15:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:17:05.193 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:19:05.208 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:21:05.189 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:23:05.212 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:25:05.192 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:27:05.166 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:29:37.128 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:32:07.121 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:42:07.121 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:49:37.122 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:51:05.193 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:52:08.023 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:53:06.051 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:54:38.027 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:55:06.066 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:57:07.133 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 14:59:37.127 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:04:37.135 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:07:07.117 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:09:37.120 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:12:07.122 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:14:37.126 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:17:07.114 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:19:37.127 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:22:07.162 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:34:37.144 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:37:07.139 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:39:37.135 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:42:07.145 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:44:37.144 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 15:47:07.132 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:04:37.133 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:07:07.144 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:09:37.156 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:12:07.131 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:14:37.121 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:17:07.118 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:29:37.130 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:19:52.153 NotebookApp] Creating new notebook in 
+[I 16:19:54.257 NotebookApp] Kernel started: 9705d3ad-a976-4460-826e-8a0bfa4be78c, name: python3
+[I 16:21:53.975 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:23:53.981 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:25:53.970 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:27:53.961 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:29:37.121 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:29:54.077 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:32:07.119 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:33:53.965 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:34:38.025 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:35:54.019 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:37:07.137 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:39:37.114 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:39:54.179 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:41:53.970 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:42:08.027 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:43:53.975 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:45:53.973 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:47:53.985 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:49:53.971 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:51:54.027 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:53:53.960 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:55:53.965 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:57:53.965 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:59:53.977 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 17:01:54.048 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 17:03:53.964 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 17:05:53.978 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 17:13:53.968 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:03:53.970 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:05:53.978 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:07:53.982 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:09:54.009 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:11:53.980 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:13:53.967 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:15:53.983 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:17:53.969 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:19:53.974 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:25:54.024 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:26:31.719 NotebookApp] Saving file at /mtp.py
+[I 18:57:53.984 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 18:58:55.370 NotebookApp] Saving file at /mtp.py
+[I 18:59:38.037 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 18:59:53.966 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:01:53.965 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:03:53.972 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:05:53.974 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:07:54.002 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:09:53.968 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:11:53.970 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:13:54.094 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:19:37.132 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:22:07.138 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:24:37.159 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:27:07.113 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:29:37.112 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:32:07.116 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:37:08.023 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:37:54.043 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 19:39:37.112 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:42:07.113 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:44:37.136 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:49:37.115 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 19:52:07.115 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 20:03:54.036 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 07:13:53.992 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 07:15:53.992 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:45:54.000 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:47:53.993 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:49:53.983 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:51:53.971 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:53:53.990 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:55:53.994 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:57:53.974 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 09:59:53.974 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:01:53.986 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:03:53.992 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:15:53.997 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:29:37.171 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:32:07.133 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:39:37.125 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:41:54.067 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:42:08.027 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 10:43:53.975 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:45:54.017 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 10:47:05.184 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 10:49:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 10:51:05.181 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 10:53:05.173 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 10:55:05.158 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 10:57:05.166 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:01:05.177 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:03:05.159 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:05:05.162 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:07:05.174 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:09:05.185 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:11:05.171 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:13:05.163 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:15:05.163 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:17:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:19:05.181 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:21:05.182 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 11:32:07.135 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:34:37.115 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:37:07.117 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:39:37.113 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:42:07.136 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:15:54.041 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:27:07.119 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:29:32.108 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:9bf2e919706147b78340a7056b26af6a
+[I 12:29:37.158 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:31:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:33:41.495 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:35:53.980 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:37:53.994 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:39:54.025 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:41:53.971 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:43:53.972 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:45:54.019 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:49:53.979 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:51:42.038 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:51:54.035 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 12:52:08.754 NotebookApp] Saving file at /mtp.py
+[I 12:53:41.489 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:55:41.499 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:57:41.492 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:59:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:01:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:03:41.494 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:05:41.491 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:07:41.513 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:09:41.511 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:11:41.488 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:15:41.535 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:17:41.488 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:19:41.493 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:21:41.489 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:23:41.496 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:25:41.494 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:27:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:29:41.486 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:45:41.519 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:47:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:49:41.496 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:51:41.490 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:53:41.503 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:55:41.502 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:57:41.490 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:59:41.504 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:01:41.496 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:03:41.486 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:05:41.497 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:07:41.487 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:09:41.495 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:11:41.490 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:13:41.495 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:15:41.492 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:17:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:19:41.490 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:21:41.497 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:23:41.493 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:25:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:27:41.493 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:29:41.499 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:31:41.516 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:33:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:35:41.491 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:37:41.498 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:39:41.490 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:41:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:43:41.491 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:45:41.495 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:47:41.516 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:49:41.494 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:51:41.491 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:53:41.499 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:55:41.496 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:57:41.536 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:59:41.519 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:01:41.517 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:01:54.037 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 15:03:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:05:41.504 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:07:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:09:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:11:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:13:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:15:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:17:41.643 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:19:41.513 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:21:41.504 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:22:44.149 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:23:41.542 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:25:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:27:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:29:41.526 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:33:41.497 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:35:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:37:41.500 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:39:41.523 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:41:41.500 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:43:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:45:41.493 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:47:41.511 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:48:52.376 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:a1d65a27b7ec45068598f50c0b131c5a
+[I 15:48:57.540 NotebookApp] Kernel restarted: b96f3f94-7a31-44e2-ae4e-b792c3419de0
+[I 15:48:57.572 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:a1d65a27b7ec45068598f50c0b131c5a
+[I 15:48:57.572 NotebookApp] Replaying 3 buffered messages
+[I 15:49:41.553 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:51:41.556 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:53:41.522 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:55:41.497 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:56:36.244 NotebookApp] Kernel interrupted: b96f3f94-7a31-44e2-ae4e-b792c3419de0
+[I 15:57:41.515 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:59:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:01:41.529 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:03:07.748 NotebookApp] Kernel interrupted: b96f3f94-7a31-44e2-ae4e-b792c3419de0
+[I 16:03:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:03:51.630 NotebookApp] Kernel interrupted: b96f3f94-7a31-44e2-ae4e-b792c3419de0
+[I 16:05:41.621 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:07:41.578 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:09:42.041 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:09:53.995 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:11:42.034 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:11:53.984 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:13:53.974 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:15:53.982 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:17:53.986 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:19:53.980 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:21:53.984 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:23:53.981 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:25:53.980 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:27:53.983 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:29:53.993 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:31:54.020 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:33:41.503 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:33:54.034 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:35:41.503 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:37:42.037 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:39:42.061 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:39:53.976 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:41:42.070 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:41:53.975 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:43:42.060 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 16:43:53.986 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:45:53.990 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:47:54.136 NotebookApp] Saving file at /GAP_to_MTP_stress_test.ipynb
+[I 16:49:37.139 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:52:07.143 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:54:03.481 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:54:37.136 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:57:07.152 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 16:59:37.118 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:02:07.119 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:04:37.131 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:09:37.122 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 17:12:07.130 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[W 04:01:39.523 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 04:01:39.552 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 04:01:44.568 NotebookApp] Starting buffering for 2354d462-179b-4f89-b754-3feed86381b5:637cb214cfb84996b008329d700e8c80
+[W 04:01:47.313 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 04:01:52.319 NotebookApp] Starting buffering for dbda7582-d17b-4a28-84aa-834c96b4efb4:326f8e48c0a34302b954d8d48b9fe40a
+[W 04:01:54.830 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 04:01:57.549 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 04:01:57.573 NotebookApp] WebSocket ping timeout after 119994 ms.
+[W 04:01:57.626 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 04:01:59.835 NotebookApp] Starting buffering for 9705d3ad-a976-4460-826e-8a0bfa4be78c:06bfe601a0aa4032829c12085e5bb1fd
+[W 04:02:00.559 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 04:02:02.554 NotebookApp] Starting buffering for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:41916c1c765a458c803b317feb378a0c
+[I 04:02:02.575 NotebookApp] Starting buffering for b96f3f94-7a31-44e2-ae4e-b792c3419de0:a1d65a27b7ec45068598f50c0b131c5a
+[I 04:02:02.652 NotebookApp] Starting buffering for 9b6e2a59-33c7-4952-aa70-1f7540daee3a:c36d86666c4048218fc528481827e14c
+[I 04:02:05.563 NotebookApp] Starting buffering for e41a882e-cba4-4535-b28e-c548691990d3:31e49ecb09ec44148030c9844e7f062c
+[W 04:02:05.733 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 04:02:10.737 NotebookApp] Starting buffering for afc764cd-f61c-4d66-b46e-94c84698718e:6d5aba8e02b545448d908fe4dc5de1cf
+[I 04:05:42.064 NotebookApp] Restoring connection for b96f3f94-7a31-44e2-ae4e-b792c3419de0:a1d65a27b7ec45068598f50c0b131c5a
+[I 04:05:42.094 NotebookApp] Restoring connection for 9705d3ad-a976-4460-826e-8a0bfa4be78c:06bfe601a0aa4032829c12085e5bb1fd
+[I 04:05:42.129 NotebookApp] Restoring connection for c50a55a0-8c59-4edb-88f6-8da0a40bf7ce:41916c1c765a458c803b317feb378a0c
+[I 04:05:42.182 NotebookApp] Restoring connection for afc764cd-f61c-4d66-b46e-94c84698718e:6d5aba8e02b545448d908fe4dc5de1cf
+[I 04:05:42.263 NotebookApp] Restoring connection for dbda7582-d17b-4a28-84aa-834c96b4efb4:326f8e48c0a34302b954d8d48b9fe40a
+[I 04:05:42.320 NotebookApp] Restoring connection for 2354d462-179b-4f89-b754-3feed86381b5:637cb214cfb84996b008329d700e8c80
+[I 11:19:37.149 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:22:07.129 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:24:37.127 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:27:07.182 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:29:37.460 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:32:07.150 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:34:37.129 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:37:07.141 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:39:37.130 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:42:07.149 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:44:37.122 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:47:07.123 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:49:37.130 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:52:08.036 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 11:53:41.569 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 11:55:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:29:37.165 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:29:42.055 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:31:41.501 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:32:08.029 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 12:33:41.511 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:35:41.501 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:37:41.534 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:39:41.605 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:41:41.506 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:43:41.524 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:45:41.536 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:47:41.595 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:49:41.499 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:51:41.503 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:53:41.745 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:55:41.804 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:57:41.574 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 12:59:41.564 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:01:41.524 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:03:41.502 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:05:41.569 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:07:41.515 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:09:41.564 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:11:41.524 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:12:09.190 NotebookApp] Kernel interrupted: b96f3f94-7a31-44e2-ae4e-b792c3419de0
+[I 13:13:41.524 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:15:42.048 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:17:05.200 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:17:08.019 NotebookApp] Saving file at /MTP_from_GAP.ipynb
+[I 13:17:42.078 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:19:05.166 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:19:42.095 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:21:05.228 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:21:42.065 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:23:06.111 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:23:42.074 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:25:05.211 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:25:42.087 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:27:05.189 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:27:42.051 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:29:05.196 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:29:42.034 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:31:05.171 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:31:42.046 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:33:05.165 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:33:42.033 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:35:05.216 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:35:42.064 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:37:05.205 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:37:42.031 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:39:05.187 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:39:42.032 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:41:05.183 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:41:42.040 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:43:05.186 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:43:42.037 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:45:05.168 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:45:42.038 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:47:05.179 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:47:42.031 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:49:05.172 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:49:42.054 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:51:05.171 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:51:42.054 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:53:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:53:42.029 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:55:05.211 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:55:42.032 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:57:05.163 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:57:42.046 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 13:59:06.057 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 13:59:42.046 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:01:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:01:42.040 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:03:05.187 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:03:42.039 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:05:05.184 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:05:42.064 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:07:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:07:42.062 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:09:05.164 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:09:42.085 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:11:05.210 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:11:42.049 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:13:05.169 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:13:42.045 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:15:05.182 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:15:42.033 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:17:05.227 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:17:42.034 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:19:05.248 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:19:42.053 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:21:05.174 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:21:42.277 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:23:05.208 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:23:42.069 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:25:05.178 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:27:05.181 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:29:06.090 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 14:29:41.502 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:31:41.527 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:33:41.505 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:35:41.502 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:37:41.500 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:39:41.497 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:41:41.522 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:43:41.505 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:45:41.510 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:47:41.505 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:49:41.536 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:51:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:53:41.539 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:55:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:57:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 14:59:41.522 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:01:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:03:41.511 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:05:42.044 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:07:42.043 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:09:41.525 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:11:41.523 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:13:41.555 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:15:41.689 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:17:41.525 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:19:41.505 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:21:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:23:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:25:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:27:41.516 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:29:41.512 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:31:41.508 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:33:41.533 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:35:41.509 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:37:41.507 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:39:41.521 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:41:41.542 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:43:41.523 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:45:41.520 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:47:41.514 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:49:41.523 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:51:41.543 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:53:41.537 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:55:41.546 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 15:59:05.217 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:01:05.222 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:11:05.331 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 16:13:05.199 NotebookApp] Saving file at /MTP_from_GAP_selection.ipynb
+[I 07:45:41.547 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:47:41.543 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:49:41.557 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:51:41.544 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:53:41.537 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:55:41.525 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 07:57:41.528 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 09:03:41.579 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb
+[I 09:05:41.520 NotebookApp] Saving file at /MTP_from_GAP_rmse.ipynb

@@ -408,7 +408,7 @@ class MTP(FileIOCalculator):
 
         FileIOCalculator.__init__(self, command=mtp_command,
                                  discard_results_on_any_change=True)
-        self.implemented_properties = ['energy', 'forces', 'stress', 'grade']
+        self.implemented_properties = ['energy', 'forces', 'stress', 'grade', 'free_energy']
         self._calls = 0
         # self._input = NamedTemporaryFile(mode='w+', suffix='.cfg')
         # self._output = NamedTemporaryFile(mode='w+', suffix='.cfg')
@@ -538,8 +538,9 @@ class MTP(FileIOCalculator):
                         stress_label='stress')
         )
         self.results['energy'] = temp_atoms.info['energy']
+        self.results['free_energy'] = self.results['energy']
         self.results['forces'] = temp_atoms.arrays['forces']
-        self.results['stress'] = temp_atoms.info['stress']
+        self.results['stress'] = -1*temp_atoms.info['stress']/temp_atoms.get_volume() # convert PlusStress to ASE stress
 
         if 'grade' in properties:
             temp_atoms = next(

@@ -21,7 +21,6 @@ from ase.lattice import hexagonal, tetragonal, orthorhombic
 from ase.constraints import StrainFilter, UnitCellFilter, ExpCellFilter, FixAtoms
 from pandas import DataFrame
 from ase.optimize import BFGS
-from Ge_analysis import *
 from copy import deepcopy
 import re
 from ase.neighborlist import neighbor_list
@@ -71,25 +70,6 @@ def extract_float(a):
             pass
     return E
 
-
-def rms_dict(x_ref, x_pred):
-    """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
-
-    x_ref = np.array(x_ref)
-    x_pred = np.array(x_pred)
-
-    if np.shape(x_pred) != np.shape(x_ref):
-        raise ValueError('WARNING: not matching shapes in rms. Shapes: {0}, {1}'
-                         .format(np.shape(x_ref), np.shape(x_pred)))
-
-    error_2 = (x_ref - x_pred) ** 2
-
-    average = np.sqrt(np.average(error_2))
-    std_ = np.sqrt(np.var(error_2))
-
-    return {'rmse': average, 'std': std_}
-
-flatten = lambda l: [item for sublist in l for item in sublist]
 
 def sort_by_timestep(d, i):
     return sorted(d[0][i], key=lambda x: d[2][1][d[0][i].index(x)], reverse=True), \

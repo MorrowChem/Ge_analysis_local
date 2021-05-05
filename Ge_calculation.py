@@ -162,22 +162,6 @@ class GAP:
                 c += 0.25
         return E, F, V, E_var, E_var_grad
 
-
-    def rms_dict(self, x_ref, x_pred):
-        """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
-        x_ref = np.array(list(self.flatten(x_ref)))
-        x_pred = np.array(list(self.flatten(x_pred)))
-
-        if np.shape(x_pred) != np.shape(x_ref):
-            raise ValueError('WARNING: not matching shapes in rms. Shapes: {0}, {1}'
-                             .format(np.shape(x_ref), np.shape(x_pred)))
-
-        error_2 = (x_ref - x_pred) ** 2
-        average = np.sqrt(np.average(error_2))
-        std_ = np.sqrt(np.var(error_2))
-
-        return {'rmse': average, 'std': std_}
-
     # def flatten(self, o):
     #     return [item for sublist in o for item in sublist]
     def flatten(self, l):
@@ -688,9 +672,11 @@ class GAP_pd:
 
     def rms_dict(self, x_ref, x_pred):
         """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
-
+        print('here')
         x_ref = np.array(x_ref)
         x_pred = np.array(x_pred)
+        x_ref = np.ma.fix_invalid(x_ref)
+        x_pred = np.ma.fix_invalid(x_pred)
 
         if np.shape(x_pred) != np.shape(x_ref):
             raise ValueError('WARNING: not matching shapes in rms. Shapes: {0}, {1}'
@@ -779,3 +765,22 @@ class GAP_pd:
         pca.fit(k_mat)
         self.red = pca.fit_transform(k_mat)
 
+def rms_dict(x_ref, x_pred):
+    """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
+
+    x_ref = np.ma.fix_invalid(np.array(x_ref), fill_value=np.NaN)
+    x_pred = np.ma.fix_invalid(np.array(x_pred), fill_value=np.NaN)
+
+    if np.shape(x_pred) != np.shape(x_ref):
+        raise ValueError('WARNING: not matching shapes in rms. Shapes: {0}, {1}'
+                         .format(np.shape(x_ref), np.shape(x_pred)))
+
+    error_2 = (x_ref - x_pred) ** 2
+
+    average = np.sqrt(np.average(error_2))
+    std_ = np.sqrt(np.var(error_2))
+
+    return {'rmse': average, 'std': std_}
+
+def flatten(o):
+    return [item for sublist in o for item in sublist]
